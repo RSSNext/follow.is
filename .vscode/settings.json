@@ -1,0 +1,26 @@
+{
+  "[javascript][javascriptreact][typescript][typescriptreact][json][jsonc]": {
+    "editor.formatOnSave": false,
+    "editor.codeActionsOnSave": {
+      "source.fixAll.eslint": "explicit"
+    }
+  },
+
+  "eslint.codeActionsOnSave.rules": [
+    "!prefer-const",
+    "!unused-imports/no-unused-imports",
+    "!@stylistic/jsx-self-closing-comp",
+    "!tailwindcss/classnames-order",
+    "*"
+  ],
+
+  "eslint.rules.customizations": [
+    { "rule": "@stylistic/*", "severity": "off", "fixable": true },
+    { "rule": "antfu/consistent-list-newline", "severity": "off" },
+    { "rule": "hyoban/jsx-attribute-spacing", "severity": "off" },
+    { "rule": "simple-import-sort/*", "severity": "off" },
+    { "rule": "prefer-const", "severity": "off" },
+    { "rule": "unused-imports/no-unused-imports", "severity": "off" },
+    { "rule": "tailwindcss/classnames-order", "severity": "off" }
+  ]
+}
