@@ -2,6 +2,7 @@ import './globals.css'
 
 import type { Metadata } from 'next'
 import localFont from 'next/font/local'
+import { ThemeProvider } from 'next-themes'
 
 import { siteInfo } from '@/constants'
 
@@ -23,7 +24,9 @@ export default function RootLayout({
   return (
     <html lang="en" className="h-full">
       <body className={`${snPro.variable} font-sans antialiased h-full`}>
-        {children}
+        <ThemeProvider attribute="class">
+          {children}
+        </ThemeProvider>
       </body>
     </html>
   )
