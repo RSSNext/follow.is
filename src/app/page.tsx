@@ -5,6 +5,7 @@ import { motion } from 'framer-motion'
 import { Header } from '@/components/header'
 import { AuroraBackground } from '@/components/ui/aurora-background'
 import { Button } from '@/components/ui/button'
+import { Highlight } from '@/components/ui/hero-highlight'
 
 export default function Home() {
   return (
@@ -22,7 +23,11 @@ export default function Home() {
           className="relative flex flex-col gap-4 items-center justify-center px-4"
         >
           <div className="text-3xl md:text-7xl font-bold dark:text-white text-center">
-            Next generation information browser
+            <Highlight>
+              Next generation
+            </Highlight>
+            {' '}
+            information browser
           </div>
           <div className="font-extralight text-base md:text-4xl dark:text-neutral-200 py-4">
             Lorem ipsum dolor sit, amet consectetur adipisicing elit.
