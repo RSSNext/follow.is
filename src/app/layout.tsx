@@ -22,8 +22,8 @@ export default function RootLayout({
   children: React.ReactNode
 }>) {
   return (
-    <html lang="en" className="h-full">
-      <body className={`${snPro.variable} font-sans antialiased h-full`}>
+    <html lang="en" className={`${snPro.variable} font-sans antialiased scroll-smooth h-full`}>
+      <body className="h-full">
         <ThemeProvider attribute="class">
           {children}
         </ThemeProvider>

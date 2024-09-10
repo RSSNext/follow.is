@@ -6,7 +6,7 @@ import { AuroraBackground } from '@/components/ui/aurora-background'
 import { Button } from '@/components/ui/button'
 import { Highlight } from '@/components/ui/hero-highlight'
 
-export function HomePage() {
+export function Hero() {
   return (
     <AuroraBackground>
       <motion.div

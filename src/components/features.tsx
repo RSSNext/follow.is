@@ -34,6 +34,8 @@ const content = [
 
 export function Features() {
   return (
-    <StickyScroll content={content} />
+    <section id="features">
+      <StickyScroll content={content} />
+    </section>
   )
 }
