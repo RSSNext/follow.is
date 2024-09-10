@@ -2,6 +2,7 @@
 
 import { motion } from 'framer-motion'
 
+import { Features } from '@/components/features'
 import { Header } from '@/components/header'
 import { AuroraBackground } from '@/components/ui/aurora-background'
 import { Button } from '@/components/ui/button'
@@ -40,11 +41,7 @@ export default function Home() {
           </Button>
         </motion.div>
       </AuroraBackground>
-      <div className="max-w-2xl mx-auto flex flex-col gap-80">
-        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Id officia explicabo fugiat fuga, delectus numquam! Sequi quia vero, perspiciatis fugit eveniet sed facere quasi earum similique, officiis inventore quibusdam odit.</p>
-        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Id officia explicabo fugiat fuga, delectus numquam! Sequi quia vero, perspiciatis fugit eveniet sed facere quasi earum similique, officiis inventore quibusdam odit.</p>
-        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Id officia explicabo fugiat fuga, delectus numquam! Sequi quia vero, perspiciatis fugit eveniet sed facere quasi earum similique, officiis inventore quibusdam odit.</p>
-      </div>
+      <Features />
     </>
   )
 }
