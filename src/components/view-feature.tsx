@@ -63,8 +63,6 @@ export function ViewFeature() {
     }
   }, [])
 
-  const [value, setValue] = useState('Articles')
-
   return (
     <section
       id="features"
@@ -82,8 +80,7 @@ export function ViewFeature() {
         <Tabs.Root
           className="mt-16 grid grid-cols-1 items-center gap-y-2 pt-10 sm:gap-y-6 md:mt-20 lg:grid-cols-12 lg:pt-0"
           orientation={tabOrientation}
-          value={value}
-          onValueChange={setValue}
+          defaultValue="Articles"
         >
           <div className="-mx-4 flex overflow-x-auto pb-4 sm:mx-0 sm:overflow-visible sm:pb-0 lg:col-span-5">
             <Tabs.List className="relative z-10 flex gap-x-4 whitespace-nowrap px-4 sm:mx-auto sm:px-0 lg:mx-0 lg:block lg:gap-x-0 lg:gap-y-1 lg:whitespace-normal">
@@ -92,7 +89,7 @@ export function ViewFeature() {
                   key={view.title}
                   className={cn(
                     'group relative rounded-full px-4 py-1 lg:rounded-xl lg:p-6',
-                    value === view.title && 'bg-secondary text-secondary-foreground',
+                    `has-[[data-state='active']]:bg-secondary has-[[data-state='active']]:text-secondary-foreground`,
                   )}
                 >
                   <h3>
