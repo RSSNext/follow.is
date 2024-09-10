@@ -36,7 +36,7 @@ export function Header() {
               <a href={siteInfo.appLink} target="_blank" rel="noopener noreferrer">Get Started</a>
             </Button>
             <Button
-              className="rounded-full flex gap-2 bg-transparent size-9 md:w-auto md:px-3"
+              className="rounded-full border-neutral-300 flex gap-2 bg-transparent size-9 md:w-auto md:px-3"
               variant="outline"
               size="reset"
               asChild

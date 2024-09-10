@@ -1,4 +1,6 @@
 import type { Config } from 'tailwindcss'
+// @ts-expect-error
+import flattenColorPalette from 'tailwindcss/lib/util/flattenColorPalette'
 
 const config: Config = {
   darkMode: ['class'],
@@ -59,9 +61,37 @@ const config: Config = {
           5: 'hsl(var(--chart-5))',
         },
       },
+      animation: {
+        aurora: 'aurora 60s linear infinite',
+      },
+      keyframes: {
+        aurora: {
+          from: {
+            backgroundPosition: '50% 50%, 50% 50%',
+          },
+          to: {
+            backgroundPosition: '350% 50%, 350% 50%',
+          },
+        },
+      },
     },
   },
-  plugins: [require('tailwindcss-animate')],
+  plugins: [
+    addVariablesForColors,
+    require('tailwindcss-animate'),
+  ],
+}
+
+// This plugin adds each Tailwind color as a global CSS variable, e.g. var(--gray-200).
+function addVariablesForColors({ addBase, theme }: any) {
+  const allColors = flattenColorPalette(theme('colors'))
+  const newVars = Object.fromEntries(
+    Object.entries(allColors).map(([key, val]) => [`--${key}`, val]),
+  )
+
+  addBase({
+    ':root': newVars,
+  })
 }
 
 export default config
