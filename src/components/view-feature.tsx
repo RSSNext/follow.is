@@ -63,8 +63,6 @@ export function ViewFeature() {
     }
   }, [])
 
-  const [activeTab, setActiveTab] = useState('Articles')
-
   return (
     <section
       id="features"
@@ -82,8 +80,7 @@ export function ViewFeature() {
         <Tabs.Root
           className="mt-16 grid grid-cols-1 items-center gap-y-2 pt-10 sm:gap-y-6 md:mt-20 lg:grid-cols-12 lg:pt-0"
           orientation={tabOrientation}
-          value={activeTab}
-          onValueChange={setActiveTab}
+          defaultValue="Articles"
         >
           <div className="-mx-4 flex overflow-x-auto pb-4 sm:mx-0 sm:overflow-visible sm:pb-0 lg:col-span-5">
             <Tabs.List className="relative z-10 flex gap-x-4 whitespace-nowrap px-4 sm:mx-auto sm:px-0 lg:mx-0 lg:block lg:gap-x-0 lg:gap-y-1 lg:whitespace-normal">
@@ -117,7 +114,7 @@ export function ViewFeature() {
                 key={view.title}
                 value={view.title}
                 forceMount
-                hidden={activeTab !== view.title}
+                className="data-[state=inactive]:hidden"
               >
                 <div className="relative sm:px-6 lg:hidden">
                   <div className="absolute -inset-x-4 bottom-[-4.25rem] top-[-6.5rem] bg-white/10 ring-1 ring-inset ring-white/10 sm:inset-x-0 sm:rounded-t-xl" />
