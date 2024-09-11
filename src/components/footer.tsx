@@ -26,6 +26,14 @@ export function Footer() {
         <div className="flex flex-col items-center border-t py-10 sm:flex-row-reverse sm:justify-between">
           <div className="flex gap-x-6">
             <a
+              href={siteInfo.discordLink}
+              target="_blank"
+              rel="noopener noreferrer"
+              aria-label="Follow on Discord"
+            >
+              <div className="i-simple-icons-discord" />
+            </a>
+            <a
               href={siteInfo.xLink}
               target="_blank"
               rel="noopener noreferrer"
