@@ -16,7 +16,7 @@ export function StickyScroll({
   const ref = useRef<HTMLDivElement>(null)
   const { scrollYProgress } = useScroll({
     target: ref,
-    offset: ['0% 0%', '50% 0%'],
+    offset: ['0% 0%', '100% 0%'],
   })
 
   const [activeCard, setActiveCard] = useState(0)
@@ -38,13 +38,13 @@ export function StickyScroll({
 
   return (
     <div
-      className="flex justify-center space-x-10 rounded-md p-10"
+      className="flex justify-center space-x-4"
       ref={ref}
     >
       <div className="relative flex items-start px-4">
-        <div className="max-w-2xl">
+        <div className="max-w-80">
           {content.map((item, index) => (
-            <div key={item.title} className="my-20">
+            <div key={item.title} className="h-[calc(100vh-4rem)] mt-16">
               <motion.h2
                 initial={{
                   opacity: 0,
@@ -69,12 +69,9 @@ export function StickyScroll({
               </motion.p>
             </div>
           ))}
-          <div className="h-40" />
         </div>
       </div>
-      <Slot
-        className="sticky top-1/3"
-      >
+      <Slot className="sticky top-1/4">
         {content[activeCard].content ?? null}
       </Slot>
     </div>

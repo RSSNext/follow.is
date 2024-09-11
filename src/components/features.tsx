@@ -1,32 +1,68 @@
 'use client'
 
+import Image from 'next/image'
+
+import screenShotAIDaily from '@/images/screenshots/ai-daily.png'
+import screenShotDiscover from '@/images/screenshots/discover.png'
+import screenShotPower from '@/images/screenshots/power.png'
+import screenShotSocial from '@/images/screenshots/social.png'
+
 import { StickyScroll } from './ui/sticky-scroll-reveal'
 
 const content = [
   {
-    title: 'Collaborative Editing',
-    description: 'Work together in real time with your team, clients, and stakeholders. Collaborate on documents, share ideas, and make decisions quickly. With our platform, you can streamline your workflow and increase productivity.',
+    title: 'Everything is RSSible.',
+    description: 'Our RSSHub community, comprising over 1,000 developers, has spent six years adapting nearly a thousand websites to provide almost all the content you need. This includes platforms like X (Twitter), Instagram, PlayStation, Spotify, Telegram, YouTube, and more. You can also write your own scripts to adapt additional websites.',
     content: (
-      <div className="size-96 flex justify-center items-center rounded-md bg-[linear-gradient(to_bottom_right,var(--cyan-500),var(--emerald-500))]">
-        Collaborative Editing
+      <div className="flex justify-center items-center h-[32rem] w-[50rem]">
+        <Image
+          src={screenShotDiscover}
+          alt="Screenshot of Discover page"
+          fill
+          objectFit="contain"
+        />
       </div>
     ),
   },
   {
-    title: 'Version control',
-    description: 'Experience real-time updates and never stress about version control again. Our platform ensures that you\'re always working on the most recent version of your project, eliminating the need for constant manual updates. Stay in the loop, keep your team aligned, and maintain the flow of your work without any interruptions.',
+    title: 'Actions and AI features.',
+    description: 'Follow leverages advanced AI to assist your operations. Beyond basic AI translation, summarization, and recommendations, it provides twice-daily AI reports to highlight key information from your subscriptions. Additionally, it offers a personalized AI knowledge base built from your subscriptions.',
     content: (
-      <div className="size-96 flex justify-center items-center rounded-md bg-[linear-gradient(to_bottom_right,var(--orange-500),var(--yellow-500))]">
-        Version control
+      <div className="flex justify-center items-center h-[32rem] w-[50rem]">
+        <Image
+          src={screenShotAIDaily}
+          alt="Screenshot of AI Daily page"
+          fill
+          objectFit="contain"
+        />
       </div>
     ),
   },
   {
-    title: 'Running out of content',
-    description: 'Experience real-time updates and never stress about version control again. Our platform ensures that you\'re always working on the most recent version of your project, eliminating the need for constant manual updates. Stay in the loop, keep your team aligned, and maintain the flow of your work without any interruptions.',
+    title: 'Blockchain features and $Power token.',
+    description: 'Follow uses blockchain technology as an incentive mechanism for active users and outstanding creators. Users can obtain more services and benefits by holding and using Power Token. Creators can obtain more rewards by providing high-quality content and services.',
     content: (
-      <div className="size-96 flex justify-center items-center rounded-md bg-[linear-gradient(to_bottom_right,var(--cyan-500),var(--emerald-500))]">
-        Running out of content
+      <div className="flex justify-center items-center h-[32rem] w-[50rem]">
+        <Image
+          src={screenShotPower}
+          alt="Screenshot of Power page"
+          fill
+          objectFit="contain"
+        />
+      </div>
+    ),
+  },
+  {
+    title: 'Social features.',
+    description: ' Follow is also a social platform that allows you to follow other users, share your subscriptions, and discover new content. It also offers a subscription list synchronization feature, enabling your friends to sync with your subscriptions.',
+    content: (
+      <div className="flex justify-center items-center h-[32rem] w-[50rem]">
+        <Image
+          src={screenShotSocial}
+          alt="Screenshot of Personal page in Follow"
+          fill
+          objectFit="contain"
+        />
       </div>
     ),
   },
