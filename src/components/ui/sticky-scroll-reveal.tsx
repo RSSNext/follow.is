@@ -42,36 +42,32 @@ export function StickyScroll({
       ref={ref}
     >
       <div className="relative flex items-start px-4">
-        <div className="max-w-80">
+        <div className="max-w-[90vw] md:max-w-80 text-center">
           {content.map((item, index) => (
-            <div key={item.title} className="h-[calc(100vh-4rem)] mt-16">
-              <motion.h2
-                initial={{
-                  opacity: 0,
-                }}
-                animate={{
-                  opacity: activeCard === index ? 1 : 0.3,
-                }}
-                className="text-2xl font-bold"
-              >
+            <motion.div
+              initial={{
+                opacity: 0,
+              }}
+              animate={{
+                opacity: activeCard === index ? 1 : 0.3,
+              }}
+              key={item.title}
+              className="md:h-[calc(100vh-4rem)] md:mt-16"
+            >
+              <h2 className="text-2xl font-bold">
                 {item.title}
-              </motion.h2>
-              <motion.p
-                initial={{
-                  opacity: 0,
-                }}
-                animate={{
-                  opacity: activeCard === index ? 1 : 0.3,
-                }}
-                className="text-lg max-w-sm mt-10"
-              >
+              </h2>
+              <p className="text-lg mt-10 text-balance">
                 {item.description}
-              </motion.p>
-            </div>
+              </p>
+              <Slot className="max-w-full h-fit my-10 md:hidden">
+                {item.content ?? null}
+              </Slot>
+            </motion.div>
           ))}
         </div>
       </div>
-      <Slot className="sticky top-1/4">
+      <Slot className="sticky top-1/4 max-md:hidden">
         {content[activeCard].content ?? null}
       </Slot>
     </div>
