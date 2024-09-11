@@ -1,4 +1,4 @@
-import { Container } from '@/components/container'
+import { FAQ } from '@/components/faq'
 import { Features } from '@/components/features'
 import { Footer } from '@/components/footer'
 import { Header } from '@/components/header'
@@ -13,11 +13,7 @@ export default function Home() {
         <Hero />
         <ViewFeature />
         <Features />
-        <Container className="space-y-96 py-32">
-          <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Hic nam quaerat consequuntur asperiores, pariatur perferendis sit explicabo eaque sapiente dignissimos eius harum, sequi, ea vero quo non provident placeat? Officia!</p>
-          <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Hic nam quaerat consequuntur asperiores, pariatur perferendis sit explicabo eaque sapiente dignissimos eius harum, sequi, ea vero quo non provident placeat? Officia!</p>
-          <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Hic nam quaerat consequuntur asperiores, pariatur perferendis sit explicabo eaque sapiente dignissimos eius harum, sequi, ea vero quo non provident placeat? Officia!</p>
-        </Container>
+        <FAQ />
         <Footer />
       </main>
     </>
