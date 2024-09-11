@@ -18,6 +18,7 @@ const content = [
         <Image
           src={screenShotDiscover}
           alt="Screenshot of Discover page"
+          priority
           fill
           objectFit="contain"
         />
@@ -32,6 +33,7 @@ const content = [
         <Image
           src={screenShotAIDaily}
           alt="Screenshot of AI Daily page"
+          priority
           fill
           objectFit="contain"
         />
@@ -46,6 +48,7 @@ const content = [
         <Image
           src={screenShotPower}
           alt="Screenshot of Power page"
+          priority
           fill
           objectFit="contain"
         />
@@ -60,6 +63,7 @@ const content = [
         <Image
           src={screenShotSocial}
           alt="Screenshot of Personal page in Follow"
+          priority
           fill
           objectFit="contain"
         />
