@@ -25,7 +25,7 @@ function TestimonialCard({ tweet }: { tweet: Tweet }) {
         height={78}
       />
       <blockquote className="relative basis-2/3">
-        <p className="text-lg tracking-tight text-card-foreground max-w-xs">
+        <p className="text-lg tracking-tight text-card-foreground max-w-xs line-clamp-6">
           {tweet.text.slice(tweet.display_text_range[0], tweet.display_text_range[1])}
         </p>
       </blockquote>
@@ -70,13 +70,13 @@ export async function Testimonials() {
             mission-critical features.
           </p>
         </div>
-        <div className="relative flex h-[800px] w-full my-10 flex-col items-center justify-center overflow-hidden rounded-lg">
-          <Marquee pauseOnHover className="[--duration:20s] grow">
+        <div className="relative flex h-[700px] w-full my-10 flex-col items-center justify-center overflow-hidden rounded-lg">
+          <Marquee pauseOnHover className="[--duration:20s] basis-1/2">
             {firstRow.map(tweet => (
               <TestimonialCard key={tweet?.id_str} tweet={tweet} />
             ))}
           </Marquee>
-          <Marquee reverse pauseOnHover className="[--duration:20s] grow">
+          <Marquee reverse pauseOnHover className="[--duration:20s] basis-1/2">
             {secondRow.map(tweet => (
               <TestimonialCard key={tweet?.id_str} tweet={tweet} />
             ))}
