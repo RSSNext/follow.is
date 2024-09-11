@@ -73,8 +73,8 @@ export function ViewFeature() {
           <h2 className="text-3xl tracking-tight sm:text-4xl md:text-5xl">
             Six types of views
           </h2>
-          <p className="mt-6 text-lg tracking-tight">
-            Lorem ipsum, dolor sit amet consectetur adipisicing elit. Doloremque repellendus.
+          <p className="mt-6 text-lg tracking-tight text-balance">
+            Use different views for various types of content to offer an experience equal to or better than the original platform - Articles, Social Media, Pictures, Videos, Podcasts, and Notifications
           </p>
         </div>
         <Tabs.Root
