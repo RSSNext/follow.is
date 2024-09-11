@@ -1,6 +1,7 @@
 'use client'
 
 import * as Tabs from '@radix-ui/react-tabs'
+import { motion } from 'framer-motion'
 import Image from 'next/image'
 import { useEffect, useState } from 'react'
 
@@ -113,8 +114,6 @@ export function ViewFeature() {
               <Tabs.Content
                 key={view.title}
                 value={view.title}
-                forceMount
-                className="data-[state=inactive]:hidden"
               >
                 <div className="relative sm:px-6 lg:hidden">
                   <div className="absolute -inset-x-4 bottom-[-4.25rem] top-[-6.5rem] bg-white/10 ring-1 ring-inset ring-white/10 sm:inset-x-0 sm:rounded-t-xl" />
@@ -122,7 +121,13 @@ export function ViewFeature() {
                     {view.description}
                   </p>
                 </div>
-                <div className="mt-10 w-[45rem] overflow-hidden sm:w-auto lg:mt-0 lg:w-[67.8125rem]">
+                <motion.div
+                  initial={{ y: 20, opacity: 0 }}
+                  animate={{ y: 0, opacity: 1 }}
+                  exit={{ y: -20, opacity: 0 }}
+                  transition={{ duration: 0.4 }}
+                  className="mt-10 w-[45rem] overflow-hidden sm:w-auto lg:mt-0 lg:w-[67.8125rem]"
+                >
                   <Image
                     className="w-full"
                     src={view.image}
@@ -130,7 +135,7 @@ export function ViewFeature() {
                     priority
                     sizes="(min-width: 1024px) 67.8125rem, (min-width: 640px) 100vw, 45rem"
                   />
-                </div>
+                </motion.div>
               </Tabs.Content>
             ))}
           </div>
