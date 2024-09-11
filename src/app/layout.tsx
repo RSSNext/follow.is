@@ -2,7 +2,6 @@ import './globals.css'
 
 import type { Metadata } from 'next'
 import localFont from 'next/font/local'
-import { ThemeProvider } from 'next-themes'
 
 import { siteInfo } from '@/constants'
 
@@ -22,11 +21,9 @@ export default function RootLayout({
   children: React.ReactNode
 }>) {
   return (
-    <html lang="en" className={`${snPro.variable} font-sans antialiased scroll-smooth h-full`} suppressHydrationWarning>
+    <html lang="en" className={`${snPro.variable} font-sans antialiased scroll-smooth h-full`}>
       <body className="h-full">
-        <ThemeProvider attribute="class">
-          {children}
-        </ThemeProvider>
+        {children}
       </body>
     </html>
   )
