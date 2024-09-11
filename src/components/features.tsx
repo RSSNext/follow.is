@@ -19,8 +19,6 @@ const content = [
           src={screenShotDiscover}
           alt="Screenshot of Discover page"
           priority
-          fill
-          objectFit="contain"
         />
       </div>
     ),
@@ -34,8 +32,6 @@ const content = [
           src={screenShotAIDaily}
           alt="Screenshot of AI Daily page"
           priority
-          fill
-          objectFit="contain"
         />
       </div>
     ),
@@ -49,8 +45,6 @@ const content = [
           src={screenShotPower}
           alt="Screenshot of Power page"
           priority
-          fill
-          objectFit="contain"
         />
       </div>
     ),
@@ -64,8 +58,6 @@ const content = [
           src={screenShotSocial}
           alt="Screenshot of Personal page in Follow"
           priority
-          fill
-          objectFit="contain"
         />
       </div>
     ),

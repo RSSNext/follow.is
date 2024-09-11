@@ -22,7 +22,7 @@ export default function RootLayout({
   children: React.ReactNode
 }>) {
   return (
-    <html lang="en" className={`${snPro.variable} font-sans antialiased scroll-smooth h-full`}>
+    <html lang="en" className={`${snPro.variable} font-sans antialiased scroll-smooth h-full`} suppressHydrationWarning>
       <body className="h-full">
         <ThemeProvider attribute="class">
           {children}
