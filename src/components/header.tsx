@@ -1,6 +1,5 @@
 'use client'
 
-import { GithubIcon } from 'lucide-react'
 import Link from 'next/link'
 
 import { siteInfo } from '@/constants'
@@ -42,7 +41,7 @@ export function Header() {
               asChild
             >
               <a href={siteInfo.githubLink} target="_blank" rel="noopener noreferrer">
-                <GithubIcon className="size-4" />
+                <span className="i-simple-icons-github size-4" />
                 <span className="hidden md:inline">Stars on GitHub</span>
               </a>
             </Button>

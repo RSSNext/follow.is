@@ -1,0 +1,56 @@
+import Link from 'next/link'
+
+import { Container } from '@/components/container'
+import { Logo } from '@/components/logo'
+import { siteInfo } from '@/constants'
+
+export function Footer() {
+  return (
+    <footer>
+      <Container>
+        <div className="py-16">
+          <div className="flex items-center justify-center gap-4">
+            <Logo className="h-10 w-auto" />
+            <p className="text-xl font-bold">Follow</p>
+          </div>
+          <nav className="mt-10 text-sm" aria-label="quick links">
+            <div className="-my-1 flex justify-center gap-x-6">
+              {siteInfo.navigation.map(item => (
+                <Link key={item.href} href={item.href}>
+                  {item.title}
+                </Link>
+              ))}
+            </div>
+          </nav>
+        </div>
+        <div className="flex flex-col items-center border-t py-10 sm:flex-row-reverse sm:justify-between">
+          <div className="flex gap-x-6">
+            <a
+              href={siteInfo.xLink}
+              target="_blank"
+              rel="noopener noreferrer"
+              aria-label="Follow on X"
+            >
+              <div className="i-simple-icons-x" />
+            </a>
+            <a
+              href={siteInfo.githubLink}
+              target="_blank"
+              rel="noopener noreferrer"
+              aria-label="Follow on GitHub"
+            >
+              <div className="i-simple-icons-github" />
+            </a>
+          </div>
+          <p className="mt-6 text-sm sm:mt-0">
+            &copy;
+            {' '}
+            {new Date().getFullYear()}
+            {' '}
+            Follow.
+          </p>
+        </div>
+      </Container>
+    </footer>
+  )
+}

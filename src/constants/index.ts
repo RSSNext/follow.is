@@ -3,7 +3,8 @@ export const siteInfo = {
   description: '🧡 Next generation information browser',
   appLink: 'https://app.follow.is',
   githubLink: 'https://github.com/RSSNext/follow',
-  headerNav: [
+  xLink: 'https://x.com/follow_app_',
+  navigation: [
     { title: 'Features', href: '#features' },
     { title: 'FAQ', href: '#faq' },
   ],

@@ -17,7 +17,7 @@ export function NavDesktop() {
   return (
     <NavigationMenu className="hidden md:flex">
       <NavigationMenuList>
-        {siteInfo.headerNav.map(item => (
+        {siteInfo.navigation.map(item => (
           <NavigationMenuItem key={item.href}>
             <Link href={item.href} legacyBehavior passHref>
               <NavigationMenuLink className={cn(navigationMenuTriggerStyle(), 'bg-transparent')}>

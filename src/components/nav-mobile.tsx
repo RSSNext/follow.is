@@ -19,7 +19,7 @@ export function NavMobile() {
         className="md:hidden w-[calc(100vw-2rem)] -translate-x-2 shadow-sm"
         sideOffset={36}
       >
-        {siteInfo.headerNav.map(navItem => (
+        {siteInfo.navigation.map(navItem => (
           <Link
             key={navItem.href}
             href={navItem.href}

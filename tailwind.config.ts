@@ -1,3 +1,4 @@
+import { iconsPlugin } from '@egoist/tailwindcss-icons'
 import type { Config } from 'tailwindcss'
 // @ts-expect-error
 import flattenColorPalette from 'tailwindcss/lib/util/flattenColorPalette'
@@ -78,6 +79,7 @@ const config: Config = {
   },
   plugins: [
     addVariablesForColors,
+    iconsPlugin({ scale: 1.5 }),
     require('tailwindcss-animate'),
   ],
 }
