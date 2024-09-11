@@ -7,6 +7,7 @@ export const siteInfo = {
   discordLink: 'https://discord.com/invite/xHCVQZ6wmZ',
   navigation: [
     { title: 'Features', href: '#features' },
+    { title: 'Testimonials', href: '#testimonials' },
     { title: 'FAQ', href: '#faq' },
   ],
 } as const

@@ -3,6 +3,7 @@ import { Features } from '@/components/features'
 import { Footer } from '@/components/footer'
 import { Header } from '@/components/header'
 import { Hero } from '@/components/hero'
+import { Testimonials } from '@/components/testimonials'
 import { ViewFeature } from '@/components/view-feature'
 
 export default function Home() {
@@ -13,6 +14,7 @@ export default function Home() {
         <Hero />
         <ViewFeature />
         <Features />
+        <Testimonials />
         <FAQ />
         <Footer />
       </main>
