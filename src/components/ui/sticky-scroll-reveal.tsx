@@ -42,7 +42,7 @@ export function StickyScroll({
       ref={ref}
     >
       <div className="relative flex items-start px-4">
-        <div className="max-w-[90vw] md:max-w-80 text-center">
+        <div className="max-w-[90vw] md:max-w-80">
           {content.map((item, index) => (
             <motion.div
               initial={{
