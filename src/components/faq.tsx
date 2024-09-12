@@ -16,12 +16,8 @@ interface FAQProps {
 
 const FAQList: FAQProps[] = [
   {
-    question: 'How can I get an invitation code?',
-    answer: [
-      'Looking for any beta user to invite you.',
-      'Join our Discord server for occasional giveaways.',
-      'Follow our X account for occasional giveaways.',
-    ],
+    question: 'Lorem ipsum dolor sit amet consectetur adipisicing elit?',
+    answer: 'Lorem ipsum dolor sit amet, consectetur adipisicing elit. Sint labore quidem quam? Consectetur sapiente iste rerum reiciendis animi nihil nostrum sit quo, modi quod.',
     value: 'item-1',
   },
   {
