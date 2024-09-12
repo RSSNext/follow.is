@@ -37,16 +37,15 @@ function ViewImageSlide({ views }: { views: View[] }) {
     }, 150)
 
     return () => {
+      setProgress(0)
       clearInterval(interval)
       clearInterval(progressInterval)
     }
   }, [isHovered, totalImages, resetFlag])
 
   return (
-    <div className="relative">
-      <div
-        className="absolute top-0 inset-x-0 flex justify-center gap-2 -translate-y-16"
-      >
+    <div className="space-y-10">
+      <div className="flex max-sm:px-4 sm:justify-center gap-2 max-w-[100vw] overflow-x-auto no-scrollbar">
         {views.map((view, index) => (
           <Button
             variant={selectedIndex === index ? 'default' : 'outline'}
@@ -54,10 +53,9 @@ function ViewImageSlide({ views }: { views: View[] }) {
             type="button"
             onClick={() => {
               setSelectedIndex(index)
-              setProgress(0)
               setResetFlag(!resetFlag)
             }}
-            className="relative overflow-hidden transition-colors"
+            className="relative transition-colors shrink-0"
           >
             <motion.div
               initial={{ scaleX: 0 }}
@@ -73,14 +71,15 @@ function ViewImageSlide({ views }: { views: View[] }) {
         ))}
       </div>
       <div
-        className="h-[32rem] w-[50rem] relative overflow-hidden"
+        className="w-[50rem] max-w-[100vw] aspect-[100/65] relative overflow-hidden"
         onMouseEnter={() => setIsHovered(true)}
         onMouseLeave={() => setIsHovered(false)}
       >
         {views.map(({ image, title }, index) => (
           <Image
-            {...image}
+            src={image}
             alt={`Screenshot of ${title} page`}
+            priority
             key={title}
             className="absolute inset-0 object-cover transition-transform duration-500 ease-in-out"
             style={{

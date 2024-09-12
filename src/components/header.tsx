@@ -18,7 +18,7 @@ export function Header() {
     <header
       className={cn(
         'px-10 py-5 backdrop-blur-lg fixed top-0 inset-x-0 z-50 transition-all',
-        scrollOffset && 'border md:border-b md:border-t-0 md:border-x-0 m-2 md:m-0 rounded-md md:rounded-none shadow-sm md:shadow-none',
+        scrollOffset && 'border-b',
       )}
     >
       <Container>

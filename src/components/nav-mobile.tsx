@@ -16,7 +16,7 @@ export function NavMobile() {
         <Menu className="group-data-[state='open']:hidden" />
       </PopoverTrigger>
       <PopoverContent
-        className="md:hidden w-[calc(100vw-2rem)] -translate-x-2 shadow-sm"
+        className="md:hidden w-[calc(100vw-2rem)] -translate-x-4 shadow-none"
         sideOffset={36}
       >
         {siteInfo.navigation.map(navItem => (
