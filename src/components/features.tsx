@@ -10,11 +10,12 @@ import screenShotAIDaily from '@/images/screenshots/ai-daily.png'
 import screenShotDiscover from '@/images/screenshots/discover.png'
 import screenShotPower from '@/images/screenshots/power.png'
 import screenShotSocial from '@/images/screenshots/social.png'
+import { cn } from '@/lib/utils'
 
 import { Button } from './ui/button'
 import { StickyScroll } from './ui/sticky-scroll-reveal'
 
-function ViewImageSlide({ views }: { views: View[] }) {
+function ViewImageSlide({ views, className }: { views: View[], className?: string }) {
   const totalImages = useMemo(() => views.length, [views])
   const [selectedIndex, setSelectedIndex] = useState(0)
   const [progress, setProgress] = useState(0)
@@ -43,7 +44,7 @@ function ViewImageSlide({ views }: { views: View[] }) {
   }, [isHovered, totalImages, resetFlag])
 
   return (
-    <div className="space-y-10">
+    <div className={cn('space-y-10 h-fit', className)}>
       <div className="flex max-sm:px-4 sm:justify-center gap-2 max-w-[100vw] overflow-x-auto no-scrollbar">
         {views.map((view, index) => (
           <Button
@@ -97,9 +98,7 @@ const content = [
     title: 'Multimedia Processing',
     description: 'Because we know content is more than just text.',
     content: (
-      <div className="flex justify-center items-center h-[32rem] w-[50rem] relative">
-        <ViewImageSlide views={views} />
-      </div>
+      <ViewImageSlide views={views} />
     ),
   },
   {
