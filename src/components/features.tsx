@@ -12,7 +12,7 @@ import { StickyScroll } from './ui/sticky-scroll-reveal'
 const content = [
   {
     title: 'Everything is RSSible.',
-    description: 'Our RSSHub community, comprising over 1,000 developers, has spent six years adapting nearly a thousand websites to provide almost all the content you need. This includes platforms like X (Twitter), Instagram, PlayStation, Spotify, Telegram, YouTube, and more. You can also write your own scripts to adapt additional websites.',
+    description: 'Founded in 2018, RSSHub is powered by over 1,000 developers. Stay connected with sources like X, Instagram, PlayStation, Spotify, Telegram, YouTube, and more.',
     content: (
       <div className="flex justify-center items-center h-[32rem] w-[50rem]">
         <Image
@@ -24,8 +24,8 @@ const content = [
     ),
   },
   {
-    title: 'Actions and AI features.',
-    description: 'Follow leverages advanced AI to assist your operations. Beyond basic AI translation, summarization, and recommendations, it provides twice-daily AI reports to highlight key information from your subscriptions. Additionally, it offers a personalized AI knowledge base built from your subscriptions.',
+    title: 'AI at Your Fingertips',
+    description: 'Transform your browsing with AI-powered Actions. Instantly translate, summarize, or create personal knowledge bases. All in one seamless experience.',
     content: (
       <div className="flex justify-center items-center h-[32rem] w-[50rem]">
         <Image
@@ -37,8 +37,8 @@ const content = [
     ),
   },
   {
-    title: 'Blockchain features and $Power token.',
-    description: 'Follow uses blockchain technology as an incentive mechanism for active users and outstanding creators. Users can obtain more services and benefits by holding and using Power Token. Creators can obtain more rewards by providing high-quality content and services.',
+    title: '$POWER an Ownership Economy',
+    description: 'Fair. Transparent. Empowering. Tip creators with $POWER, and earn it for producing quality content. A simple, rewarding way to fuel creativity.',
     content: (
       <div className="flex justify-center items-center h-[32rem] w-[50rem]">
         <Image
@@ -50,8 +50,8 @@ const content = [
     ),
   },
   {
-    title: 'Social features.',
-    description: ' Follow is also a social platform that allows you to follow other users, share your subscriptions, and discover new content. It also offers a subscription list synchronization feature, enabling your friends to sync with your subscriptions.',
+    title: 'Social, Community',
+    description: 'Follow is also a community. Connect with others, share your subscriptions, and discover fresh content. You are always in sync.',
     content: (
       <div className="flex justify-center items-center h-[32rem] w-[50rem]">
         <Image
