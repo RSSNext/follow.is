@@ -20,6 +20,8 @@ function ViewImageSlide({ views }: { views: View[] }) {
   const [progress, setProgress] = useState(0)
   const [isHovered, setIsHovered] = useState(false)
 
+  const [resetFlag, setResetFlag] = useState(false)
+
   useEffect(() => {
     const interval = setInterval(() => {
       if (isHovered)
@@ -38,7 +40,7 @@ function ViewImageSlide({ views }: { views: View[] }) {
       clearInterval(interval)
       clearInterval(progressInterval)
     }
-  }, [isHovered, totalImages])
+  }, [isHovered, totalImages, resetFlag])
 
   return (
     <div className="relative">
@@ -53,6 +55,7 @@ function ViewImageSlide({ views }: { views: View[] }) {
             onClick={() => {
               setSelectedIndex(index)
               setProgress(0)
+              setResetFlag(!resetFlag)
             }}
             className="relative overflow-hidden transition-colors"
           >
