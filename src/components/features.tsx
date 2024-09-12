@@ -1,15 +1,105 @@
 'use client'
 
+import { motion } from 'framer-motion'
 import Image from 'next/image'
+import { useEffect, useMemo, useState } from 'react'
 
+import type { View } from '@/constants'
+import { views } from '@/constants'
 import screenShotAIDaily from '@/images/screenshots/ai-daily.png'
 import screenShotDiscover from '@/images/screenshots/discover.png'
 import screenShotPower from '@/images/screenshots/power.png'
 import screenShotSocial from '@/images/screenshots/social.png'
 
+import { Button } from './ui/button'
 import { StickyScroll } from './ui/sticky-scroll-reveal'
 
+function ViewImageSlide({ views }: { views: View[] }) {
+  const totalImages = useMemo(() => views.length, [views])
+  const [selectedIndex, setSelectedIndex] = useState(0)
+  const [progress, setProgress] = useState(0)
+  const [isHovered, setIsHovered] = useState(false)
+
+  useEffect(() => {
+    const interval = setInterval(() => {
+      if (isHovered)
+        return
+      setSelectedIndex(prevIndex => (prevIndex + 1) % totalImages)
+      setProgress(0)
+    }, 3000)
+
+    const progressInterval = setInterval(() => {
+      if (isHovered)
+        return
+      setProgress(prevProgress => Math.min(prevProgress + 0.05, 1))
+    }, 150)
+
+    return () => {
+      clearInterval(interval)
+      clearInterval(progressInterval)
+    }
+  }, [isHovered, totalImages])
+
+  return (
+    <div className="relative">
+      <div
+        className="absolute top-0 inset-x-0 flex justify-center gap-2 -translate-y-16"
+      >
+        {views.map((view, index) => (
+          <Button
+            variant={selectedIndex === index ? 'default' : 'outline'}
+            key={view.title}
+            type="button"
+            onClick={() => {
+              setSelectedIndex(index)
+              setProgress(0)
+            }}
+            className="relative overflow-hidden transition-colors"
+          >
+            <motion.div
+              initial={{ scaleX: 0 }}
+              animate={{
+                scaleX: index === (selectedIndex + 1) % totalImages ? progress : 0,
+              }}
+              style={{ originX: 0 }}
+              transition={{ duration: 0.15, ease: 'linear' }}
+              className="absolute inset-0 bg-primary/10"
+            />
+            {view.title}
+          </Button>
+        ))}
+      </div>
+      <div
+        className="h-[32rem] w-[50rem] relative overflow-hidden"
+        onMouseEnter={() => setIsHovered(true)}
+        onMouseLeave={() => setIsHovered(false)}
+      >
+        {views.map(({ image, title }, index) => (
+          <Image
+            {...image}
+            alt={`Screenshot of ${title} page`}
+            key={title}
+            className="absolute inset-0 object-cover transition-transform duration-500 ease-in-out"
+            style={{
+              transform: `translateX(${(index - selectedIndex) * 100}%)`,
+            }}
+          />
+        ))}
+      </div>
+    </div>
+  )
+}
+
 const content = [
+  {
+    title: 'Multimedia Processing',
+    description: 'Because we know content is more than just text.',
+    content: (
+      <div className="flex justify-center items-center h-[32rem] w-[50rem] relative">
+        <ViewImageSlide views={views} />
+      </div>
+    ),
+  },
   {
     title: 'Everything is RSSible.',
     description: 'Founded in 2018, RSSHub is powered by over 1,000 developers. Stay connected with sources like X, Instagram, PlayStation, Spotify, Telegram, YouTube, and more.',
