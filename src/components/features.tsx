@@ -44,8 +44,8 @@ function ViewImageSlide({ views, className }: { views: View[], className?: strin
   }, [isHovered, totalImages, resetFlag])
 
   return (
-    <div className={cn('space-y-10 h-fit', className)}>
-      <div className="flex max-sm:px-4 sm:justify-center gap-2 max-w-[100vw] overflow-x-auto no-scrollbar">
+    <div className={cn('space-y-10 h-fit overflow-hidden', className)}>
+      <div className="flex md:justify-center gap-2 max-w-[100vw] overflow-x-auto no-scrollbar">
         {views.map((view, index) => (
           <Button
             variant={selectedIndex === index ? 'default' : 'outline'}
@@ -72,7 +72,7 @@ function ViewImageSlide({ views, className }: { views: View[], className?: strin
         ))}
       </div>
       <div
-        className="w-[50rem] max-w-[100vw] aspect-[100/65] relative overflow-hidden"
+        className="w-[50rem] aspect-[100/65] relative overflow-hidden"
         onMouseEnter={() => setIsHovered(true)}
         onMouseLeave={() => setIsHovered(false)}
       >
