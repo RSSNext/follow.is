@@ -5,6 +5,7 @@ import { motion } from 'framer-motion'
 import { AuroraBackground } from '@/components/ui/aurora-background'
 import { Button } from '@/components/ui/button'
 import { Highlight } from '@/components/ui/hero-highlight'
+import { siteInfo } from '@/constants'
 
 export function Hero() {
   return (
@@ -32,8 +33,9 @@ export function Hero() {
         <Button
           type="button"
           className="rounded-full"
+          asChild
         >
-          Get Started
+          <a href={siteInfo.appLink} target="_blank" rel="noopener noreferrer">Get Started</a>
         </Button>
       </motion.div>
     </AuroraBackground>
