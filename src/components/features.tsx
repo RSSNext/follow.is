@@ -37,7 +37,6 @@ function ViewImageSlide({ views }: { views: View[] }) {
     }, 150)
 
     return () => {
-      setProgress(0)
       clearInterval(interval)
       clearInterval(progressInterval)
     }
@@ -54,6 +53,7 @@ function ViewImageSlide({ views }: { views: View[] }) {
             onClick={() => {
               setSelectedIndex(index)
               setResetFlag(!resetFlag)
+              setProgress(0)
             }}
             className="relative transition-colors shrink-0"
           >
