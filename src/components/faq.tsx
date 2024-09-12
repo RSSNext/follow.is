@@ -16,7 +16,7 @@ interface FAQProps {
 
 const FAQList: FAQProps[] = [
   {
-    question: 'How can i get an invitation code?',
+    question: 'How can I get an invitation code?',
     answer: [
       'Looking for any beta user to invite you.',
       'Join our Discord server for occasional giveaways.',
