@@ -14,7 +14,6 @@ export const siteInfo = {
   discordLink: 'https://discord.com/invite/xHCVQZ6wmZ',
   releaseLink: 'https://github.com/RSSNext/Follow/releases',
   navigation: [
-    { title: 'Download', href: '/download' },
     { title: 'Features', href: '/#features' },
     { title: 'Testimonials', href: '/#testimonials' },
     { title: 'FAQ', href: '/#faq' },

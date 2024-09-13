@@ -24,7 +24,7 @@ export function Header() {
       <Container>
         <nav className="relative flex justify-between">
           <div className="flex items-center md:gap-x-12">
-            <Link className="flex items-center gap-4" href="#">
+            <Link className="flex items-center gap-4" href="/#">
               <Logo className="h-8 w-auto" />
               <p className="text-xl font-bold">Follow</p>
             </Link>
@@ -32,7 +32,7 @@ export function Header() {
           </div>
           <div className="flex items-center gap-4">
             <Button className="rounded-full hidden md:inline-flex" size="sm" asChild>
-              <a href={siteInfo.releaseLink} target="_blank" rel="noopener noreferrer">Get Started</a>
+              <Link href="/download">Get Started</Link>
             </Button>
             <Button
               className="rounded-full border-neutral-300 dark:border-neutral-500 flex gap-2 bg-transparent size-9 md:w-auto md:px-3"

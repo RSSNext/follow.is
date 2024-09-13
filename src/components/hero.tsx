@@ -1,11 +1,11 @@
 'use client'
 
 import { motion } from 'framer-motion'
+import Link from 'next/link'
 
 import { AuroraBackground } from '@/components/ui/aurora-background'
 import { Button } from '@/components/ui/button'
 import { Highlight } from '@/components/ui/hero-highlight'
-import { siteInfo } from '@/constants'
 
 export function Hero() {
   return (
@@ -35,7 +35,7 @@ export function Hero() {
           className="rounded-full"
           asChild
         >
-          <a href={siteInfo.releaseLink} target="_blank" rel="noopener noreferrer">Get Started</a>
+          <Link href="/download">Get Started</Link>
         </Button>
       </motion.div>
     </AuroraBackground>
