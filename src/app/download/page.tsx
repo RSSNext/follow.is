@@ -1,5 +1,4 @@
 import { Download } from 'lucide-react'
-import osName from 'os-name'
 
 import { getLatestReleaseInfo } from '@/api/release'
 import { Logo } from '@/components/logo'
@@ -8,7 +7,7 @@ import { siteInfo } from '@/constants'
 
 export default async function DownloadPage() {
   const releaseInfo = await getLatestReleaseInfo()
-  const platform = osName().split(' ')[0]
+  const platform = 'macOS'
 
   if (!releaseInfo) {
     return <main className="min-h-screen" />
