@@ -7,7 +7,7 @@ import screenshotVideo from '@/images/screenshots/video.png'
 
 export const siteInfo = {
   title: 'Follow',
-  description: '🧡 Next generation information browser',
+  description: 'Next-Gen Information Browser',
   appLink: 'https://app.follow.is',
   githubLink: 'https://github.com/RSSNext/follow',
   xLink: 'https://x.com/follow_app_',
