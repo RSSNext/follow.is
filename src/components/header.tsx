@@ -32,7 +32,7 @@ export function Header() {
           </div>
           <div className="flex items-center gap-4">
             <Button className="rounded-full hidden md:inline-flex" size="sm" asChild>
-              <a href={siteInfo.downloadLink} target="_blank" rel="noopener noreferrer">Get Started</a>
+              <a href={siteInfo.releaseLink} target="_blank" rel="noopener noreferrer">Get Started</a>
             </Button>
             <Button
               className="rounded-full border-neutral-300 dark:border-neutral-500 flex gap-2 bg-transparent size-9 md:w-auto md:px-3"

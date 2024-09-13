@@ -35,7 +35,7 @@ export function Hero() {
           className="rounded-full"
           asChild
         >
-          <a href={siteInfo.downloadLink} target="_blank" rel="noopener noreferrer">Get Started</a>
+          <a href={siteInfo.releaseLink} target="_blank" rel="noopener noreferrer">Get Started</a>
         </Button>
       </motion.div>
     </AuroraBackground>
