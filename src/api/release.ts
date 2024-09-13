@@ -1,7 +1,7 @@
 export async function getLatestReleaseInfo(): Promise<ReleaseInfo | undefined> {
   const res = await fetch('https://ungh.cc/repos/RSSNext/follow/releases')
   const releases = await res.json() as GitHubRelease
-  const latestRelease = releases.releases[0]
+  const latestRelease = releases.releases.find(release => !release.draft && !release.prerelease)
   if (!latestRelease) {
     return
   }
