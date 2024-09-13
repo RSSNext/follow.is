@@ -86,10 +86,10 @@ export async function Testimonials() {
       <Container>
         <div className="mx-auto max-w-2xl md:text-center">
           <h2 className="text-3xl tracking-tight sm:text-4xl">
-            Loved by the Community.
+            Read to experience the future?
           </h2>
           <p className="mt-4 text-lg tracking-tight">
-            Designed with you, for you. Every feature is shaped by the community, creating an experience that evolves together.
+            Follow—where information flows freely, and creators hold the power.
           </p>
         </div>
         <div className="relative flex h-[700px] w-full my-10 flex-col items-center justify-center overflow-hidden rounded-lg">

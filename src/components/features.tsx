@@ -95,15 +95,15 @@ function ViewImageSlide({ views, className }: { views: View[], className?: strin
 
 const content = [
   {
-    title: 'Multimedia Processing',
-    description: 'Because we know content is more than just text.',
+    title: 'Dynamic Content Support',
+    description: 'Because we know content is more than just text. From articles to videos, images to audio—Follow gets it all covered.',
     content: (
       <ViewImageSlide views={views} />
     ),
   },
   {
-    title: 'Everything is RSSible.',
-    description: 'Founded in 2018, RSSHub is powered by over 1,000 developers. Stay connected with sources like X, Instagram, PlayStation, Spotify, Telegram, YouTube, and more.',
+    title: 'Customized Information Hub',
+    description: 'Subscribe to a vast range of Web 1, 2, and 3 feeds. Curate your favorites and keep track of what matters most to you.',
     content: (
       <div className="flex justify-center items-center h-[32rem] w-[50rem]">
         <Image
@@ -115,8 +115,8 @@ const content = [
     ),
   },
   {
-    title: 'AI at Your Fingertips',
-    description: 'Transform your browsing with AI-powered Actions. Instantly translate, summarize, or create personal knowledge bases. All in one seamless experience.',
+    title: 'AI At Your Fingertips',
+    description: 'A smarter and more efficient browsing with AI-powered feature—translation, summary, personalization, and more coming your way.',
     content: (
       <div className="flex justify-center items-center h-[32rem] w-[50rem]">
         <Image
@@ -128,8 +128,8 @@ const content = [
     ),
   },
   {
-    title: '$POWER an Ownership Economy',
-    description: 'Fair. Transparent. Empowering. Tip creators with $POWER, and earn it for producing quality content. A simple, rewarding way to fuel creativity.',
+    title: '$POWER An Ownership Economy',
+    description: 'Tip creators across instantly with $POWER. Support content you love, and unlock real value with your own pieces. Your content, your power.',
     content: (
       <div className="flex justify-center items-center h-[32rem] w-[50rem]">
         <Image
@@ -141,8 +141,8 @@ const content = [
     ),
   },
   {
-    title: 'Social, Community',
-    description: 'Follow is also a community. Connect with others, share your subscriptions, and discover fresh content. You are always in sync.',
+    title: 'More Than Just An App',
+    description: 'This isn’t just another app. Follow is a community—introducing a new era of openness and community-driven experience.',
     content: (
       <div className="flex justify-center items-center h-[32rem] w-[50rem]">
         <Image

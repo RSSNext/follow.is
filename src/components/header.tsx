@@ -42,7 +42,7 @@ export function Header() {
             >
               <a href={siteInfo.githubLink} target="_blank" rel="noopener noreferrer">
                 <span className="i-simple-icons-github size-4" />
-                <span className="hidden md:inline">Stars on GitHub</span>
+                <span className="hidden md:inline">Star on GitHub</span>
               </a>
             </Button>
             <NavMobile />

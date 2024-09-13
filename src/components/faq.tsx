@@ -16,8 +16,8 @@ interface FAQProps {
 
 const FAQList: FAQProps[] = [
   {
-    question: 'What platforms are supported?',
-    answer: 'Follow Desktop for Windows, macOS, Linux, and Browser; Follow Mobile for Android and iOS (coming soon).',
+    question: 'On which platforms is Follow available?',
+    answer: 'Follow is available on Desktop for Windows, macOS, Linux, and directly in your browser. The mobile app for Android and iOS is coming soon!',
     value: 'item-1',
   },
 ]
