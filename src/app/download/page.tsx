@@ -29,10 +29,7 @@ export default async function DownloadPage() {
             {`Follow ${releaseInfo.name} is not available for ${platform}.`}
           </p>
         ) : (
-          <Button
-            className="p-6"
-            asChild
-          >
+          <Button className="p-6 rounded-lg" asChild>
             <a href={releaseInfo.downloadUrl[platform]}>
               <span className="font-semibold text-lg">
                 Download for
