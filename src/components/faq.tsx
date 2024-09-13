@@ -50,7 +50,7 @@ export function FAQ() {
               <AccordionTrigger className="text-left hover:no-underline">
                 {question}
               </AccordionTrigger>
-              <AccordionContent className="prose prose-neutral dark:prose-invert">
+              <AccordionContent className="prose prose-neutral dark:prose-invert text-balance">
                 {Array.isArray(answer) ? (
                   <ul>
                     {answer.map(item => (
