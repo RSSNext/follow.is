@@ -13,6 +13,9 @@ export async function getLatestReleaseInfo(): Promise<ReleaseInfo | undefined> {
     Linux: '',
   }
   for (const asset of assets) {
+    if (asset.contentType !== 'application/octet-stream') {
+      continue
+    }
     if (asset.downloadUrl.includes('windows')) {
       downloadUrl.Windows = asset.downloadUrl
     }
