@@ -10,9 +10,4 @@ export default defineConfig(
       order: false,
     },
   },
-  {
-    rules: {
-      '@stylistic/quotes': ['error', 'single', { allowTemplateLiterals: true, avoidEscape: true }],
-    },
-  },
 )
