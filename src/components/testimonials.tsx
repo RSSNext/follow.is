@@ -99,7 +99,7 @@ export async function Testimonials() {
       <Container>
         <div className="mx-auto max-w-2xl md:text-center">
           <h2 className="text-3xl tracking-tight sm:text-4xl">
-            Read to experience the future?
+            Ready to experience the future?
           </h2>
           <p className="mt-4 text-lg tracking-tight">
             Follow—where information flows freely, and creators hold the power.
