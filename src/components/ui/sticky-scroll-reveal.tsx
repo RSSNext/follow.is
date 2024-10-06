@@ -1,5 +1,3 @@
-'use client'
-
 import { Slot } from '@radix-ui/react-slot'
 import { motion, useMotionValueEvent, useScroll } from 'framer-motion'
 import { useRef, useState } from 'react'
@@ -26,7 +24,7 @@ export function StickyScroll({
     const closestBreakpointIndex = cardsBreakpoints.reduce(
       (acc, breakpoint, index) => {
         const distance = Math.abs(latest - breakpoint)
-        if (distance < Math.abs(latest - cardsBreakpoints[acc])) {
+        if (cardsBreakpoints[acc] && distance < Math.abs(latest - cardsBreakpoints[acc])) {
           return index
         }
         return acc
@@ -68,7 +66,7 @@ export function StickyScroll({
         </div>
       </div>
       <Slot className="sticky top-1/4 max-md:hidden">
-        {content[activeCard].content ?? null}
+        {content[activeCard]?.content ?? null}
       </Slot>
     </div>
   )

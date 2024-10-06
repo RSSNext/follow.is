@@ -1,4 +1,4 @@
-import Link from 'next/link'
+import { Link } from 'react-router'
 
 import { Container } from '@/components/container'
 import { Logo } from '@/components/logo'
@@ -16,7 +16,7 @@ export function Footer() {
           <nav className="mt-10 text-sm" aria-label="quick links">
             <div className="-my-1 flex justify-center gap-x-6">
               {siteInfo.navigation.map(item => (
-                <Link key={item.href} href={item.href}>
+                <Link key={item.href} to={item.href}>
                   {item.title}
                 </Link>
               ))}

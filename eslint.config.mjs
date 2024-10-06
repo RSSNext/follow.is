@@ -9,5 +9,6 @@ export default defineConfig(
     tailwindCSS: {
       order: false,
     },
+    react: 'remix',
   },
 )

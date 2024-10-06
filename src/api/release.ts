@@ -1,6 +1,5 @@
 export async function getLatestReleaseInfo(): Promise<ReleaseInfo | undefined> {
-  // TODO: remove revalidate after next.js 15
-  const res = await fetch('https://ungh.cc/repos/RSSNext/follow/releases', { next: { revalidate: 60 } })
+  const res = await fetch('https://ungh.cc/repos/RSSNext/follow/releases')
   const releases = await res.json() as GitHubRelease
   const latestRelease = releases.releases.find(release => !release.draft && !release.prerelease)
   if (!latestRelease) {

@@ -1,7 +1,5 @@
-'use client'
-
-import Link from 'next/link'
 import * as React from 'react'
+import { Link } from 'react-router'
 
 import {
   NavigationMenu,
@@ -19,7 +17,7 @@ export function NavDesktop() {
       <NavigationMenuList>
         {siteInfo.navigation.map(item => (
           <NavigationMenuItem key={item.href}>
-            <Link href={item.href} legacyBehavior passHref>
+            <Link to={item.href}>
               <NavigationMenuLink className={cn(navigationMenuTriggerStyle(), 'bg-transparent')}>
                 {item.title}
               </NavigationMenuLink>

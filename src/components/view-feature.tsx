@@ -1,8 +1,5 @@
-'use client'
-
 import * as Tabs from '@radix-ui/react-tabs'
 import { motion } from 'framer-motion'
-import Image from 'next/image'
 import { useEffect, useState } from 'react'
 
 import { Container } from '@/components/container'
@@ -90,11 +87,10 @@ export function ViewFeature() {
                   transition={{ duration: 0.4 }}
                   className="mt-10 w-[45rem] overflow-hidden sm:w-auto lg:mt-0 lg:w-[67.8125rem]"
                 >
-                  <Image
+                  <img
                     className="w-full"
                     src={view.image}
                     alt=""
-                    priority
                     sizes="(min-width: 1024px) 67.8125rem, (min-width: 640px) 100vw, 45rem"
                   />
                 </motion.div>
