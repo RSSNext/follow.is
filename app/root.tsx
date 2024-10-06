@@ -13,7 +13,7 @@ export function Layout() {
       <head>
         <meta charSet="utf-8" />
         <meta name="viewport" content="width=device-width, initial-scale=1" />
-        <link rel="icon" href="/public/icon.ico" type="image/x-icon" sizes="16x16" />
+        <link rel="icon" href="/icon.ico" type="image/x-icon" sizes="16x16" />
 
         <title>{siteInfo.title}</title>
         <meta name="description" content={siteInfo.description} />
@@ -23,7 +23,7 @@ export function Layout() {
         <meta property="og:image:type" content="image/png" />
         <meta property="og:image:width" content="979" />
         <meta property="og:image:height" content="557" />
-        <meta property="og:image" content={`${siteInfo.domain}/public/opengraph-image.png`} />
+        <meta property="og:image" content={`${siteInfo.domain}/opengraph-image.png`} />
 
         <meta name="twitter:card" content="summary_large_image" />
         <meta name="twitter:title" content={siteInfo.title} />
@@ -31,7 +31,7 @@ export function Layout() {
         <meta name="twitter:image:type" content="image/png" />
         <meta name="twitter:image:width" content="979" />
         <meta name="twitter:image:height" content="557" />
-        <meta name="twitter:image" content={`${siteInfo.domain}/public/opengraph-image.png`} />
+        <meta name="twitter:image" content={`${siteInfo.domain}/opengraph-image.png`} />
 
         <Meta />
         <Links />
