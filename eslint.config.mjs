@@ -11,4 +11,7 @@ export default defineConfig(
     },
     react: 'remix',
   },
+  {
+    rules: { 'unicorn/prefer-global-this': 'off' },
+  },
 )
