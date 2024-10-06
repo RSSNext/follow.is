@@ -5,8 +5,16 @@ import { Logo } from '@/components/logo'
 import { Button } from '@/components/ui/button'
 import { siteInfo } from '@/constants'
 
-export default async function DownloadPage() {
+import type * as Route from './+types.download'
+
+export async function loader() {
   const releaseInfo = await getLatestReleaseInfo()
+  return { releaseInfo }
+}
+
+export default function DownloadPage({ loaderData }: Route.ComponentProps) {
+  const { releaseInfo } = loaderData
+
   const platform = 'macOS'
 
   if (!releaseInfo) {

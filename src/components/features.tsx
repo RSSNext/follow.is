@@ -1,7 +1,4 @@
-'use client'
-
 import { motion } from 'framer-motion'
-import Image from 'next/image'
 import { useEffect, useMemo, useState } from 'react'
 
 import type { View } from '@/constants'
@@ -77,10 +74,9 @@ function ViewImageSlide({ views, className }: { views: View[], className?: strin
         onMouseLeave={() => setIsHovered(false)}
       >
         {views.map(({ image, title }, index) => (
-          <Image
+          <img
             src={image}
             alt={`Screenshot of ${title} page`}
-            priority
             key={title}
             className="absolute inset-0 object-cover transition-transform duration-500 ease-in-out"
             style={{
@@ -106,10 +102,9 @@ const content = [
     description: 'Subscribe to a vast range of Web 1, 2, and 3 feeds. Curate your favorites and keep track of what matters most to you.',
     content: (
       <div className="flex justify-center items-center h-[32rem] w-[50rem]">
-        <Image
+        <img
           src={screenShotDiscover}
           alt="Screenshot of Discover page"
-          priority
         />
       </div>
     ),
@@ -119,10 +114,9 @@ const content = [
     description: 'A smarter and more efficient browsing with AI-powered feature—translation, summary, personalization, and more coming your way.',
     content: (
       <div className="flex justify-center items-center h-[32rem] w-[50rem]">
-        <Image
+        <img
           src={screenShotAIDaily}
           alt="Screenshot of AI Daily page"
-          priority
         />
       </div>
     ),
@@ -132,10 +126,9 @@ const content = [
     description: 'Tip creators across instantly with $POWER. Support content you love, and unlock real value with your own pieces. Your content, your power.',
     content: (
       <div className="flex justify-center items-center h-[32rem] w-[50rem]">
-        <Image
+        <img
           src={screenShotPower}
           alt="Screenshot of Power page"
-          priority
         />
       </div>
     ),
@@ -145,10 +138,9 @@ const content = [
     description: 'This isn’t just another app. Follow is a community—introducing a new era of openness and community-driven experience.',
     content: (
       <div className="flex justify-center items-center h-[32rem] w-[50rem]">
-        <Image
+        <img
           src={screenShotSocial}
           alt="Screenshot of Personal page in Follow"
-          priority
         />
       </div>
     ),

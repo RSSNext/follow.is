@@ -9,5 +9,9 @@ export default defineConfig(
     tailwindCSS: {
       order: false,
     },
+    react: 'remix',
+  },
+  {
+    rules: { 'unicorn/prefer-global-this': 'off' },
   },
 )

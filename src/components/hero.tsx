@@ -1,7 +1,5 @@
-'use client'
-
 import { motion } from 'framer-motion'
-import Link from 'next/link'
+import { Link } from 'react-router'
 
 import { AuroraBackground } from '@/components/ui/aurora-background'
 import { Button } from '@/components/ui/button'
@@ -35,7 +33,7 @@ export function Hero() {
           className="rounded-full"
           asChild
         >
-          <Link href="/download">Get Started</Link>
+          <Link to="/download">Get Started</Link>
         </Button>
       </motion.div>
     </AuroraBackground>

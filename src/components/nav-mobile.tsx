@@ -1,5 +1,5 @@
 import { Menu, X } from 'lucide-react'
-import Link from 'next/link'
+import { Link } from 'react-router'
 
 import {
   Popover,
@@ -22,7 +22,7 @@ export function NavMobile() {
         {siteInfo.navigation.map(navItem => (
           <Link
             key={navItem.href}
-            href={navItem.href}
+            to={navItem.href}
             className="block py-2 px-4 text-lg font-semibold"
           >
             {navItem.title}

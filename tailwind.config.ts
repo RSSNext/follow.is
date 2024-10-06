@@ -1,10 +1,14 @@
 import { iconsPlugin } from '@egoist/tailwindcss-icons'
+import tailwindcssTypography from '@tailwindcss/typography'
 import type { Config } from 'tailwindcss'
+import defaultTheme from 'tailwindcss/defaultTheme'
 // @ts-expect-error
 import flattenColorPalette from 'tailwindcss/lib/util/flattenColorPalette'
+import tailwindcssAnimate from 'tailwindcss-animate'
 
 const config: Config = {
   content: [
+    './app/**/*.{js,ts,jsx,tsx,mdx}',
     './src/pages/**/*.{js,ts,jsx,tsx,mdx}',
     './src/components/**/*.{js,ts,jsx,tsx,mdx}',
     './src/app/**/*.{js,ts,jsx,tsx,mdx}',
@@ -12,7 +16,7 @@ const config: Config = {
   theme: {
     extend: {
       fontFamily: {
-        sans: ['var(--font-sn-pro)'],
+        sans: ['SN Pro', ...defaultTheme.fontFamily.sans],
       },
       borderRadius: {
         lg: 'var(--radius)',
@@ -107,8 +111,8 @@ const config: Config = {
   plugins: [
     addVariablesForColors,
     iconsPlugin({ scale: 1.5 }),
-    require('tailwindcss-animate'),
-    require('@tailwindcss/typography'),
+    tailwindcssAnimate,
+    tailwindcssTypography,
   ],
 }
 
