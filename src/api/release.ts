@@ -1,8 +1,19 @@
 export async function getLatestReleaseInfo(): Promise<ReleaseInfo | undefined> {
-  // TODO: remove revalidate after next.js 15
-  const res = await fetch('https://ungh.cc/repos/RSSNext/follow/releases', { next: { revalidate: 60 } })
-  const releases = await res.json() as GitHubRelease
-  const latestRelease = releases.releases.find(release => !release.draft && !release.prerelease)
+  return getReleaseInfo(false)
+}
+
+export async function getNightlyReleaseInfo(): Promise<ReleaseInfo | undefined> {
+  return getReleaseInfo(true)
+}
+
+async function getReleaseInfo(isNightly: boolean): Promise<ReleaseInfo | undefined> {
+  const res = await fetch('https://ungh.cc/repos/RSSNext/follow/releases', {
+    next: { revalidate: 60 },
+  })
+  const releases = (await res.json()) as GitHubRelease
+  const latestRelease = releases.releases.find(
+    release => !release.draft && release.prerelease === isNightly,
+  )
   if (!latestRelease) {
     return
   }
@@ -14,7 +25,7 @@ export async function getLatestReleaseInfo(): Promise<ReleaseInfo | undefined> {
     Linux: '',
   }
   for (const asset of assets) {
-    if (asset.contentType !== 'application/octet-stream') {
+    if (!isNightly && asset.contentType !== 'application/octet-stream') {
       continue
     }
     if (asset.downloadUrl.includes('windows')) {

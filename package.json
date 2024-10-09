@@ -28,6 +28,7 @@
   },
   "devDependencies": {
     "@egoist/tailwindcss-icons": "^1.8.1",
+    "@iconify-json/mingcute": "1.2.1",
     "@iconify-json/simple-icons": "^1.2.2",
     "@tailwindcss/typography": "^0.5.15",
     "@types/node": "^20.16.5",
