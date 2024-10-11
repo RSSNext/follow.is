@@ -29,7 +29,7 @@ export function Hero() {
         </div>
 
         <div className="flex items-center gap-4">
-          <Button type="button" className="rounded-full bg-transparent" variant="outline" asChild>
+          <Button type="button" className="rounded-full bg-transparent text-foreground" variant="outline" asChild>
             <Link href={configs.webUrl}>Try web app</Link>
           </Button>
 
