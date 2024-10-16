@@ -6,7 +6,7 @@ import Link from 'next/link'
 import { AuroraBackground } from '@/components/ui/aurora-background'
 import { Button } from '@/components/ui/button'
 import { Highlight } from '@/components/ui/hero-highlight'
-import { configs } from '@/configs'
+import { siteInfo } from '@/constants'
 
 export function Hero() {
   return (
@@ -30,7 +30,7 @@ export function Hero() {
 
         <div className="flex items-center gap-4">
           <Button type="button" className="rounded-full bg-transparent text-foreground" variant="outline" asChild>
-            <Link href={configs.webUrl}>Try web app</Link>
+            <Link href={siteInfo.webUrl}>Try web app</Link>
           </Button>
 
           <Button type="button" className="rounded-full" asChild>
