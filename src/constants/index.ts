@@ -11,12 +11,13 @@ export const siteInfo = {
   webUrl: 'https://app.follow.is',
   githubLink: 'https://github.com/RSSNext/follow',
   xLink: 'https://x.com/follow_app_',
-  discordLink: 'https://discord.com/invite/xHCVQZ6wmZ',
+  discordLink: 'https://discord.gg/followapp',
   releaseLink: 'https://github.com/RSSNext/Follow/releases',
   navigation: [
     { title: 'Features', href: '/#features' },
     { title: 'Testimonials', href: '/#testimonials' },
     { title: 'FAQ', href: '/#faq' },
+    { title: 'Airdrop', href: '/airdrop' },
   ],
 } as const
 
