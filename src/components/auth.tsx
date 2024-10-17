@@ -20,13 +20,13 @@ const providerIcons: Record<string, string> = {
   github: 'i-simple-icons-github',
 }
 
-export function AuthButton() {
+export function AuthButton({ className }: { className?: string }) {
   const { data: session, status } = useSession()
   const { data } = useSWR('get-providers', getProviders)
 
   if (session && status === 'authenticated') {
     return (
-      <section className="flex gap-4 items-center">
+      <section className={cn('flex gap-4 items-center', className)}>
         <TooltipProvider>
           <Tooltip>
             <TooltipTrigger>
@@ -53,7 +53,7 @@ export function AuthButton() {
 
   if (data && status === 'unauthenticated') {
     return (
-      <section className="flex gap-4 items-center">
+      <section className={cn('flex gap-4 items-center', className)}>
         {Object.entries(data || {}).map(([provider, providerData]) => {
           return (
             <Button
