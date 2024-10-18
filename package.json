@@ -29,6 +29,7 @@
     "react": "^18.3.1",
     "react-dom": "^18.3.1",
     "react-tweet": "^3.2.1",
+    "sonner": "^1.5.0",
     "swr": "^2.2.5",
     "tailwind-merge": "^2.5.2",
     "zod": "^3.23.8"
