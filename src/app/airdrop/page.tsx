@@ -4,7 +4,8 @@ import { toast, Toaster } from 'sonner'
 import useSWR from 'swr'
 
 import { AuthButton } from '@/components/auth'
-import { Button } from '@/components/ui/button'
+import { Button, buttonVariants } from '@/components/ui/button'
+import { siteInfo } from '@/constants'
 import { env } from '@/env'
 
 export default function AirdropPage() {
@@ -39,15 +40,29 @@ export default function AirdropPage() {
           {status === 'authenticated' && data
             ? data.claimed
               ? 'You have already claimed your airdrop'
-              : `You are eligible to receive ${data.amount} $POWER`
-            : 'Sign in to claim your airdrop'}
+              : data.amount
+                ? `You are eligible to receive ${data.amount} $POWER`
+                : 'You are not eligible to receive airdrop'
+            : 'Sign in to check your eligibility'}
         </p>
         {data?.claimed ? (
-          <Button>Share on X</Button>
-        ) : (
-          <Button
-            onClick={async () => {
-              const res = await fetch(
+          <a
+            href={`https://twitter.com/intent/tweet?text=${
+              encodeURIComponent(
+                `I just joined the $POWER Airdrop and got my share of 20,000,000 $POWER tokens\n\n${siteInfo.webUrl}/airdrop`,
+              )
+            }`}
+            target="_blank"
+            rel="noopener noreferrer"
+            className={buttonVariants()}
+          >
+            Share on X
+          </a>
+        ) : data?.amount
+          ? (
+              <Button
+                onClick={async () => {
+                  const res = await fetch(
                 `${env.NEXT_PUBLIC_API_URL}/wallets/airdrop`,
                 {
                   method: 'POST',
@@ -57,19 +72,23 @@ export default function AirdropPage() {
                   },
                   credentials: 'include',
                 },
-              )
-              const data = await res.json() as { code: number, data: { transactionHash: string } }
-              if (data.code === 0) {
-                toast.success('Airdrop claimed successfully')
-              }
-              else {
-                toast.error('Failed to claim airdrop')
-              }
-            }}
-          >
-            Claim Airdrop
-          </Button>
-        )}
+                  )
+                  const data = (await res.json()) as {
+                    code: number
+                    data: { transactionHash: string }
+                  }
+                  if (data.code === 0) {
+                    toast.success('Airdrop claimed successfully')
+                  }
+                  else {
+                    toast.error('Failed to claim airdrop')
+                  }
+                }}
+              >
+                Claim Airdrop
+              </Button>
+            )
+          : null}
         <AuthButton className="justify-center" />
         <Toaster />
       </main>

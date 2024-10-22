@@ -30,7 +30,7 @@ export function Hero() {
 
         <div className="flex items-center gap-4">
           <Button type="button" className="rounded-full bg-transparent text-foreground" variant="outline" asChild>
-            <Link href={siteInfo.webUrl}>Try web app</Link>
+            <Link href={siteInfo.appUrl}>Try web app</Link>
           </Button>
 
           <Button type="button" className="rounded-full" asChild>
