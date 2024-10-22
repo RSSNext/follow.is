@@ -8,8 +8,9 @@ import { siteInfo } from '@/constants'
 import { cn } from '@/lib/utils'
 
 export type OS = 'macOS' | 'iOS' | 'Windows' | 'Android' | 'Linux' | ''
-function getOs(): OS {
-  const headersList = headers()
+
+async function getOs(): Promise<OS> {
+  const headersList = await headers()
   const userAgent = headersList.get('user-agent') || ''
 
   if (userAgent.includes('Win'))
@@ -42,9 +43,15 @@ const PlatformIconMap = {
 export const DownloadInfo: FC<{
   releaseInfo: ReleaseInfo
 }> = async ({ releaseInfo }) => {
-  const platform = getOs()
-
-  const nightlyReleaseInfo = await getNightlyReleaseInfo()
+  const [
+    platform,
+    nightlyReleaseInfo,
+  ] = await Promise.all(
+    [
+      getOs(),
+      getNightlyReleaseInfo(),
+    ],
+  )
 
   return (
     <>
