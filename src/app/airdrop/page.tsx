@@ -2,6 +2,7 @@
 import { getCsrfToken, useSession } from '@hono/auth-js/react'
 import { toast, Toaster } from 'sonner'
 import useSWR from 'swr'
+import useSWRMutation from 'swr/mutation'
 
 import { AuthButton } from '@/components/auth'
 import { Button, buttonVariants } from '@/components/ui/button'
@@ -24,6 +25,33 @@ export default function AirdropPage() {
         return data.data
       }
       return null
+    },
+  )
+
+  const claimeAirDrop = useSWRMutation(
+    'claim-airdrop',
+    async () => {
+      const res = await fetch(
+        `${env.NEXT_PUBLIC_API_URL}/wallets/airdrop`,
+        {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json',
+            'X-CSRF-Token': await getCsrfToken(),
+          },
+          credentials: 'include',
+        },
+      )
+      const data = (await res.json()) as {
+        code: number
+        data: { transactionHash: string }
+      }
+      if (data.code === 0) {
+        toast.success('Airdrop claimed successfully')
+      }
+      else {
+        toast.error('Failed to claim airdrop')
+      }
     },
   )
 
@@ -61,29 +89,8 @@ export default function AirdropPage() {
         ) : data?.amount
           ? (
               <Button
-                onClick={async () => {
-                  const res = await fetch(
-                `${env.NEXT_PUBLIC_API_URL}/wallets/airdrop`,
-                {
-                  method: 'POST',
-                  headers: {
-                    'Content-Type': 'application/json',
-                    'X-CSRF-Token': await getCsrfToken(),
-                  },
-                  credentials: 'include',
-                },
-                  )
-                  const data = (await res.json()) as {
-                    code: number
-                    data: { transactionHash: string }
-                  }
-                  if (data.code === 0) {
-                    toast.success('Airdrop claimed successfully')
-                  }
-                  else {
-                    toast.error('Failed to claim airdrop')
-                  }
-                }}
+                disabled={claimeAirDrop.isMutating}
+                onClick={() => claimeAirDrop.trigger()}
               >
                 Claim Airdrop
               </Button>
