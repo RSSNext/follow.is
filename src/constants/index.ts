@@ -12,7 +12,7 @@ export const siteInfo = {
   githubLink: 'https://github.com/RSSNext/follow',
   xLink: 'https://x.com/follow_app_',
   discordLink: 'https://discord.com/invite/xHCVQZ6wmZ',
-  releaseLink: 'https://github.com/RSSNext/Follow/releases',
+  releaseLink: 'https://github.com/RSSNext/Follow/releases/latest',
   navigation: [
     { title: 'Features', href: '/#features' },
     { title: 'Testimonials', href: '/#testimonials' },
