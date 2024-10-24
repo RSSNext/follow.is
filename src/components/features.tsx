@@ -116,7 +116,7 @@ const content = [
   },
   {
     title: 'AI At Your Fingertips',
-    description: 'A smarter and more efficient browsing with AI-powered feature—translation, summary, personalization, and more coming your way.',
+    description: 'A smarter and more efficient browsing with AI-powered features—translation, summary, personalization, and more coming your way.',
     content: (
       <div className="flex justify-center items-center h-[32rem] w-[50rem]">
         <Image
