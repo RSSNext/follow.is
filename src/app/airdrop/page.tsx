@@ -1,13 +1,14 @@
 'use client'
-import { getCsrfToken, useSession } from '@hono/auth-js/react'
-import { toast, Toaster } from 'sonner'
+import { useSession } from '@hono/auth-js/react'
+import { Toaster } from 'sonner'
 import useSWR from 'swr'
-import useSWRMutation from 'swr/mutation'
 
 import { AuthButton } from '@/components/auth'
-import { Button, buttonVariants } from '@/components/ui/button'
-import { siteInfo } from '@/constants'
+import type { DetailModel } from '@/components/follow-summary'
+import { FollowSummary } from '@/components/follow-summary'
 import { env } from '@/env'
+
+type AirdropStatus = { amount: string, detail: DetailModel | null, tx: string } | null
 
 export default function AirdropPage() {
   const { data: session, status } = useSession()
@@ -17,41 +18,11 @@ export default function AirdropPage() {
       const res = await fetch(`${env.NEXT_PUBLIC_API_URL}/wallets/airdrop`, {
         credentials: 'include',
       })
-      const data = (await res.json()) as {
-        code: number
-        data: { amount: number, claimed: boolean }
-      }
+      const data = (await res.json()) as { code: number, data: AirdropStatus }
       if (data.code === 0) {
         return data.data
       }
       return null
-    },
-  )
-
-  const claimeAirDrop = useSWRMutation(
-    'claim-airdrop',
-    async () => {
-      const res = await fetch(
-        `${env.NEXT_PUBLIC_API_URL}/wallets/airdrop`,
-        {
-          method: 'POST',
-          headers: {
-            'Content-Type': 'application/json',
-            'X-CSRF-Token': await getCsrfToken(),
-          },
-          credentials: 'include',
-        },
-      )
-      const data = (await res.json()) as {
-        code: number
-        data: { transactionHash: string }
-      }
-      if (data.code === 0) {
-        toast.success('Airdrop claimed successfully')
-      }
-      else {
-        toast.error('Failed to claim airdrop')
-      }
     },
   )
 
@@ -65,38 +36,16 @@ export default function AirdropPage() {
           <p>AIRDROP</p>
         </div>
         <p className="text-2xl">
-          {status === 'authenticated' && data
-            ? data.claimed
+          {status === 'authenticated'
+            ? data?.tx
               ? 'You have already claimed your airdrop'
-              : data.amount
+              : data?.amount
                 ? `You are eligible to receive ${data.amount} $POWER`
                 : 'You are not eligible to receive airdrop'
             : 'Sign in to check your eligibility'}
         </p>
-        {data?.claimed ? (
-          <a
-            href={`https://twitter.com/intent/tweet?text=${
-              encodeURIComponent(
-                `I just joined the $POWER Airdrop and got my share of 20,000,000 $POWER tokens\n\n${siteInfo.webUrl}/airdrop`,
-              )
-            }`}
-            target="_blank"
-            rel="noopener noreferrer"
-            className={buttonVariants()}
-          >
-            Share on X
-          </a>
-        ) : data?.amount
-          ? (
-              <Button
-                disabled={claimeAirDrop.isMutating}
-                onClick={() => claimeAirDrop.trigger()}
-              >
-                Claim Airdrop
-              </Button>
-            )
-          : null}
         <AuthButton className="justify-center" />
+        <FollowSummary data={data?.detail} />
         <Toaster />
       </main>
     </div>
