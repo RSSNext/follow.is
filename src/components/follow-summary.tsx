@@ -116,7 +116,7 @@ function Actions({ isCapturing, onDownload, onShare }: ActionsProps) {
         variant="outline"
         className="gap-3"
         onClick={onShare}
-        disabled={isCapturing || !navigator.share}
+        disabled={isCapturing}
       >
         {isCapturing ? (
           <Loader2 className="size-4 animate-spin" />
