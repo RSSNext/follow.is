@@ -6,9 +6,15 @@ import useSWR from 'swr'
 import { AuthButton } from '@/components/auth'
 import type { DetailModel } from '@/components/follow-summary'
 import { FollowSummary } from '@/components/follow-summary'
+import { alphaTestAirdropTotalUsers } from '@/constants'
 import { env } from '@/env'
 
-type AirdropStatus = { amount: string, detail: DetailModel | null, tx: string } | null
+type AirdropStatus = {
+  amount: string
+  rank: number
+  detail: DetailModel | null
+  tx: string
+} | null
 
 export default function AirdropPage() {
   const { data: session, status } = useSession()
@@ -40,12 +46,12 @@ export default function AirdropPage() {
             ? data?.tx
               ? 'You have already claimed your airdrop'
               : data?.amount
-                ? `You are eligible to receive ${data.amount} $POWER`
+                ? `You are at rank ${Math.ceil(data.rank / alphaTestAirdropTotalUsers * 100)}%, eligible to receive ${data.amount} $POWER`
                 : 'You are not eligible to receive airdrop'
             : 'Sign in to check your eligibility'}
         </p>
         <AuthButton className="justify-center" />
-        <FollowSummary data={data?.detail} />
+        {data?.detail && <FollowSummary data={data?.detail} />}
         <Toaster />
       </main>
     </div>

@@ -5,6 +5,8 @@ import screenshotPicture from '@/images/screenshots/picture.png'
 import screenshotSocialMedia from '@/images/screenshots/social-media.png'
 import screenshotVideo from '@/images/screenshots/video.png'
 
+export const alphaTestAirdropTotalUsers = 28676
+
 export const siteInfo = {
   title: 'Follow',
   description: 'Next-Gen Information Browser',
