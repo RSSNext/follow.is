@@ -52,8 +52,8 @@ export default function AirdropPage() {
         </p>
         <AuthButton className="justify-center" />
         {data?.detail && <FollowSummary data={data?.detail} />}
-        <Toaster />
       </main>
+      <Toaster />
     </div>
   )
 }

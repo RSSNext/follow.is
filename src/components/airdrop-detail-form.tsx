@@ -1,5 +1,10 @@
+import { getCsrfToken } from '@hono/auth-js/react'
 import { Link2 } from 'lucide-react'
 import { useState } from 'react'
+import { toast } from 'sonner'
+import useSWRMutation from 'swr/mutation'
+
+import { env } from '@/env'
 
 import { Button } from './ui/button'
 import { Input } from './ui/input'
@@ -8,9 +13,38 @@ export function AirdropDetailForm() {
   const [postLink, setPostLink] = useState('')
   const [isLinkSubmitted, setIsLinkSubmitted] = useState(false)
 
+  const fillVerifyInfo = useSWRMutation(
+    ['fill-verify-info', postLink],
+    async ([_, verify]) => {
+      const res = await fetch(
+        `${env.NEXT_PUBLIC_API_URL}/wallets/airdrop`,
+        {
+          method: 'PUT',
+          headers: {
+            'Content-Type': 'application/json',
+            'X-CSRF-Token': await getCsrfToken(),
+          },
+          credentials: 'include',
+          body: JSON.stringify({ verify }),
+        },
+      )
+      const data = (await res.json()) as { code: number }
+      if (data.code === 0) {
+        toast.success('Airdrop claimed successfully')
+      }
+      else {
+        toast.error('Failed to claim airdrop')
+      }
+    },
+  )
+
   const handleSubmitLink = () => {
     if (postLink.trim() !== '') {
       setIsLinkSubmitted(true)
+      fillVerifyInfo.trigger()
+        .catch(() => {
+          setIsLinkSubmitted(false)
+        })
     }
   }
   return (
