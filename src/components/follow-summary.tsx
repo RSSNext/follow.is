@@ -104,10 +104,10 @@ function Header() {
         <SparklesIcon className="size-6 text-pink-500" />
         <span className="font-medium text-pink-500">Alpha Testing Snapshot</span>
       </div>
-      <h1 className="text-4xl md:text-5xl font-bold bg-gradient-to-r from-pink-500 to-violet-500 dark:from-pink-400 dark:to-violet-400 text-transparent bg-clip-text">
+      <h1 className="text-4xl md:text-5xl font-bold text-balance bg-gradient-to-r from-pink-500 to-violet-500 dark:from-pink-400 dark:to-violet-400 text-transparent bg-clip-text">
         Your Early Explorer Journey
       </h1>
-      <p className="text-xl text-muted-foreground">Thank you for helping shape the future of Follow</p>
+      <p className="text-xl text-muted-foreground text-balance">Thank you for helping shape the future of Follow</p>
     </div>
   )
 }
@@ -401,7 +401,7 @@ export function FollowSummary({
   verifyLink?: string
 }) {
   return (
-    <div className="min-h-screen bg-background text-foreground py-4 md:py-8">
+    <div className="min-h-screen bg-background text-foreground py-8">
       <div className="max-w-7xl mx-auto space-y-8">
         <AirdropDetailForm verifyLink={verifyLink} />
         <Header />
