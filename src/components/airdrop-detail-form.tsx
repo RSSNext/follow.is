@@ -50,12 +50,12 @@ export function AirdropDetailForm({ verifyLink }: { verifyLink?: string }) {
   }
 
   return (
-    <div className="w-full sm:max-w-xl mx-auto">
+    <div className="w-full sm:max-w-xl mx-auto !my-10 pt-16 border-t">
       <h2 className="text-3xl font-bold mb-4">
-        Join the Follow airdrop
+        One more step to claim your airdrop
       </h2>
       <p className="text-lg mb-8 text-balance">
-        Share your Follow journey on social media and submit your post link below to be eligible for the upcoming airdrop.
+        To verify your humanity, please share the image of your alpha journey on any social media platform, submit the link here, and then claim your $POWER <strong>next week</strong>.
       </p>
       <div className="relative flex justify-stretch max-w-xs mx-auto">
         <div className="absolute left-3 top-1/2 -translate-y-1/2 text-foreground/60">

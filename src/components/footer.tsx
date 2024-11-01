@@ -10,27 +10,26 @@ import { siteInfo } from '@/constants'
 export function Footer() {
   const pathname = usePathname()
 
-  if (pathname === '/airdrop')
-    return null
-
   return (
     <footer>
       <Container>
-        <div className="py-16">
-          <div className="flex items-center justify-center gap-4">
-            <Logo className="h-10 w-auto" />
-            <p className="text-xl font-bold">Follow</p>
-          </div>
-          <nav className="mt-10 text-sm" aria-label="quick links">
-            <div className="-my-1 flex justify-center gap-x-6">
-              {siteInfo.navigation.map(item => (
-                <Link key={item.href} href={item.href}>
-                  {item.title}
-                </Link>
-              ))}
+        {pathname !== '/airdrop' && (
+          <div className="py-16">
+            <div className="flex items-center justify-center gap-4">
+              <Logo className="h-10 w-auto" />
+              <p className="text-xl font-bold">Follow</p>
             </div>
-          </nav>
-        </div>
+            <nav className="mt-10 text-sm" aria-label="quick links">
+              <div className="-my-1 flex justify-center gap-x-6">
+                {siteInfo.navigation.map(item => (
+                  <Link key={item.href} href={item.href}>
+                    {item.title}
+                  </Link>
+                ))}
+              </div>
+            </nav>
+          </div>
+        )}
         <div className="flex flex-col items-center border-t py-10 sm:flex-row-reverse sm:justify-between">
           <div className="flex gap-x-6">
             <a

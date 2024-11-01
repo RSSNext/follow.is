@@ -1,13 +1,10 @@
 'use client'
 
-import { useSession } from '@hono/auth-js/react'
 import { toPng } from 'html-to-image'
 import {
   Download,
   List,
   Rss,
-  SparklesIcon,
-  Tornado,
   Users,
   Wallet,
 } from 'lucide-react'
@@ -19,7 +16,6 @@ import { alphaTestAirdropTotalUsers } from '@/constants'
 
 import { AirdropDetailForm } from './airdrop-detail-form'
 import { Logo } from './logo'
-import { PowerIcon } from './power'
 import { Tooltip, TooltipContent, TooltipProvider, TooltipTrigger } from './ui/tooltip'
 
 // eslint-disable-next-line unused-imports/no-unused-vars
@@ -101,21 +97,6 @@ function StatsCard({
   )
 }
 
-function Header() {
-  return (
-    <div className="text-center space-y-4 mb-6">
-      <div className="flex items-center justify-center gap-2 mb-2">
-        <SparklesIcon className="size-6 text-pink-500" />
-        <span className="font-medium text-pink-500">Alpha Testing Snapshot</span>
-      </div>
-      <h1 className="text-4xl md:text-5xl font-bold text-balance bg-gradient-to-r from-pink-500 to-violet-500 dark:from-pink-400 dark:to-violet-400 text-transparent bg-clip-text">
-        Your Early Explorer Journey
-      </h1>
-      <p className="text-xl text-muted-foreground text-balance">Thank you for helping shape the future of Follow</p>
-    </div>
-  )
-}
-
 function Actions() {
   const captureAndDownload = async () => {
     const element = document.querySelector('#follow-summary')
@@ -179,10 +160,35 @@ function DataPresenter({
   )
 }
 
+function BestDataPresenter({
+  className,
+  data,
+  dataKeys,
+}: {
+  className?: string
+  data?: Partial<DetailModel> | null | undefined
+  dataKeys: Array<keyof DetailModel>
+}) {
+  const safeData = data ?? {} as DetailModel
+
+  const getValue = (key: keyof DetailModel, defaultValue = 0) => {
+    return safeData[key] || defaultValue
+  }
+
+  const dataRanks = dataKeys.map(key => getValue(`${key} Rank` as keyof DetailModel))
+  const bestDataRank = Math.min(...dataRanks)
+
+  const dataRankPercentage = Math.max(Number((bestDataRank / alphaTestAirdropTotalUsers * 100).toFixed(2)), 0.01)
+
+  return (
+    <span className={`text-sm mt-4 ${className}`}>Ranked in the top {dataRankPercentage}%</span>
+  )
+}
+
 function YourReadingJourneyStatsCard({ data }: { data?: Partial<DetailModel> | null | undefined }) {
   return (
     <StatsCard
-      title="Your Reading Journey"
+      title="Reading Journey"
       icon={<Rss className="size-4 sm:size-5 text-white" />}
       gradient="from-rose-50 to-rose-100"
       darkGradient="dark:from-rose-500/10 dark:to-rose-600/10"
@@ -205,24 +211,25 @@ function YourReadingJourneyStatsCard({ data }: { data?: Partial<DetailModel> | n
         </div>
         <div className="space-y-4 bg-rose-500/5 dark:bg-rose-400/5 rounded-xl p-4 mt-8">
           <div className="flex justify-between items-baseline">
-            <span className="text-rose-600/70 dark:text-rose-300/70">Feeds</span>
+            <span className="text-rose-600/70 dark:text-rose-300/70">Subscribed Feeds</span>
             <span className="text-2xl font-bold text-rose-600 dark:text-rose-300">
               <DataPresenter data={data} dataKey="Feeds subscriptions count" />
             </span>
           </div>
           <div className="flex justify-between items-baseline">
-            <span className="text-rose-600/70 dark:text-rose-300/70">Inboxes</span>
-            <span className="text-2xl font-bold text-rose-600 dark:text-rose-300">
-              <DataPresenter data={data} dataKey="Inbox subscriptions count" />
-            </span>
-          </div>
-          <div className="flex justify-between items-baseline">
-            <span className="text-rose-600/70 dark:text-rose-300/70">Lists</span>
+            <span className="text-rose-600/70 dark:text-rose-300/70">Subscribed Lists</span>
             <span className="text-2xl font-bold text-rose-600 dark:text-rose-300">
               <DataPresenter data={data} dataKey="Lists subscriptions count" />
             </span>
           </div>
+          <div className="flex justify-between items-baseline">
+            <span className="text-rose-600/70 dark:text-rose-300/70">Created Inboxes</span>
+            <span className="text-2xl font-bold text-rose-600 dark:text-rose-300">
+              <DataPresenter data={data} dataKey="Inbox subscriptions count" />
+            </span>
+          </div>
         </div>
+        <BestDataPresenter className="text-rose-600" data={data} dataKeys={['Recent read count in the last month', 'Feeds subscriptions count', 'Lists subscriptions count', 'Inbox subscriptions count']} />
       </div>
     </StatsCard>
   )
@@ -266,6 +273,7 @@ function ContentCreationImpactStatsCard({ data }: { data?: Partial<DetailModel> 
           </span>
         </div>
       </div>
+      <BestDataPresenter className="text-violet-600" data={data} dataKeys={['Claimed feeds count', 'Lists with more than 1 feed count', 'Claimed feeds subscriptions count', 'Created lists subscriptions count']} />
     </StatsCard>
   )
 }
@@ -273,7 +281,7 @@ function ContentCreationImpactStatsCard({ data }: { data?: Partial<DetailModel> 
 function PlatformEngagementStatsCard({ data }: { data?: Partial<DetailModel> | null | undefined }) {
   return (
     <StatsCard
-      title="Platform Engagement"
+      title="Community Engagement"
       icon={<Wallet className="size-4 sm:size-5 text-white" />}
       gradient="from-amber-50 to-amber-100"
       darkGradient="dark:from-amber-500/10 dark:to-amber-600/10"
@@ -291,24 +299,24 @@ function PlatformEngagementStatsCard({ data }: { data?: Partial<DetailModel> | n
             </div>
             <span className="text-xl text-amber-600 dark:text-amber-300 font-medium">$POWER</span>
           </div>
-          <p className="text-amber-600/80 dark:text-amber-300/80 mt-3 text-left">
-            income generated during alpha
-          </p>
         </div>
         <div className="grid grid-cols-2 gap-4 mt-8">
           <div className="bg-amber-500/5 dark:bg-amber-400/5 rounded-xl p-4">
             <div className="text-3xl font-bold text-amber-600 dark:text-amber-300">
               <DataPresenter data={data} dataKey="Total tip amount" />
+              <span className="text-sm text-amber-600 dark:text-amber-300 font-medium ml-2">$POWER</span>
             </div>
             <div className="text-amber-600/70 dark:text-amber-300/70">Tips Given</div>
           </div>
           <div className="bg-amber-500/5 dark:bg-amber-400/5 rounded-xl p-4">
             <div className="text-3xl font-bold text-amber-600 dark:text-amber-300">
               <DataPresenter data={data} dataKey="Purchase lists cost" />
+              <span className="text-sm text-amber-600 dark:text-amber-300 font-medium ml-2">$POWER</span>
             </div>
-            <div className="text-amber-600/70 dark:text-amber-300/70">Lists Purchased</div>
+            <div className="text-amber-600/70 dark:text-amber-300/70">Purchase List</div>
           </div>
         </div>
+        <BestDataPresenter className="text-amber-600" data={data} dataKeys={['Total tip amount', 'Purchase lists cost', 'Created lists income amount']} />
       </div>
     </StatsCard>
   )
@@ -317,7 +325,7 @@ function PlatformEngagementStatsCard({ data }: { data?: Partial<DetailModel> | n
 function CommunityInfluenceStatsCard({ data }: { data?: Partial<DetailModel> | null | undefined }) {
   return (
     <StatsCard
-      title="Community Influence"
+      title="Community Contribution"
       icon={<Users className="size-4 sm:size-5 text-white" />}
       gradient="from-emerald-50  to-emerald-100"
       darkGradient="dark:from-emerald-500/10 dark:to-emerald-600/10"
@@ -329,9 +337,10 @@ function CommunityInfluenceStatsCard({ data }: { data?: Partial<DetailModel> | n
     >
       <div className="flex flex-col flex-1 justify-between">
         <div className="text-left">
-          <div className="text-emerald-600/70 dark:text-emerald-300/70 mb-2">Alpha Testers Invited</div>
-          <div className="text-7xl font-bold text-emerald-600 dark:text-emerald-300 tracking-tight leading-none mb-3">
+          <div className="text-emerald-600/70 dark:text-emerald-300/70 mb-2">Invited</div>
+          <div className="text-7xl font-bold text-emerald-600 dark:text-emerald-300 leading-none mb-3 flex items-baseline gap-2">
             <DataPresenter data={data} dataKey="Invitations count" />
+            <span className="text-xl text-emerald-600 dark:text-emerald-300 font-medium">friends</span>
           </div>
         </div>
         <div className="mt-8">
@@ -343,6 +352,7 @@ function CommunityInfluenceStatsCard({ data }: { data?: Partial<DetailModel> | n
             </span>
           </div>
         </div>
+        <BestDataPresenter className="text-emerald-600" data={data} dataKeys={['GitHub Community Contributions', 'Invitations count']} />
       </div>
     </StatsCard>
   )
@@ -398,62 +408,52 @@ export function FollowSummary({
   verifyLink,
   amount,
   rank,
+  tx,
 }: {
   data?: Partial<DetailModel> | null | undefined
   verifyLink?: string
   amount: string
   rank: number
+  tx?: string
 }) {
   return (
     <div className="min-h-screen bg-background text-foreground py-8">
-      <div className="max-w-7xl mx-auto space-y-8">
-        <AirdropDetailForm verifyLink={verifyLink} />
-        <Header />
-        <Actions />
-        <div className="w-fit mx-auto">
-          <div id="follow-summary" className="p-6 space-y-6">
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-              {getStatusCardOrder(data).map(({ component: StatsCardComponent, key }) => (
-                <StatsCardComponent key={key} data={data} />
-              ))}
+      <div className="max-w-7xl mx-auto flex flex-col items-center justify-center">
+        <div className="w-fit p-10 space-y-8" id="follow-summary">
+          <div className="text-center space-y-4 mb-6">
+            <h1 className="flex items-center justify-center gap-4 text-4xl md:text-[42px] font-bold text-balance bg-gradient-to-r bg-clip-text">
+              <Logo className="h-10 w-auto rounded-[10px]" /> Follow Airdrop
+            </h1>
+          </div>
+          <p className="text-2xl">
+            {tx
+              ? 'You have already claimed your airdrop'
+              : amount
+                ? (
+                    <div className="space-y-2">
+                      <p>Thank you for participating in the Follow alpha test!</p>
+                      <p>You are eligible to claim <span className="text-power-orange font-bold">{amount} $POWER</span> Alpha Airdrop, surpassing <strong>{100 - Math.ceil(rank / alphaTestAirdropTotalUsers * 100)}%</strong> of users.</p>
+                    </div>
+                  )
+                : 'You are not eligible to receive this airdrop, please pay attention to the next event'}
+          </p>
+          <div className="w-fit mx-auto">
+            <div className="mt-8">
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+                {getStatusCardOrder(data).map(({ component: StatsCardComponent, key }) => (
+                  <StatsCardComponent key={key} data={data} />
+                ))}
+              </div>
+              <div className="flex items-center justify-center gap-4 mt-12">
+                <Logo className="h-10 w-auto rounded-[10px]" />
+                <p className="text-xl font-bold">Follow</p>
+              </div>
             </div>
-            <Footer amount={amount} rank={rank} />
           </div>
         </div>
+        <Actions />
+        <AirdropDetailForm verifyLink={verifyLink} />
       </div>
-    </div>
-  )
-}
-
-function Footer({
-  amount,
-  rank,
-}: {
-  amount: string
-  rank: number
-}) {
-  const { data } = useSession()
-
-  return (
-    <div className="flex gap-4 justify-center items-center">
-      <section className="flex gap-2 items-center">
-        <Logo className="size-5 rounded-md" />
-        <p>Follow</p>
-      </section>
-      <section className="flex gap-2 items-center">
-        {data?.user?.image && (
-          <img src={data.user.image} alt="User Avatar" className="size-5 rounded-full" />
-        )}
-        {data?.user?.name && <p>{data.user.name}</p>}
-      </section>
-      <section className="flex gap-2 items-center">
-        <PowerIcon className="text-power-orange" />
-        <p>{amount}</p>
-      </section>
-      <section className="flex gap-2 items-center">
-        <Tornado className="text-power-orange" />
-        <p>{rank}</p>
-      </section>
     </div>
   )
 }

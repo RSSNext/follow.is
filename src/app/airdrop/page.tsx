@@ -6,7 +6,6 @@ import useSWR from 'swr'
 import { AuthButton } from '@/components/auth'
 import type { DetailModel } from '@/components/follow-summary'
 import { FollowSummary } from '@/components/follow-summary'
-import { alphaTestAirdropTotalUsers } from '@/constants'
 import { env } from '@/env'
 
 type AirdropStatus = {
@@ -35,22 +34,12 @@ export default function AirdropPage() {
 
   return (
     <div className="min-h-screen flex flex-col items-center pt-36 dark:bg-[linear-gradient(45deg,#d43421,#ff6a0b,#ff5d07)]">
-      <main className="w-full space-y-8 text-center">
-        <div className="text-5xl sm:text-7xl font-bold space-y-2">
-          <p>JOIN TO SHARE</p>
-          <p className="text-power-orange dark:text-white">20,000,000</p>
-          <p className="text-power-orange dark:text-white">$POWER</p>
-          <p>AIRDROP</p>
+      <main className="w-full space-y-10 text-center">
+        <div className="text-5xl sm:text-6xl font-bold space-y-2">
+          <p>Check Your Eligibility for</p>
+          <p className="text-power-orange dark:text-white">20,000,000 $POWER</p>
+          <p>Alpha Airdrop</p>
         </div>
-        <p className="text-2xl">
-          {status === 'authenticated'
-            ? data?.tx
-              ? 'You have already claimed your airdrop'
-              : data?.amount
-                ? `You are eligible to receive ${data.amount} $POWER, exceed ${100 - Math.ceil(data.rank / alphaTestAirdropTotalUsers * 100)}% of people`
-                : 'You are not eligible to receive this airdrop, please pay attention to the next event'
-            : 'Sign in to check your eligibility'}
-        </p>
         <AuthButton className="justify-center" />
         {data?.detail && (
           <FollowSummary
@@ -58,6 +47,7 @@ export default function AirdropPage() {
             amount={data.amount}
             data={data?.detail}
             verifyLink={data.verify}
+            tx={data.tx}
           />
         )}
       </main>
