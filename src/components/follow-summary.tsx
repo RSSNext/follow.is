@@ -406,10 +406,12 @@ export function FollowSummary({
         <AirdropDetailForm verifyLink={verifyLink} />
         <Header />
         <Actions />
-        <div id="follow-summary" className="grid grid-cols-1 md:grid-cols-2 gap-6 p-6 w-fit mx-auto">
-          {getStatusCardOrder(data).map(({ component: StatsCardComponent, key }) => (
-            <StatsCardComponent key={key} data={data} />
-          ))}
+        <div className="w-fit mx-auto">
+          <div id="follow-summary" className="grid grid-cols-1 md:grid-cols-2 gap-6 p-6 ">
+            {getStatusCardOrder(data).map(({ component: StatsCardComponent, key }) => (
+              <StatsCardComponent key={key} data={data} />
+            ))}
+          </div>
         </div>
       </div>
     </div>
