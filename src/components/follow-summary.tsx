@@ -83,7 +83,7 @@ function StatsCard({
   children,
 }: StatsCardProps) {
   return (
-    <Card className={`bg-gradient-to-br ${gradient} ${darkGradient} border-none h-full`}>
+    <Card className={`bg-gradient-to-br ${gradient} ${darkGradient} border-none h-full max-w-[360px]`}>
       <CardContent className="p-6 flex flex-col h-full">
         <div className="flex items-center gap-4 mb-8">
           <div className={`p-2.5 ${iconColor} ${darkIconColor} rounded-2xl`}>
@@ -406,7 +406,7 @@ export function FollowSummary({
         <AirdropDetailForm verifyLink={verifyLink} />
         <Header />
         <Actions />
-        <div id="follow-summary" className="grid grid-cols-1 md:grid-cols-2 gap-6 p-6">
+        <div id="follow-summary" className="grid grid-cols-1 md:grid-cols-2 gap-6 p-6 w-fit mx-auto">
           {getStatusCardOrder(data).map(({ component: StatsCardComponent, key }) => (
             <StatsCardComponent key={key} data={data} />
           ))}
