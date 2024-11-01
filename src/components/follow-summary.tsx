@@ -13,7 +13,7 @@ import { z } from 'zod'
 
 import { Button } from '@/components/ui/button'
 import { Card, CardContent } from '@/components/ui/card'
-import { alphaTestAirdropTotalUsers, siteInfo } from '@/constants'
+import { alphaTestAirdropTotalUsers } from '@/constants'
 
 import { AirdropDetailForm } from './airdrop-detail-form'
 import { Tooltip, TooltipContent, TooltipProvider, TooltipTrigger } from './ui/tooltip'
@@ -132,44 +132,15 @@ function Actions() {
     link.click()
   }
 
-  const shareImage = async () => {
-    const element = document.querySelector('#follow-summary')
-    if (!element)
-      return
-
-    const dataUrl = await toPng(element as HTMLElement, {
-      quality: 1,
-      pixelRatio: 2,
-      backgroundColor: window.getComputedStyle(document.body).backgroundColor,
-    })
-
-    const response = await fetch(dataUrl)
-    const blob = await response.blob()
-    const item = new ClipboardItem({ 'image/png': blob })
-    await navigator.clipboard.write([item])
-
-    window.open(`https://x.com/intent/post?text=${encodeURIComponent('Check out my Follow Alpha Testing Snapshot!')}&url=${encodeURIComponent(`${siteInfo.webUrl}/airdrop`)}`)
-  }
-
   return (
-    <div className="flex gap-4 justify-center my-4">
-      <Button
-        variant="outline"
-        className="gap-3"
-        onClick={captureAndDownload}
-      >
-        <Download className="size-4" />
-        Save as Image
-      </Button>
-      <Button
-        variant="outline"
-        className="gap-3"
-        onClick={shareImage}
-      >
-        <div className="size-4 i-simple-icons-x" />
-        Copy as image and share on X
-      </Button>
-    </div>
+    <Button
+      variant="outline"
+      className="gap-3"
+      onClick={captureAndDownload}
+    >
+      <Download className="size-4" />
+      Save as Image
+    </Button>
   )
 }
 
@@ -284,13 +255,13 @@ function ContentCreationImpactStatsCard({ data }: { data?: Partial<DetailModel> 
         </div>
         <div className="space-y-4">
           <div className="flex justify-between items-baseline">
-            <span className="text-violet-600/70 dark:text-violet-300/70">Feed Subscriptions</span>
+            <span className="text-violet-600/70 dark:text-violet-300/70">Feed Subscribers</span>
             <span className="text-2xl font-bold text-violet-600 dark:text-violet-300">
               <DataPresenter data={data} dataKey="Claimed feeds subscriptions count" />
             </span>
           </div>
           <div className="flex justify-between items-baseline">
-            <span className="text-violet-600/70 dark:text-violet-300/70">List Subscriptions</span>
+            <span className="text-violet-600/70 dark:text-violet-300/70">List Subscribers</span>
             <span className="text-2xl font-bold text-violet-600 dark:text-violet-300">
               <DataPresenter data={data} dataKey="Created lists subscriptions count" />
             </span>
@@ -317,10 +288,10 @@ function PlatformEngagementStatsCard({ data }: { data?: Partial<DetailModel> | n
         <div>
           <div className="text-amber-600/70 dark:text-amber-300/70 mb-2 text-left">Earned from Lists</div>
           <div className="flex items-baseline gap-2">
-            <span className="text-2xl text-amber-600 dark:text-amber-300">$</span>
             <div className="text-5xl font-bold text-amber-600 dark:text-amber-300 tracking-tight leading-none">
               <DataPresenter data={data} dataKey="Created lists income amount" />
             </div>
+            <span className="text-xl text-amber-600 dark:text-amber-300 font-medium">$POWER</span>
           </div>
           <p className="text-amber-600/80 dark:text-amber-300/80 mt-3 text-left">
             income generated during alpha
@@ -359,13 +330,10 @@ function CommunityInfluenceStatsCard({ data }: { data?: Partial<DetailModel> | n
       darkTextColor="dark:text-emerald-300"
     >
       <div className="flex flex-col flex-1 justify-between">
-        <div className="text-center">
+        <div className="text-left">
           <div className="text-emerald-600/70 dark:text-emerald-300/70 mb-2">Alpha Testers Invited</div>
-          <div className="text-7xl font-bold text-emerald-600  dark:text-emerald-300 tracking-tight leading-none mb-3">
+          <div className="text-7xl font-bold text-emerald-600 dark:text-emerald-300 tracking-tight leading-none mb-3">
             <DataPresenter data={data} dataKey="Invitations count" />
-          </div>
-          <div className="inline-flex items-center gap-1.5 bg-emerald-500/5 dark:bg-emerald-400/5 rounded-full px-4 py-1.5">
-            <span className="text-emerald-600/80 dark:text-emerald-300/80">Early Community Builder</span>
           </div>
         </div>
         <div className="mt-8">
@@ -373,6 +341,7 @@ function CommunityInfluenceStatsCard({ data }: { data?: Partial<DetailModel> | n
             <span className="text-emerald-600/70 dark:text-emerald-300/70">GitHub Contributions</span>
             <span className="text-3xl font-bold text-emerald-600 dark:text-emerald-300">
               <DataPresenter data={data} dataKey="GitHub Community Contributions" />
+              <span className="text-lg font-medium ml-1">points</span>
             </span>
           </div>
         </div>

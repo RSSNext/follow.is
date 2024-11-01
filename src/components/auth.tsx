@@ -53,7 +53,7 @@ export function AuthButton({ className }: { className?: string }) {
 
   if (data && status === 'unauthenticated') {
     return (
-      <section className={cn('flex gap-4 items-center', className)}>
+      <section className={cn('flex flex-col sm:flex-row gap-4 items-center', className)}>
         {Object.entries(data || {}).map(([provider, providerData]) => {
           return (
             <Button
