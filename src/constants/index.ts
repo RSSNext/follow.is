@@ -20,7 +20,6 @@ export const siteInfo = {
     { title: 'Features', href: '/#features' },
     { title: 'Testimonials', href: '/#testimonials' },
     { title: 'FAQ', href: '/#faq' },
-    { title: 'Airdrop', href: '/airdrop' },
   ],
 } as const
 
