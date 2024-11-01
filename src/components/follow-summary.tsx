@@ -83,19 +83,17 @@ function StatsCard({
   children,
 }: StatsCardProps) {
   return (
-    <div className="min-w-[360px]">
-      <Card className={`bg-gradient-to-br ${gradient} ${darkGradient} border-none h-full`}>
-        <CardContent className="p-6 flex flex-col h-full">
-          <div className="flex items-center gap-4 mb-8">
-            <div className={`p-2.5 ${iconColor} ${darkIconColor} rounded-2xl`}>
-              {icon}
-            </div>
-            <h3 className={`text-2xl font-semibold ${textColor} ${darkTextColor} shrink-0`}>{title}</h3>
+    <Card className={`bg-gradient-to-br ${gradient} ${darkGradient} border-none h-full`}>
+      <CardContent className="p-6 flex flex-col h-full">
+        <div className="flex items-center gap-4 mb-8">
+          <div className={`p-2.5 ${iconColor} ${darkIconColor} rounded-2xl`}>
+            {icon}
           </div>
-          {children}
-        </CardContent>
-      </Card>
-    </div>
+          <h3 className={`text-xl sm:text-2xl font-semibold ${textColor} ${darkTextColor} shrink-0`}>{title}</h3>
+        </div>
+        {children}
+      </CardContent>
+    </Card>
   )
 }
 
@@ -181,7 +179,7 @@ function YourReadingJourneyStatsCard({ data }: { data?: Partial<DetailModel> | n
   return (
     <StatsCard
       title="Your Reading Journey"
-      icon={<Rss className="size-5 text-white" />}
+      icon={<Rss className="size-4 sm:size-5 text-white" />}
       gradient="from-rose-50 to-rose-100"
       darkGradient="dark:from-rose-500/10 dark:to-rose-600/10"
       iconColor="bg-rose-500"
@@ -230,7 +228,7 @@ function ContentCreationImpactStatsCard({ data }: { data?: Partial<DetailModel> 
   return (
     <StatsCard
       title="Content Creation Impact"
-      icon={<List className="size-5 text-white" />}
+      icon={<List className="size-4 sm:size-5 text-white" />}
       gradient="from-violet-50 to-violet-100"
       darkGradient="dark:from-violet-500/10 dark:to-violet-600/10"
       iconColor="bg-violet-500"
@@ -276,7 +274,7 @@ function PlatformEngagementStatsCard({ data }: { data?: Partial<DetailModel> | n
   return (
     <StatsCard
       title="Platform Engagement"
-      icon={<Wallet className="size-5 text-white" />}
+      icon={<Wallet className="size-4 sm:size-5 text-white" />}
       gradient="from-amber-50 to-amber-100"
       darkGradient="dark:from-amber-500/10 dark:to-amber-600/10"
       iconColor="bg-amber-500"
@@ -320,7 +318,7 @@ function CommunityInfluenceStatsCard({ data }: { data?: Partial<DetailModel> | n
   return (
     <StatsCard
       title="Community Influence"
-      icon={<Users className="size-5 text-white" />}
+      icon={<Users className="size-4 sm:size-5 text-white" />}
       gradient="from-emerald-50  to-emerald-100"
       darkGradient="dark:from-emerald-500/10 dark:to-emerald-600/10"
       iconColor="bg-emerald-500"
@@ -403,17 +401,15 @@ export function FollowSummary({
   verifyLink?: string
 }) {
   return (
-    <div className="min-h-screen bg-background text-foreground p-4 md:p-8">
+    <div className="min-h-screen bg-background text-foreground py-4 md:py-8">
       <div className="max-w-7xl mx-auto space-y-8">
         <AirdropDetailForm verifyLink={verifyLink} />
         <Header />
         <Actions />
-        <div className="mx-auto max-w-fit [&>*]:h-full">
-          <div id="follow-summary" className="grid grid-cols-1 md:grid-cols-2 gap-6 p-6">
-            {getStatusCardOrder(data).map(({ component: StatsCardComponent, key }) => (
-              <StatsCardComponent key={key} data={data} />
-            ))}
-          </div>
+        <div id="follow-summary" className="grid grid-cols-1 md:grid-cols-2 gap-6 p-6">
+          {getStatusCardOrder(data).map(({ component: StatsCardComponent, key }) => (
+            <StatsCardComponent key={key} data={data} />
+          ))}
         </div>
       </div>
     </div>
