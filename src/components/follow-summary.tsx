@@ -240,34 +240,30 @@ function ContentCreationImpactStatsCard({ data }: { data?: Partial<DetailModel> 
       textColor="text-violet-700"
       darkTextColor="dark:text-violet-300"
     >
-      <div className="flex flex-col h-full justify-end">
-        <div className="grid grid-cols-2 gap-4 mb-6">
-          <div className="bg-violet-500/5 dark:bg-violet-400/5 rounded-xl p-4 flex flex-col items-center justify-center">
-            <div className="text-4xl font-bold text-violet-600 dark:text-violet-300">
-              <DataPresenter data={data} dataKey="Claimed feeds count" />
-            </div>
-            <div className="text-violet-600/70 dark:text-violet-300/70 text-center">Claimed Feeds</div>
-          </div>
-          <div className="bg-violet-500/5 dark:bg-violet-400/5 rounded-xl p-4 flex flex-col items-center justify-center">
-            <div className="text-4xl font-bold text-violet-600 dark:text-violet-300">
-              <DataPresenter data={data} dataKey="Lists with more than 1 feed count" />
-            </div>
-            <div className="text-violet-600/70 dark:text-violet-300/70 text-center">Created Lists</div>
+      <div className="grid grid-cols-2 gap-4 h-full">
+        <div className="bg-violet-500/5 dark:bg-violet-400/5 rounded-xl p-4 flex flex-col gap-4 items-center justify-center">
+          <div className="text-violet-600/70 dark:text-violet-300/70 text-center">Claimed Feeds</div>
+          <div className="text-4xl font-bold text-violet-600 dark:text-violet-300">
+            <DataPresenter data={data} dataKey="Claimed feeds count" />
           </div>
         </div>
-        <div className="space-y-4">
-          <div className="flex justify-between items-baseline">
-            <span className="text-violet-600/70 dark:text-violet-300/70">Feed Subscribers</span>
-            <span className="text-2xl font-bold text-violet-600 dark:text-violet-300">
-              <DataPresenter data={data} dataKey="Claimed feeds subscriptions count" />
-            </span>
+        <div className="bg-violet-500/5 dark:bg-violet-400/5 rounded-xl p-4 flex flex-col gap-4 items-center justify-center">
+          <div className="text-violet-600/70 dark:text-violet-300/70 text-center">Created Lists</div>
+          <div className="text-4xl font-bold text-violet-600 dark:text-violet-300">
+            <DataPresenter data={data} dataKey="Lists with more than 1 feed count" />
           </div>
-          <div className="flex justify-between items-baseline">
-            <span className="text-violet-600/70 dark:text-violet-300/70">List Subscribers</span>
-            <span className="text-2xl font-bold text-violet-600 dark:text-violet-300">
-              <DataPresenter data={data} dataKey="Created lists subscriptions count" />
-            </span>
-          </div>
+        </div>
+        <div className="flex flex-col gap-4 justify-center items-center">
+          <span className="text-violet-600/70 dark:text-violet-300/70">Feed Subscribers</span>
+          <span className="text-2xl font-bold text-violet-600 dark:text-violet-300">
+            <DataPresenter data={data} dataKey="Claimed feeds subscriptions count" />
+          </span>
+        </div>
+        <div className="flex flex-col gap-4 justify-center items-center">
+          <span className="text-violet-600/70 dark:text-violet-300/70">List Subscribers</span>
+          <span className="text-2xl font-bold text-violet-600 dark:text-violet-300">
+            <DataPresenter data={data} dataKey="Created lists subscriptions count" />
+          </span>
         </div>
       </div>
     </StatsCard>
