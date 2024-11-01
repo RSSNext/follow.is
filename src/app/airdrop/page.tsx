@@ -38,7 +38,7 @@ export default function AirdropPage() {
         <div className="text-5xl sm:text-6xl font-bold space-y-2">
           <p>Check Your Eligibility for</p>
           <p className="text-power-orange dark:text-white">20,000,000 $POWER</p>
-          <p>Alpha Airdrop</p>
+          <p>Follow Airdrop #1</p>
         </div>
         <AuthButton className="justify-center" />
         {data?.detail && (

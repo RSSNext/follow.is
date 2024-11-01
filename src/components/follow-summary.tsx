@@ -249,27 +249,27 @@ function ContentCreationImpactStatsCard({ data }: { data?: Partial<DetailModel> 
     >
       <div className="grid grid-cols-2 gap-4 h-full">
         <div className="bg-violet-500/5 dark:bg-violet-400/5 rounded-xl p-4 flex flex-col gap-4 items-center justify-center">
-          <div className="text-violet-600/70 dark:text-violet-300/70 text-center">Claimed Feeds</div>
+          <div className="text-violet-600/70 dark:text-violet-300/70 text-center">Feed Subscribers</div>
           <div className="text-4xl font-bold text-violet-600 dark:text-violet-300">
-            <DataPresenter data={data} dataKey="Claimed feeds count" />
+            <DataPresenter data={data} dataKey="Claimed feeds subscriptions count" />
           </div>
         </div>
         <div className="bg-violet-500/5 dark:bg-violet-400/5 rounded-xl p-4 flex flex-col gap-4 items-center justify-center">
-          <div className="text-violet-600/70 dark:text-violet-300/70 text-center">Created Lists</div>
+          <div className="text-violet-600/70 dark:text-violet-300/70 text-center">List Subscribers</div>
           <div className="text-4xl font-bold text-violet-600 dark:text-violet-300">
-            <DataPresenter data={data} dataKey="Lists with more than 1 feed count" />
+            <DataPresenter data={data} dataKey="Created lists subscriptions count" />
           </div>
         </div>
         <div className="flex flex-col gap-4 justify-center items-center">
-          <span className="text-violet-600/70 dark:text-violet-300/70">Feed Subscribers</span>
+          <span className="text-violet-600/70 dark:text-violet-300/70">Claimed Feeds</span>
           <span className="text-2xl font-bold text-violet-600 dark:text-violet-300">
-            <DataPresenter data={data} dataKey="Claimed feeds subscriptions count" />
+            <DataPresenter data={data} dataKey="Claimed feeds count" />
           </span>
         </div>
         <div className="flex flex-col gap-4 justify-center items-center">
-          <span className="text-violet-600/70 dark:text-violet-300/70">List Subscribers</span>
+          <span className="text-violet-600/70 dark:text-violet-300/70">Created Lists</span>
           <span className="text-2xl font-bold text-violet-600 dark:text-violet-300">
-            <DataPresenter data={data} dataKey="Created lists subscriptions count" />
+            <DataPresenter data={data} dataKey="Lists with more than 1 feed count" />
           </span>
         </div>
       </div>
@@ -422,7 +422,7 @@ export function FollowSummary({
         <div className="w-fit p-10 space-y-8" id="follow-summary">
           <div className="text-center space-y-4 mb-6">
             <h1 className="flex items-center justify-center gap-4 text-4xl md:text-[42px] font-bold text-balance bg-gradient-to-r bg-clip-text">
-              <Logo className="h-10 w-auto rounded-[10px]" /> Follow Airdrop
+              <Logo className="h-10 w-auto rounded-[10px]" /> Follow Airdrop #1
             </h1>
           </div>
           <p className="text-2xl">
