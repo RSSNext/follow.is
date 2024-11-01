@@ -434,10 +434,11 @@ export function FollowSummary({
   verifyLink?: string
 }) {
   return (
-    <div className="min-h-screen bg-background text-foreground p-4 md:p-8">
-      <div className="max-w-7xl mx-auto">
+    <div className="min-h-screen bg-background text-foreground px-4 md:px-8">
+      <div className="max-w-7xl mx-auto space-y-8">
+        <AirdropDetailForm verifyLink={verifyLink} />
         <Header />
-
+        <Actions />
         <div className="mx-auto max-w-fit [&>*]:h-full">
           <div id="follow-summary" className="grid grid-cols-1 md:grid-cols-2 2xl:grid-cols-4 gap-6 p-6">
             {getStatusCardOrder(data).map(({ component: StatsCardComponent, key }) => (
@@ -445,8 +446,6 @@ export function FollowSummary({
             ))}
           </div>
         </div>
-        <Actions />
-        <AirdropDetailForm verifyLink={verifyLink} />
       </div>
     </div>
   )

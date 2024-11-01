@@ -50,7 +50,7 @@ export function AirdropDetailForm({ verifyLink }: { verifyLink?: string }) {
   }
 
   return (
-    <div className="w-full sm:max-w-xl mx-auto mt-12">
+    <div className="w-full sm:max-w-xl mx-auto">
       <h2 className="text-2xl font-bold mb-4">
         Join the Follow airdrop
       </h2>
