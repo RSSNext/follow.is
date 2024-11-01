@@ -89,7 +89,7 @@ function StatsCard({
           <div className={`p-2.5 ${iconColor} ${darkIconColor} rounded-2xl`}>
             {icon}
           </div>
-          <h3 className={`text-xl sm:text-2xl font-semibold ${textColor} ${darkTextColor} shrink-0`}>{title}</h3>
+          <h3 className={`text-xl sm:text-2xl font-semibold ${textColor} ${darkTextColor} truncate`}>{title}</h3>
         </div>
         {children}
       </CardContent>
@@ -238,7 +238,7 @@ function YourReadingJourneyStatsCard({ data }: { data?: Partial<DetailModel> | n
 function ContentCreationImpactStatsCard({ data }: { data?: Partial<DetailModel> | null | undefined }) {
   return (
     <StatsCard
-      title="Content Creation Impact"
+      title="Content Creation"
       icon={<List className="size-4 sm:size-5 text-white" />}
       gradient="from-violet-50 to-violet-100"
       darkGradient="dark:from-violet-500/10 dark:to-violet-600/10"
