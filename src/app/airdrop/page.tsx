@@ -14,6 +14,7 @@ type AirdropStatus = {
   rank: number
   detail: DetailModel | null
   tx: string
+  verify: string
 } | null
 
 export default function AirdropPage() {
@@ -51,7 +52,7 @@ export default function AirdropPage() {
             : 'Sign in to check your eligibility'}
         </p>
         <AuthButton className="justify-center" />
-        {data?.detail && <FollowSummary data={data?.detail} />}
+        {data?.detail && <FollowSummary data={data?.detail} verifyLink={data.verify} />}
       </main>
       <Toaster />
     </div>

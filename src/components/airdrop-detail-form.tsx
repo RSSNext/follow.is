@@ -9,7 +9,7 @@ import { env } from '@/env'
 import { Button } from './ui/button'
 import { Input } from './ui/input'
 
-export function AirdropDetailForm() {
+export function AirdropDetailForm({ verifyLink }: { verifyLink?: string }) {
   const [postLink, setPostLink] = useState('')
 
   const fillVerifyInfo = useSWRMutation(
@@ -44,6 +44,9 @@ export function AirdropDetailForm() {
           toast.error('Failed to submit your link. Please try again later.')
         })
     }
+    else {
+      toast.error('Please enter your post link.')
+    }
   }
 
   return (
@@ -60,7 +63,7 @@ export function AirdropDetailForm() {
         </div>
         <Input
           type="url"
-          placeholder="Paste your post link here"
+          placeholder={verifyLink ?? 'Enter your post link'}
           value={postLink}
           onChange={e => setPostLink(e.target.value)}
           className="pl-10 w-full h-auto rounded-r-none !ring-offset-0 !ring-0"

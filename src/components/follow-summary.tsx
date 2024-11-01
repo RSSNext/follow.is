@@ -465,7 +465,13 @@ function getStatusCardOrder(data: Partial<DetailModel> | null | undefined) {
   return cardOrder
 }
 
-export function FollowSummary({ data }: { data?: Partial<DetailModel> | null | undefined }) {
+export function FollowSummary({
+  data,
+  verifyLink,
+}: {
+  data?: Partial<DetailModel> | null | undefined
+  verifyLink?: string
+}) {
   return (
     <div className="min-h-screen bg-background text-foreground p-4 md:p-8">
       <div className="max-w-7xl mx-auto">
@@ -479,7 +485,7 @@ export function FollowSummary({ data }: { data?: Partial<DetailModel> | null | u
           </div>
         </div>
         <Actions />
-        <AirdropDetailForm />
+        <AirdropDetailForm verifyLink={verifyLink} />
       </div>
     </div>
   )
