@@ -52,7 +52,14 @@ export default function AirdropPage() {
             : 'Sign in to check your eligibility'}
         </p>
         <AuthButton className="justify-center" />
-        {data?.detail && <FollowSummary data={data?.detail} verifyLink={data.verify} />}
+        {data?.detail && (
+          <FollowSummary
+            rank={data.rank}
+            amount={data.amount}
+            data={data?.detail}
+            verifyLink={data.verify}
+          />
+        )}
       </main>
       <Toaster />
     </div>

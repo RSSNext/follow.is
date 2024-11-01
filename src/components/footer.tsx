@@ -1,10 +1,18 @@
+'use client'
+
 import Link from 'next/link'
+import { usePathname } from 'next/navigation'
 
 import { Container } from '@/components/container'
 import { Logo } from '@/components/logo'
 import { siteInfo } from '@/constants'
 
 export function Footer() {
+  const pathname = usePathname()
+
+  if (pathname === '/airdrop')
+    return null
+
   return (
     <footer>
       <Container>

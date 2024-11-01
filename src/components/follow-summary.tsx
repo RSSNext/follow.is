@@ -1,11 +1,13 @@
 'use client'
 
+import { useSession } from '@hono/auth-js/react'
 import { toPng } from 'html-to-image'
 import {
   Download,
   List,
   Rss,
   SparklesIcon,
+  Tornado,
   Users,
   Wallet,
 } from 'lucide-react'
@@ -16,6 +18,8 @@ import { Card, CardContent } from '@/components/ui/card'
 import { alphaTestAirdropTotalUsers } from '@/constants'
 
 import { AirdropDetailForm } from './airdrop-detail-form'
+import { Logo } from './logo'
+import { PowerIcon } from './power'
 import { Tooltip, TooltipContent, TooltipProvider, TooltipTrigger } from './ui/tooltip'
 
 // eslint-disable-next-line unused-imports/no-unused-vars
@@ -83,7 +87,7 @@ function StatsCard({
   children,
 }: StatsCardProps) {
   return (
-    <Card className={`bg-gradient-to-br ${gradient} ${darkGradient} border-none h-full max-w-[360px]`}>
+    <Card className={`bg-gradient-to-br ${gradient} ${darkGradient} border-none h-full max-w-[400px]`}>
       <CardContent className="p-6 flex flex-col h-full">
         <div className="flex items-center gap-4 mb-8">
           <div className={`p-2.5 ${iconColor} ${darkIconColor} rounded-2xl`}>
@@ -396,9 +400,13 @@ function getStatusCardOrder(data: Partial<DetailModel> | null | undefined) {
 export function FollowSummary({
   data,
   verifyLink,
+  amount,
+  rank,
 }: {
   data?: Partial<DetailModel> | null | undefined
   verifyLink?: string
+  amount: string
+  rank: number
 }) {
   return (
     <div className="min-h-screen bg-background text-foreground py-8">
@@ -407,13 +415,49 @@ export function FollowSummary({
         <Header />
         <Actions />
         <div className="w-fit mx-auto">
-          <div id="follow-summary" className="grid grid-cols-1 md:grid-cols-2 gap-6 p-6 ">
-            {getStatusCardOrder(data).map(({ component: StatsCardComponent, key }) => (
-              <StatsCardComponent key={key} data={data} />
-            ))}
+          <div id="follow-summary" className="p-6 space-y-6">
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+              {getStatusCardOrder(data).map(({ component: StatsCardComponent, key }) => (
+                <StatsCardComponent key={key} data={data} />
+              ))}
+            </div>
+            <Footer amount={amount} rank={rank} />
           </div>
         </div>
       </div>
+    </div>
+  )
+}
+
+function Footer({
+  amount,
+  rank,
+}: {
+  amount: string
+  rank: number
+}) {
+  const { data } = useSession()
+
+  return (
+    <div className="flex gap-4 justify-center items-center">
+      <section className="flex gap-2 items-center">
+        <Logo className="size-5 rounded-md" />
+        <p>Follow</p>
+      </section>
+      <section className="flex gap-2 items-center">
+        {data?.user?.image && (
+          <img src={data.user.image} alt="User Avatar" className="size-5 rounded-full" />
+        )}
+        {data?.user?.name && <p>{data.user.name}</p>}
+      </section>
+      <section className="flex gap-2 items-center">
+        <PowerIcon className="text-power-orange" />
+        <p>{amount}</p>
+      </section>
+      <section className="flex gap-2 items-center">
+        <Tornado className="text-power-orange" />
+        <p>{rank}</p>
+      </section>
     </div>
   )
 }
