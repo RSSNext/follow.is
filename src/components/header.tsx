@@ -1,6 +1,7 @@
 'use client'
 
 import Link from 'next/link'
+import { usePathname } from 'next/navigation'
 
 import { siteInfo } from '@/constants'
 import { useScrollOffset } from '@/hooks/use-scroll-offset'
@@ -14,11 +15,12 @@ import { Button } from './ui/button'
 
 export function Header() {
   const scrollOffset = useScrollOffset()
+  const pathname = usePathname()
   return (
     <header
       className={cn(
         'px-10 py-5 backdrop-blur-lg fixed top-0 inset-x-0 z-50 transition-all',
-        scrollOffset && 'border-b',
+        (scrollOffset && pathname !== '/airdrop') && 'border-b',
       )}
     >
       <Container>
