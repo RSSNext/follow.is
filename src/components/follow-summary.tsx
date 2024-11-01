@@ -4,19 +4,16 @@ import { toPng } from 'html-to-image'
 import {
   Download,
   List,
-  Loader2,
   Rss,
-  Share2,
   SparklesIcon,
   Users,
   Wallet,
 } from 'lucide-react'
-import { useState } from 'react'
 import { z } from 'zod'
 
 import { Button } from '@/components/ui/button'
 import { Card, CardContent } from '@/components/ui/card'
-import { alphaTestAirdropTotalUsers } from '@/constants'
+import { alphaTestAirdropTotalUsers, siteInfo } from '@/constants'
 
 import { AirdropDetailForm } from './airdrop-detail-form'
 import { Tooltip, TooltipContent, TooltipProvider, TooltipTrigger } from './ui/tooltip'
@@ -118,66 +115,40 @@ function Header() {
 }
 
 function Actions() {
-  const [isCapturing, setIsCapturing] = useState(false)
-
   const captureAndDownload = async () => {
-    try {
-      setIsCapturing(true)
-      const element = document.querySelector('#follow-summary')
-      if (!element)
-        return
+    const element = document.querySelector('#follow-summary')
+    if (!element)
+      return
 
-      const dataUrl = await toPng(element as HTMLElement, {
-        quality: 1,
-        pixelRatio: 2,
-        backgroundColor: '#ffffff',
-      })
+    const dataUrl = await toPng(element as HTMLElement, {
+      quality: 1,
+      pixelRatio: 2,
+      backgroundColor: window.getComputedStyle(document.body).backgroundColor,
+    })
 
-      const link = document.createElement('a')
-      link.download = 'follow-summary.png'
-      link.href = dataUrl
-      link.click()
-    }
-    catch (error) {
-      console.error('Failed to capture summary:', error)
-    }
-    finally {
-      setIsCapturing(false)
-    }
+    const link = document.createElement('a')
+    link.download = 'follow-summary.png'
+    link.href = dataUrl
+    link.click()
   }
 
   const shareImage = async () => {
-    try {
-      setIsCapturing(true)
-      const element = document.querySelector('#follow-summary')
-      if (!element)
-        return
+    const element = document.querySelector('#follow-summary')
+    if (!element)
+      return
 
-      const dataUrl = await toPng(element as HTMLElement, {
-        quality: 1,
-        pixelRatio: 2,
-        backgroundColor: '#ffffff',
-      })
+    const dataUrl = await toPng(element as HTMLElement, {
+      quality: 1,
+      pixelRatio: 2,
+      backgroundColor: window.getComputedStyle(document.body).backgroundColor,
+    })
 
-      const response = await fetch(dataUrl)
-      const blob = await response.blob()
+    const response = await fetch(dataUrl)
+    const blob = await response.blob()
+    const item = new ClipboardItem({ 'image/png': blob })
+    await navigator.clipboard.write([item])
 
-      if (navigator.share) {
-        await navigator.share({
-          files: [new File([blob], 'follow-summary.png', { type: 'image/png' })],
-          title: 'My Follow Journey',
-          text: 'Check out my Follow journey!',
-        })
-      }
-    }
-    catch (error) {
-      if (error instanceof Error && error.name !== 'AbortError') {
-        console.error('Failed to share summary:', error)
-      }
-    }
-    finally {
-      setIsCapturing(false)
-    }
+    window.open(`https://x.com/intent/post?text=${encodeURIComponent('Check out my Follow Alpha Testing Snapshot!')}&url=${encodeURIComponent(`${siteInfo.webUrl}/airdrop`)}`)
   }
 
   return (
@@ -186,27 +157,17 @@ function Actions() {
         variant="outline"
         className="gap-3"
         onClick={captureAndDownload}
-        disabled={isCapturing}
       >
-        {isCapturing ? (
-          <Loader2 className="size-4 animate-spin" />
-        ) : (
-          <Download className="size-4" />
-        )}
+        <Download className="size-4" />
         Save as Image
       </Button>
       <Button
         variant="outline"
         className="gap-3"
         onClick={shareImage}
-        disabled={isCapturing}
       >
-        {isCapturing ? (
-          <Loader2 className="size-4 animate-spin" />
-        ) : (
-          <Share2 className="size-4" />
-        )}
-        Share
+        <div className="size-4 i-simple-icons-x" />
+        Copy as image and share on X
       </Button>
     </div>
   )
