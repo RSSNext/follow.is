@@ -11,7 +11,6 @@ import { Input } from './ui/input'
 
 export function AirdropDetailForm() {
   const [postLink, setPostLink] = useState('')
-  const [isLinkSubmitted, setIsLinkSubmitted] = useState(false)
 
   const fillVerifyInfo = useSWRMutation(
     ['fill-verify-info', postLink],
@@ -30,23 +29,23 @@ export function AirdropDetailForm() {
       )
       const data = (await res.json()) as { code: number }
       if (data.code === 0) {
-        toast.success('Airdrop claimed successfully')
+        toast.success('Your link has been submitted successfully. You\'re now eligible for the upcoming airdrop!')
       }
       else {
-        toast.error('Failed to claim airdrop')
+        toast.error('Failed to submit your link. Please try again later.')
       }
     },
   )
 
   const handleSubmitLink = () => {
     if (postLink.trim() !== '') {
-      setIsLinkSubmitted(true)
       fillVerifyInfo.trigger()
         .catch(() => {
-          setIsLinkSubmitted(false)
+          toast.error('Failed to submit your link. Please try again later.')
         })
     }
   }
+
   return (
     <div className="w-full sm:max-w-xl mx-auto mt-12">
       <h2 className="text-2xl font-bold mb-4">
@@ -64,22 +63,17 @@ export function AirdropDetailForm() {
           placeholder="Paste your post link here"
           value={postLink}
           onChange={e => setPostLink(e.target.value)}
-          disabled={isLinkSubmitted}
           className="pl-10 w-full h-auto rounded-r-none !ring-offset-0 !ring-0"
         />
         <Button
+          disabled={fillVerifyInfo.isMutating}
           onClick={handleSubmitLink}
           className="h-auto border-l-0 rounded-l-none font-medium"
           variant="outline"
         >
-          {isLinkSubmitted ? 'Submitted' : 'Submit'}
+          Submit
         </Button>
       </div>
-      {isLinkSubmitted && (
-        <p className="mt-4 text-power-orange text-balance font-medium">
-          Your link has been submitted successfully. You're now eligible for the upcoming airdrop!
-        </p>
-      )}
     </div>
   )
 }
