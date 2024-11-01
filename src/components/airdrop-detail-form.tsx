@@ -51,10 +51,10 @@ export function AirdropDetailForm({ verifyLink }: { verifyLink?: string }) {
 
   return (
     <div className="w-full sm:max-w-xl mx-auto">
-      <h2 className="text-2xl font-bold mb-4">
+      <h2 className="text-3xl font-bold mb-4">
         Join the Follow airdrop
       </h2>
-      <p className="text-foreground/60 mb-8 text-balance">
+      <p className="text-lg mb-8 text-balance">
         Share your Follow journey on social media and submit your post link below to be eligible for the upcoming airdrop.
       </p>
       <div className="relative flex justify-stretch max-w-xs mx-auto">
