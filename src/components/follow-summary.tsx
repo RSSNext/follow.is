@@ -16,8 +16,10 @@ import { z } from 'zod'
 
 import { Button } from '@/components/ui/button'
 import { Card, CardContent } from '@/components/ui/card'
+import { alphaTestAirdropTotalUsers } from '@/constants'
 
 import { AirdropDetailForm } from './airdrop-detail-form'
+import { Tooltip, TooltipContent, TooltipProvider, TooltipTrigger } from './ui/tooltip'
 
 // eslint-disable-next-line unused-imports/no-unused-vars
 const detailModelSchema = z.object({
@@ -210,12 +212,40 @@ function Actions() {
   )
 }
 
-function YourReadingJourneyStatsCard({ data }: { data?: Partial<DetailModel> | null | undefined }) {
+function DataPresenter({
+  data,
+  dataKey,
+}: {
+  data?: Partial<DetailModel> | null | undefined
+  dataKey: keyof DetailModel
+}) {
   const safeData = data ?? {} as DetailModel
 
-  const getValue = (key: keyof DetailModel, defaultValue = '0') => {
-    return safeData[key]?.toString() || defaultValue
+  const getValue = (key: keyof DetailModel, defaultValue = 0) => {
+    return safeData[key] || defaultValue
   }
+
+  const dataValue = getValue(dataKey)
+  const dataRank = getValue(`${dataKey} Rank` as keyof DetailModel)
+
+  if (!dataRank)
+    return dataValue
+
+  const dataRankPercentage = (dataRank / alphaTestAirdropTotalUsers * 100).toFixed(2)
+
+  return (
+    <TooltipProvider>
+      <Tooltip>
+        <TooltipTrigger>{dataValue}</TooltipTrigger>
+        <TooltipContent className="font-medium tracking-wide">
+          Ranked in the top {dataRankPercentage}%
+        </TooltipContent>
+      </Tooltip>
+    </TooltipProvider>
+  )
+}
+
+function YourReadingJourneyStatsCard({ data }: { data?: Partial<DetailModel> | null | undefined }) {
   return (
     <StatsCard
       title="Your Reading Journey"
@@ -231,7 +261,7 @@ function YourReadingJourneyStatsCard({ data }: { data?: Partial<DetailModel> | n
         <div>
           <div className="flex items-baseline gap-2 mb-3">
             <div className="text-5xl font-bold text-rose-600 dark:text-rose-300 tracking-tight leading-none">
-              {getValue('Recent read count in the last month')}
+              <DataPresenter data={data} dataKey="Recent read count in the last month" />
             </div>
             <div className="text-xl text-rose-600/80 dark:text-rose-300/80 font-medium">entries</div>
           </div>
@@ -242,15 +272,21 @@ function YourReadingJourneyStatsCard({ data }: { data?: Partial<DetailModel> | n
         <div className="space-y-4 bg-rose-500/5 dark:bg-rose-400/5 rounded-xl p-4 mt-8">
           <div className="flex justify-between items-baseline">
             <span className="text-rose-600/70 dark:text-rose-300/70">Feeds</span>
-            <span className="text-2xl font-bold text-rose-600 dark:text-rose-300">{getValue('Feeds subscriptions count')}</span>
+            <span className="text-2xl font-bold text-rose-600 dark:text-rose-300">
+              <DataPresenter data={data} dataKey="Feeds subscriptions count" />
+            </span>
           </div>
           <div className="flex justify-between items-baseline">
             <span className="text-rose-600/70 dark:text-rose-300/70">Inboxes</span>
-            <span className="text-2xl font-bold text-rose-600 dark:text-rose-300">{getValue('Inbox subscriptions count')}</span>
+            <span className="text-2xl font-bold text-rose-600 dark:text-rose-300">
+              <DataPresenter data={data} dataKey="Inbox subscriptions count" />
+            </span>
           </div>
           <div className="flex justify-between items-baseline">
             <span className="text-rose-600/70 dark:text-rose-300/70">Lists</span>
-            <span className="text-2xl font-bold text-rose-600 dark:text-rose-300">{getValue('Lists subscriptions count')}</span>
+            <span className="text-2xl font-bold text-rose-600 dark:text-rose-300">
+              <DataPresenter data={data} dataKey="Lists subscriptions count" />
+            </span>
           </div>
         </div>
       </div>
@@ -259,11 +295,6 @@ function YourReadingJourneyStatsCard({ data }: { data?: Partial<DetailModel> | n
 }
 
 function ContentCreationImpactStatsCard({ data }: { data?: Partial<DetailModel> | null | undefined }) {
-  const safeData = data ?? {} as DetailModel
-
-  const getValue = (key: keyof DetailModel, defaultValue = '0') => {
-    return safeData[key]?.toString() || defaultValue
-  }
   return (
     <StatsCard
       title="Content Creation Impact"
@@ -278,22 +309,30 @@ function ContentCreationImpactStatsCard({ data }: { data?: Partial<DetailModel> 
       <div className="flex flex-col h-full justify-end">
         <div className="grid grid-cols-2 gap-4 mb-6">
           <div className="bg-violet-500/5 dark:bg-violet-400/5 rounded-xl p-4 flex flex-col items-center justify-center">
-            <div className="text-4xl font-bold text-violet-600 dark:text-violet-300">{getValue('Claimed feeds count')}</div>
+            <div className="text-4xl font-bold text-violet-600 dark:text-violet-300">
+              <DataPresenter data={data} dataKey="Claimed feeds count" />
+            </div>
             <div className="text-violet-600/70 dark:text-violet-300/70 text-center">Claimed Feeds</div>
           </div>
           <div className="bg-violet-500/5 dark:bg-violet-400/5 rounded-xl p-4 flex flex-col items-center justify-center">
-            <div className="text-4xl font-bold text-violet-600 dark:text-violet-300">{getValue('Lists with more than 1 feed count')}</div>
+            <div className="text-4xl font-bold text-violet-600 dark:text-violet-300">
+              <DataPresenter data={data} dataKey="Lists with more than 1 feed count" />
+            </div>
             <div className="text-violet-600/70 dark:text-violet-300/70 text-center">Created Lists</div>
           </div>
         </div>
         <div className="space-y-4">
           <div className="flex justify-between items-baseline">
             <span className="text-violet-600/70 dark:text-violet-300/70">Feed Subscriptions</span>
-            <span className="text-2xl font-bold text-violet-600 dark:text-violet-300">{getValue('Claimed feeds subscriptions count')}</span>
+            <span className="text-2xl font-bold text-violet-600 dark:text-violet-300">
+              <DataPresenter data={data} dataKey="Claimed feeds subscriptions count" />
+            </span>
           </div>
           <div className="flex justify-between items-baseline">
             <span className="text-violet-600/70 dark:text-violet-300/70">List Subscriptions</span>
-            <span className="text-2xl font-bold text-violet-600 dark:text-violet-300">{getValue('Created lists subscriptions count')}</span>
+            <span className="text-2xl font-bold text-violet-600 dark:text-violet-300">
+              <DataPresenter data={data} dataKey="Created lists subscriptions count" />
+            </span>
           </div>
         </div>
       </div>
@@ -302,11 +341,6 @@ function ContentCreationImpactStatsCard({ data }: { data?: Partial<DetailModel> 
 }
 
 function PlatformEngagementStatsCard({ data }: { data?: Partial<DetailModel> | null | undefined }) {
-  const safeData = data ?? {} as DetailModel
-
-  const getValue = (key: keyof DetailModel, defaultValue = '0') => {
-    return safeData[key]?.toString() || defaultValue
-  }
   return (
     <StatsCard
       title="Platform Engagement"
@@ -324,7 +358,7 @@ function PlatformEngagementStatsCard({ data }: { data?: Partial<DetailModel> | n
           <div className="flex items-baseline gap-2">
             <span className="text-2xl text-amber-600 dark:text-amber-300">$</span>
             <div className="text-5xl font-bold text-amber-600 dark:text-amber-300 tracking-tight leading-none">
-              {getValue('Created lists income amount')}
+              <DataPresenter data={data} dataKey="Created lists income amount" />
             </div>
           </div>
           <p className="text-amber-600/80 dark:text-amber-300/80 mt-3 text-left">
@@ -334,13 +368,13 @@ function PlatformEngagementStatsCard({ data }: { data?: Partial<DetailModel> | n
         <div className="grid grid-cols-2 gap-4 mt-8">
           <div className="bg-amber-500/5 dark:bg-amber-400/5 rounded-xl p-4">
             <div className="text-3xl font-bold text-amber-600 dark:text-amber-300">
-              ${getValue('Total tip amount')}
+              <DataPresenter data={data} dataKey="Total tip amount" />
             </div>
             <div className="text-amber-600/70 dark:text-amber-300/70">Tips Given</div>
           </div>
           <div className="bg-amber-500/5 dark:bg-amber-400/5 rounded-xl p-4">
             <div className="text-3xl font-bold text-amber-600 dark:text-amber-300">
-              ${getValue('Purchase lists cost')}
+              <DataPresenter data={data} dataKey="Purchase lists cost" />
             </div>
             <div className="text-amber-600/70 dark:text-amber-300/70">Lists Purchased</div>
           </div>
@@ -349,12 +383,8 @@ function PlatformEngagementStatsCard({ data }: { data?: Partial<DetailModel> | n
     </StatsCard>
   )
 }
-function CommunityInfluenceStatsCard({ data }: { data?: Partial<DetailModel> | null | undefined }) {
-  const safeData = data ?? {} as DetailModel
 
-  const getValue = (key: keyof DetailModel, defaultValue = '0') => {
-    return safeData[key]?.toString() || defaultValue
-  }
+function CommunityInfluenceStatsCard({ data }: { data?: Partial<DetailModel> | null | undefined }) {
   return (
     <StatsCard
       title="Community Influence"
@@ -371,7 +401,7 @@ function CommunityInfluenceStatsCard({ data }: { data?: Partial<DetailModel> | n
         <div className="text-center">
           <div className="text-emerald-600/70 dark:text-emerald-300/70 mb-2">Alpha Testers Invited</div>
           <div className="text-7xl font-bold text-emerald-600  dark:text-emerald-300 tracking-tight leading-none mb-3">
-            {getValue('Invitations count')}
+            <DataPresenter data={data} dataKey="Invitations count" />
           </div>
           <div className="inline-flex items-center gap-1.5 bg-emerald-500/5 dark:bg-emerald-400/5 rounded-full px-4 py-1.5">
             <span className="text-emerald-600/80 dark:text-emerald-300/80">Early Community Builder</span>
@@ -381,7 +411,7 @@ function CommunityInfluenceStatsCard({ data }: { data?: Partial<DetailModel> | n
           <div className="flex items-center justify-between bg-emerald-500/5 dark:bg-emerald-400/5 rounded-xl p-4">
             <span className="text-emerald-600/70 dark:text-emerald-300/70">GitHub Contributions</span>
             <span className="text-3xl font-bold text-emerald-600 dark:text-emerald-300">
-              {getValue('GitHub Community Contributions')}
+              <DataPresenter data={data} dataKey="GitHub Community Contributions" />
             </span>
           </div>
         </div>
