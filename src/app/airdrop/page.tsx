@@ -41,6 +41,9 @@ export default function AirdropPage() {
           <p>Follow Airdrop #1</p>
         </div>
         <AuthButton className="justify-center" />
+        {data === null && (
+          <p className="text-xl">Sorry, you are not eligible to claim Follow Airdrop #1. Please stay tuned for our next event.</p>
+        )}
         {data?.detail && (
           <FollowSummary
             rank={data.rank}
