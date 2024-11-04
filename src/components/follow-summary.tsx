@@ -15,6 +15,7 @@ import { Card, CardContent } from '@/components/ui/card'
 import { alphaTestAirdropTotalUsers } from '@/constants'
 
 import { AirdropDetailForm } from './airdrop-detail-form'
+import { ClaimAirdrop } from './claim-airdrop'
 import { Logo } from './logo'
 import { Tooltip, TooltipContent, TooltipProvider, TooltipTrigger } from './ui/tooltip'
 
@@ -403,19 +404,23 @@ function getStatusCardOrder(data: Partial<DetailModel> | null | undefined) {
   return cardOrder
 }
 
-export function FollowSummary({
-  data,
-  verifyLink,
-  amount,
-  rank,
-  tx,
-}: {
-  data?: Partial<DetailModel> | null | undefined
-  verifyLink?: string
+export type AirdropStatus = {
   amount: string
   rank: number
-  tx?: string
+  detail: DetailModel | null
+  tx: string
+  verify: string
+} | null
+
+export function FollowSummary({
+  status,
+}: {
+  status?: AirdropStatus
 }) {
+  if (!status)
+    return null
+  const { amount, rank, detail: data, tx, verify } = status
+
   return (
     <div className="min-h-screen bg-background text-foreground py-8">
       <div className="max-w-7xl mx-auto flex flex-col items-center justify-center">
@@ -425,18 +430,18 @@ export function FollowSummary({
               <Logo className="h-10 w-auto rounded-[10px]" /> Follow Airdrop #1
             </h1>
           </div>
-          <p className="text-2xl">
+          <div className="text-2xl space-y-2">
             {tx
-              ? 'You have already claimed your airdrop'
+              ? <p>You have already claimed your airdrop</p>
               : amount
                 ? (
-                    <div className="space-y-2">
+                    <>
                       <p>Thank you for participating in the Follow alpha test!</p>
                       <p>You are eligible to claim <span className="text-power-orange font-bold">{amount} $POWER</span> Alpha Airdrop, surpassing <strong>{100 - Math.ceil(rank / alphaTestAirdropTotalUsers * 100)}%</strong> of users.</p>
-                    </div>
+                    </>
                   )
-                : 'You are not eligible to receive this airdrop, please pay attention to the next event'}
-          </p>
+                : <p>You are not eligible to receive this airdrop, please pay attention to the next event</p>}
+          </div>
           <div className="w-fit mx-auto">
             <div className="mt-8">
               <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
@@ -452,7 +457,8 @@ export function FollowSummary({
           </div>
         </div>
         <Actions />
-        <AirdropDetailForm verifyLink={verifyLink} />
+        {!tx && <AirdropDetailForm verifyLink={verify} />}
+        <ClaimAirdrop />
       </div>
     </div>
   )

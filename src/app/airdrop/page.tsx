@@ -4,17 +4,9 @@ import { Toaster } from 'sonner'
 import useSWR from 'swr'
 
 import { AuthButton } from '@/components/auth'
-import type { DetailModel } from '@/components/follow-summary'
+import type { AirdropStatus } from '@/components/follow-summary'
 import { FollowSummary } from '@/components/follow-summary'
 import { env } from '@/env'
-
-type AirdropStatus = {
-  amount: string
-  rank: number
-  detail: DetailModel | null
-  tx: string
-  verify: string
-} | null
 
 export default function AirdropPage() {
   const { data: session, status } = useSession()
@@ -44,17 +36,9 @@ export default function AirdropPage() {
         {data === null && (
           <p className="text-xl">Sorry, you are not eligible to claim Follow Airdrop #1. Please stay tuned for our next event.</p>
         )}
-        {data?.detail && (
-          <FollowSummary
-            rank={data.rank}
-            amount={data.amount}
-            data={data?.detail}
-            verifyLink={data.verify}
-            tx={data.tx}
-          />
-        )}
+        {data?.detail && (<FollowSummary status={data} />)}
       </main>
-      <Toaster />
+      <Toaster theme="system" />
     </div>
   )
 }
