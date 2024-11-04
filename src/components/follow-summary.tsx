@@ -458,7 +458,7 @@ export function FollowSummary({
         </div>
         <Actions />
         {!tx && <AirdropDetailForm verifyLink={verify} />}
-        <ClaimAirdrop />
+        {(!!verify && !tx) && <ClaimAirdrop />}
       </div>
     </div>
   )
