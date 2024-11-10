@@ -55,7 +55,7 @@ export function AirdropDetailForm({ verifyLink }: { verifyLink?: string }) {
         One more step to claim your airdrop
       </h2>
       <p className="text-lg mb-8 text-balance">
-        To verify your humanity, please share the image of your alpha journey on any social media platform <strong>with what you love most about<br /> Follow 👀</strong>, submit the link here, and then claim your $POWER <strong>next week</strong>.
+        To verify your humanity, please share the image of your alpha journey on any social media platform <strong>with what you love most about<br /> Follow 👀</strong>, submit the link here, and then come back here <strong>on November 18th</strong> to claim your $POWER.
       </p>
       <div className="relative flex justify-stretch max-w-xs mx-auto">
         <div className="absolute left-3 top-1/2 -translate-y-1/2 text-foreground/60">
