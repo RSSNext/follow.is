@@ -56,7 +56,11 @@ export function AirdropClaim() {
             <h2 className="text-xl font-semibold">Step 2: Follow on X</h2>
             <p>Follow our X account to continue:</p>
             <div className="flex gap-2">
-              <Button>
+              <Button
+                onClick={() => {
+                  window.open(siteInfo.xLink, '_blank')
+                }}
+              >
                 Follow on <div className="ml-2 size-4 i-simple-icons-x" />
               </Button>
               <NextStepButton onClick={nextStep} />
@@ -69,7 +73,11 @@ export function AirdropClaim() {
             <h2 className="text-xl font-semibold">Step 3: Join Discord</h2>
             <p>Join our Discord community to continue:</p>
             <div className="flex gap-2">
-              <Button>
+              <Button
+                onClick={() => {
+                  window.open(siteInfo.discordLink, '_blank')
+                }}
+              >
                 Join Discord <div className="ml-2 size-4 i-simple-icons-discord" />
               </Button>
               <NextStepButton onClick={nextStep} />
