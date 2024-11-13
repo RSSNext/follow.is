@@ -17,7 +17,7 @@ export function Header() {
     'github-stars',
     async () => {
       const res = await fetch(siteInfo.githubApiLink)
-      const data = (await res.json()) as { stargazers_count: number }
+      const data = (await res.json()) as { repo: { stars: number } }
       return data
     },
   )
@@ -45,10 +45,10 @@ export function Header() {
               <a href={siteInfo.githubLink} target="_blank" rel="noopener noreferrer" className="flex items-center">
                 <span className="i-simple-icons-github size-4" />
                 <span>Star on GitHub</span>
-                {!!data?.stargazers_count && (
+                {!!data?.repo?.stars && (
                   <>
                     <span className="i-mingcute-star-fill size-4 text-yellow-500 mb-0.5" />
-                    <div className="font-medium">{(data?.stargazers_count / 1000).toFixed(1)}K</div>
+                    <div className="font-medium">{(data?.repo?.stars / 1000).toFixed(1)}K</div>
                   </>
                 )}
               </a>
