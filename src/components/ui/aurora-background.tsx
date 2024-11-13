@@ -23,8 +23,8 @@ export function AuroraBackground({
     >
       <div className="absolute inset-0 overflow-hidden pointer-events-none">
         <div className="fixed inset-0 -z-10 dark:bg-[#0f131c]">
-          <div id="glow" className="absolute inset-0 opacity-50 bg-gradient-to-br from-[#f5d7a620] to-[#f5d7a6] dark:from-[#1b293f20] dark:to-[#000]" />
-          <div id="glow-bounce" className="absolute inset-0 opacity-30 bg-gradient-to-t from-[#f5d7a6] to-transparent to-20% dark:from-[#000]" />
+          <div id="glow" className="absolute inset-0 opacity-30 bg-gradient-to-br from-[#f5d7a620] to-[#f5d7a6] dark:from-[#1b293f20] dark:to-[#000]" />
+          <div id="glow-bounce" className="absolute inset-0 opacity-10 bg-gradient-to-t from-[#f5d7a6] to-transparent to-20% dark:from-[#000]" />
         </div>
       </div>
       {children}

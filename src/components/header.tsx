@@ -1,10 +1,9 @@
 'use client'
 
 import Link from 'next/link'
-import { usePathname } from 'next/navigation'
+import useSWR from 'swr'
 
 import { siteInfo } from '@/constants'
-import { useScrollOffset } from '@/hooks/use-scroll-offset'
 import { cn } from '@/lib/utils'
 
 import { Container } from './container'
@@ -14,13 +13,19 @@ import { NavMobile } from './nav-mobile'
 import { Button } from './ui/button'
 
 export function Header() {
-  const scrollOffset = useScrollOffset()
-  const pathname = usePathname()
+  const { data } = useSWR(
+    'github-stars',
+    async () => {
+      const res = await fetch(siteInfo.githubApiLink)
+      const data = (await res.json()) as { stargazers_count: number }
+      return data
+    },
+  )
+
   return (
     <header
       className={cn(
-        'px-10 py-5 backdrop-blur-lg fixed top-0 inset-x-0 z-50 transition-all',
-        (scrollOffset && pathname !== '/airdrop') && 'border-b',
+        'p-4 md:px-10 backdrop-blur-lg fixed top-0 inset-x-0 z-50 transition-all',
       )}
     >
       <Container>
@@ -33,19 +38,23 @@ export function Header() {
             <NavDesktop />
           </div>
           <div className="flex items-center gap-4">
-            <Button className="rounded-full hidden md:inline-flex" size="sm" asChild>
-              <Link href="/download">Download</Link>
-            </Button>
             <Button
-              className="rounded-full border-neutral-300 dark:border-neutral-500 flex gap-2 bg-transparent size-9 md:w-auto md:px-3"
-              variant="outline"
-              size="reset"
+              className="gap-2 bg-black text-white hover:bg-black/90 hidden md:flex"
               asChild
             >
-              <a href={siteInfo.githubLink} target="_blank" rel="noopener noreferrer">
+              <a href={siteInfo.githubLink} target="_blank" rel="noopener noreferrer" className="flex items-center">
                 <span className="i-simple-icons-github size-4" />
-                <span className="hidden md:inline">Star on GitHub</span>
+                <span>Star on GitHub</span>
+                {!!data?.stargazers_count && (
+                  <>
+                    <span className="i-mingcute-star-fill size-4 text-yellow-500 mb-0.5" />
+                    <div className="font-medium">{(data?.stargazers_count / 1000).toFixed(1)}K</div>
+                  </>
+                )}
               </a>
+            </Button>
+            <Button className="hidden md:inline-flex" asChild>
+              <Link href="/download">Get Started</Link>
             </Button>
             <NavMobile />
           </div>
