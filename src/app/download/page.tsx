@@ -17,7 +17,7 @@ export default async function DownloadPage() {
         {`Download Follow ${releaseInfo.name}`}
       </h1>
       <p className="text-xl text-foreground/70">
-        {`Available for ${Object.keys(releaseInfo.downloadUrl).join(', ')}.`}
+        {`Available for ${Object.keys(releaseInfo.downloadUrl).join(', ')}, Web.`}
       </p>
 
       <DownloadInfo releaseInfo={releaseInfo} />
