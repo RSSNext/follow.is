@@ -26,8 +26,8 @@ export function Header() {
       <Container>
         <nav className="relative flex justify-between">
           <div className="flex items-center md:gap-x-12">
-            <Link className="flex items-center gap-4" href="/#">
-              <Logo className="h-8 w-auto" />
+            <Link className="flex items-center gap-3" href="/#">
+              <Logo className="h-7 w-auto" color="#000" />
               <p className="text-xl font-bold">Follow</p>
             </Link>
             <NavDesktop />
