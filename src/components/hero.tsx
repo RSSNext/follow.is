@@ -7,6 +7,7 @@ import { AuroraBackground } from '@/components/ui/aurora-background'
 import { Button } from '@/components/ui/button'
 import { siteInfo } from '@/constants'
 
+import GithubTrending from './github-trending'
 import { Logo } from './logo'
 
 export function Hero() {
@@ -24,7 +25,7 @@ export function Hero() {
         >
           <Logo className="h-20 w-auto" />
         </motion.div>
-        <p className="text-xl font-bold dark:text-white">Follow</p>
+        <p className="text-xl font-bold">Follow</p>
       </div>
       <motion.div
         initial={{ opacity: 0, y: 400 }}
@@ -38,17 +39,18 @@ export function Hero() {
         <div className="text-3xl md:text-5xl font-bold dark:text-white text-center">
           Next generation information browser
         </div>
-        <div className="font-extralight text-base md:text-2xl dark:text-neutral-200 pb-4">
+        <div className="font-extralight text-base md:text-2xl dark:text-neutral-200 pb-8">
           Enjoy a platformless experience like never before.
         </div>
 
         <div className="flex items-center gap-4">
-          <Button type="button" className="rounded-full bg-transparent text-foreground" variant="outline" asChild>
-            <Link href={siteInfo.appUrl}>Try web app</Link>
+          <Button type="button" asChild size="xl" className="w-[250px] text-xl">
+            <Link href="/download">Get Started</Link>
           </Button>
-
-          <Button type="button" className="rounded-full" asChild>
-            <Link href="/download">Download</Link>
+          <Button type="button" className="p-0 bg-[#111] hover:bg-[#111]" variant="ghost" size="xl">
+            <Link href={siteInfo.githubLink} target="_blank">
+              <GithubTrending />
+            </Link>
           </Button>
         </div>
       </motion.div>
