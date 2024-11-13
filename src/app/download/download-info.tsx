@@ -70,6 +70,14 @@ export const DownloadInfo: FC<{
               {/* <Download className="ml-2" size={20} /> */}
             </a>
           </Button>
+          <Button className="p-6 rounded-lg" asChild variant="outline">
+            <a href={siteInfo.appUrl}>
+              <i className="i-mingcute-chrome-fill mr-2" />
+              <span className="font-semibold text-lg">
+                Try in browser
+              </span>
+            </a>
+          </Button>
           {!!nightlyReleaseInfo?.downloadUrl[platform] && (
             <Button
               className="rounded-lg bg-transparent"

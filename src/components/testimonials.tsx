@@ -53,7 +53,7 @@ function TestimonialCard({ testimonial }: { testimonial: Testimonial }) {
         height={78}
       />
       <blockquote className="relative basis-2/3">
-        <p className="text-lg tracking-tight text-card-foreground max-w-xs line-clamp-6">
+        <p className="text-base tracking-tight text-card-foreground max-w-xs line-clamp-6">
           {testimonial.text}
         </p>
       </blockquote>
@@ -68,11 +68,11 @@ function TestimonialCard({ testimonial }: { testimonial: Testimonial }) {
         </div>
         <div className="overflow-hidden rounded-full">
           <Image
-            className="size-14 object-cover"
+            className="size-10 object-cover"
             src={testimonial.profileImageUrl}
             alt=""
-            width={56}
-            height={56}
+            width={40}
+            height={40}
           />
         </div>
       </figcaption>
@@ -105,7 +105,7 @@ export async function Testimonials() {
             Follow—where information flows freely, and creators hold the power.
           </p>
         </div>
-        <div className="relative flex h-[700px] w-full my-10 flex-col items-center justify-center overflow-hidden rounded-lg">
+        <div className="relative flex h-[550px] w-full my-10 flex-col items-center justify-center overflow-hidden rounded-lg">
           <Marquee pauseOnHover className="[--duration:20s] basis-1/2">
             {firstRow.map(i => (
               <TestimonialCard key={i.text} testimonial={i} />
@@ -116,8 +116,8 @@ export async function Testimonials() {
               <TestimonialCard key={i.text} testimonial={i} />
             ))}
           </Marquee>
-          <div className="pointer-events-none absolute inset-y-0 left-0 w-1/3 bg-gradient-to-r from-white dark:from-background" />
-          <div className="pointer-events-none absolute inset-y-0 right-0 w-1/3 bg-gradient-to-l from-white dark:from-background" />
+          <div className="pointer-events-none absolute inset-y-0 left-0 w-1/6 bg-gradient-to-r from-[#fefaf4] dark:from-background" />
+          <div className="pointer-events-none absolute inset-y-0 right-0 w-1/6 bg-gradient-to-l from-[#fcf5ea] dark:from-background" />
         </div>
       </Container>
     </section>

@@ -11,7 +11,7 @@ export const Logo = forwardRef<SVGSVGElement, React.SVGProps<SVGSVGElement>>((pr
       />
     </mask>
     <g mask="url(#mask0_54_296)">
-      <rect x="0.414551" y="-6.74585" width="149.477" height="158.537" fill="#FF5C00" />
+      <rect x="0.414551" y="-6.74585" width="149.477" height="158.537" fill={props.color || '#FF5C00'} />
       <path
         d="M103.609 36.6948H53.5823C47.5327 36.6948 42.6284 41.5946 42.6284 47.6388C42.6284 53.683 47.5327 58.5828 53.5823 58.5828H103.609C109.659 58.5828 114.563 53.683 114.563 47.6388C114.563 41.5946 109.659 36.6948 103.609 36.6948Z"
         fill="white"
