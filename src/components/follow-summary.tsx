@@ -14,8 +14,8 @@ import { Button } from '@/components/ui/button'
 import { Card, CardContent } from '@/components/ui/card'
 import { alphaTestAirdropTotalUsers } from '@/constants'
 
+import { AirdropClaim } from './airdrop-claim'
 import { AirdropDetailForm } from './airdrop-detail-form'
-import { ClaimAirdrop } from './claim-airdrop'
 import { Logo } from './logo'
 import { Tooltip, TooltipContent, TooltipProvider, TooltipTrigger } from './ui/tooltip'
 
@@ -458,7 +458,7 @@ export function FollowSummary({
         </div>
         <Actions />
         {!tx && <AirdropDetailForm verifyLink={verify} />}
-        {(!!verify && !tx) && <ClaimAirdrop />}
+        {(!!verify && !tx) && <AirdropClaim />}
       </div>
     </div>
   )
