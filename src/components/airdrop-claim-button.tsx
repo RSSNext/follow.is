@@ -32,24 +32,24 @@ export function AirdropClaimButton() {
       if (data.code === 0) {
         toast.success('Your airdrop has been claimed successfully.')
 
+        if (buttonRef.current) {
+          const rect = buttonRef.current.getBoundingClientRect()
+          const viewportWidth = window.innerWidth
+          const viewportHeight = window.innerHeight
+          void confetti({
+            particleCount: 100,
+            spread: 70,
+            origin: {
+              x: (rect.left + rect.width / 2) / viewportWidth,
+              y: (rect.top + rect.height / 2) / viewportHeight,
+            },
+          })
+        }
+
         await mutate('get-airdrop-amount')
       }
       else {
         toast.error(data.message)
-      }
-
-      if (buttonRef.current) {
-        const rect = buttonRef.current.getBoundingClientRect()
-        const viewportWidth = window.innerWidth
-        const viewportHeight = window.innerHeight
-        void confetti({
-          particleCount: 100,
-          spread: 70,
-          origin: {
-            x: (rect.left + rect.width / 2) / viewportWidth,
-            y: (rect.top + rect.height / 2) / viewportHeight,
-          },
-        })
       }
     },
   )
