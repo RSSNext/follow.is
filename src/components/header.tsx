@@ -1,7 +1,4 @@
-'use client'
-
 import Link from 'next/link'
-import useSWR from 'swr'
 
 import { siteInfo } from '@/constants'
 import { cn } from '@/lib/utils'
@@ -12,16 +9,35 @@ import { NavDesktop } from './nav-desktop'
 import { NavMobile } from './nav-mobile'
 import { Button } from './ui/button'
 
-export function Header() {
-  const { data } = useSWR(
-    'github-stars',
-    async () => {
-      const res = await fetch(siteInfo.githubApiLink)
-      const data = (await res.json()) as { repo: { stars: number } }
-      return data
-    },
-  )
+async function getGithubStars() {
+  const res = await fetch(siteInfo.githubApiLink, { next: { revalidate: 3600 } })
+  const data = (await res.json()) as { repo: { stars: number } }
+  return data.repo.stars
+}
 
+async function GithubStarButton() {
+  const stars = await getGithubStars()
+  return (
+    <Button
+      className="gap-2 bg-black text-white hover:bg-black/90 hidden md:flex"
+      asChild
+    >
+      <a
+        href={siteInfo.githubLink}
+        target="_blank"
+        rel="noopener noreferrer"
+        className="flex items-center"
+      >
+        <span className="i-simple-icons-github size-4" />
+        <span>Star on GitHub</span>
+        <span className="i-mingcute-star-fill size-4 text-yellow-500 mb-0.5" />
+        <div className="font-medium">{(stars / 1000).toFixed(1)}K</div>
+      </a>
+    </Button>
+  )
+}
+
+export async function Header() {
   return (
     <header
       className={cn(
@@ -38,21 +54,7 @@ export function Header() {
             <NavDesktop />
           </div>
           <div className="flex items-center gap-4">
-            <Button
-              className="gap-2 bg-black text-white hover:bg-black/90 hidden md:flex"
-              asChild
-            >
-              <a href={siteInfo.githubLink} target="_blank" rel="noopener noreferrer" className="flex items-center">
-                <span className="i-simple-icons-github size-4" />
-                <span>Star on GitHub</span>
-                {!!data?.repo?.stars && (
-                  <>
-                    <span className="i-mingcute-star-fill size-4 text-yellow-500 mb-0.5" />
-                    <div className="font-medium">{(data?.repo?.stars / 1000).toFixed(1)}K</div>
-                  </>
-                )}
-              </a>
-            </Button>
+            <GithubStarButton />
             <Button className="hidden md:inline-flex" asChild>
               <Link href="/download">Get Started</Link>
             </Button>

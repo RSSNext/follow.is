@@ -12,7 +12,7 @@ import { Logo } from './logo'
 
 export function Hero() {
   return (
-    <AuroraBackground className="relative flex flex-col h-[90vh] items-center justify-center text-slate-950 transition-colors gap-10">
+    <AuroraBackground className="relative flex flex-col h-[90vh] items-center justify-center text-slate-950 dark:text-slate-50 transition-colors gap-10">
       <div className="flex flex-col items-center justify-center gap-2">
         <motion.div
           initial={{ scale: 3 }}
