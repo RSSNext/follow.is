@@ -31,7 +31,7 @@ async function getReleaseInfo(isNightly: boolean): Promise<ReleaseInfo | undefin
     if (asset.downloadUrl.includes('windows')) {
       downloadUrl.Windows = asset.downloadUrl
     }
-    else if (asset.downloadUrl.includes('macos')) {
+    else if (asset.downloadUrl.includes('macos-arm64')) {
       downloadUrl.macOS = asset.downloadUrl
     }
     else if (asset.downloadUrl.includes('linux')) {

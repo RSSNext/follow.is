@@ -13,7 +13,7 @@ export const siteInfo = {
   webUrl: 'https://follow.is',
   appUrl: 'https://app.follow.is',
   githubLink: 'https://github.com/RSSNext/follow',
-  githubApiLink: 'https://api.github.com/repos/RSSNext/Follow',
+  githubApiLink: 'https://ungh.cc/repos/RSSNext/Follow',
   xLink: 'https://x.com/follow_app_',
   discordLink: 'https://discord.gg/followapp',
   releaseLink: 'https://github.com/RSSNext/Follow/releases/latest',
