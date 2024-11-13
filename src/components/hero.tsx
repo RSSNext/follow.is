@@ -43,7 +43,7 @@ export function Hero() {
           Enjoy a platformless experience like never before.
         </div>
 
-        <div className="flex items-center gap-4">
+        <div className="flex items-center gap-4 flex-col md:flex-row">
           <Button type="button" asChild size="xl" className="w-[250px] text-xl">
             <Link href="/download">Get Started</Link>
           </Button>

@@ -52,7 +52,7 @@ export function StickyScroll({
                 opacity: activeCard === index ? 1 : 0.3,
               }}
               key={item.title}
-              className="md:h-[calc(100vh-4rem)] md:mt-16"
+              className="md:h-[calc(100vh-6rem)] md:mt-24"
             >
               <h2 className="text-2xl font-bold">
                 {item.title}
