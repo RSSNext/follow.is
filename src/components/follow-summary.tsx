@@ -412,6 +412,8 @@ export type AirdropStatus = {
   verify: string
 } | null
 
+type AirdropClaimStatus = 'claimed' | 'verified' | 'eligible' | 'not-eligible'
+
 export function FollowSummary({
   status,
 }: {
@@ -420,6 +422,8 @@ export function FollowSummary({
   if (!status)
     return null
   const { amount, rank, detail: data, tx, verify } = status
+
+  const claimStatus: AirdropClaimStatus = tx ? 'claimed' : amount ? verify ? 'verified' : 'eligible' : 'not-eligible'
 
   return (
     <div className="min-h-screen bg-background text-foreground py-8">
@@ -431,34 +435,36 @@ export function FollowSummary({
             </h1>
           </div>
           <div className="text-2xl space-y-2">
-            {tx
+            {claimStatus === 'claimed'
               ? <p>You have already claimed your airdrop</p>
-              : amount
-                ? (
+              : claimStatus === 'not-eligible'
+                ? <p>You are not eligible to receive this airdrop, please pay attention to the next event</p>
+                : (
                     <>
                       <p>Thank you for participating in the Follow alpha test!</p>
                       <p>You are eligible to claim <span className="text-power-orange font-bold">{amount} $POWER</span> Alpha Airdrop, surpassing <strong>{100 - Math.ceil(rank / alphaTestAirdropTotalUsers * 100)}%</strong> of users.</p>
                     </>
-                  )
-                : <p>You are not eligible to receive this airdrop, please pay attention to the next event</p>}
+                  )}
           </div>
-          <div className="w-fit mx-auto">
-            <div className="mt-8">
-              <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-                {getStatusCardOrder(data).map(({ component: StatsCardComponent, key }) => (
-                  <StatsCardComponent key={key} data={data} />
-                ))}
-              </div>
-              <div className="flex items-center justify-center gap-4 mt-12">
-                <Logo className="h-10 w-auto rounded-[10px]" />
-                <p className="text-xl font-bold">Follow</p>
+          {claimStatus === 'eligible' && (
+            <div className="w-fit mx-auto">
+              <div className="mt-8">
+                <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+                  {getStatusCardOrder(data).map(({ component: StatsCardComponent, key }) => (
+                    <StatsCardComponent key={key} data={data} />
+                  ))}
+                </div>
+                <div className="flex items-center justify-center gap-4 mt-12">
+                  <Logo className="h-10 w-auto rounded-[10px]" />
+                  <p className="text-xl font-bold">Follow</p>
+                </div>
               </div>
             </div>
-          </div>
+          )}
         </div>
-        <Actions />
-        {!tx && <AirdropDetailForm verifyLink={verify} />}
-        {(!!verify && !tx) && <AirdropClaim />}
+        {claimStatus === 'eligible' && <Actions />}
+        {claimStatus === 'eligible' && <AirdropDetailForm verifyLink={verify} />}
+        {claimStatus === 'verified' && <AirdropClaim />}
       </div>
     </div>
   )

@@ -1,11 +1,13 @@
 'use client'
 
+import { motion } from 'framer-motion'
 import { useState } from 'react'
 
 import { Button } from '@/components/ui/button'
 import { siteInfo } from '@/constants'
 
 import { AirdropClaimButton } from './airdrop-claim-button'
+import { Card } from './ui/card'
 
 function NextStepButton(
   { onClick }: { onClick?: () => void },
@@ -25,10 +27,18 @@ export function AirdropClaim() {
 
   return (
     <>
-      <h1 className="text-3xl font-bold mt-16 mb-6">
+      <h1 className="text-3xl font-bold my-6">
         Claim Your Airdrop
       </h1>
-      <div className="w-full max-w-[600px] mx-auto p-6 space-y-6 text-left border rounded-md">
+      <Card className="relative w-full max-w-[600px] min-h-[300px] mx-auto p-6 flex justify-center items-center text-left overflow-hidden">
+
+        <motion.div
+          className="absolute top-0 left-0 h-2 bg-primary"
+          initial={{ width: 0 }}
+          animate={{ width: `${(step / 4) * 100}%` }}
+          transition={{ duration: 0.5 }}
+        />
+
         {step === 1 && (
           <div className="space-y-4">
             <h2 className="text-xl font-semibold">Step 1: Vote on ProductHunt</h2>
@@ -92,7 +102,7 @@ export function AirdropClaim() {
             <AirdropClaimButton />
           </div>
         )}
-      </div>
+      </Card>
     </>
   )
 }
