@@ -16,7 +16,7 @@ export const siteInfo = {
   githubApiLink: 'https://ungh.cc/repos/RSSNext/Follow',
   xLink: 'https://x.com/follow_app_',
   discordLink: 'https://discord.gg/followapp',
-  productHuntLink: 'https://www.producthunt.com',
+  productHuntLink: 'https://www.producthunt.com/posts/follow-5',
   releaseLink: 'https://github.com/RSSNext/Follow/releases/latest',
   navigation: [
     { title: 'Features', href: '/#features' },
