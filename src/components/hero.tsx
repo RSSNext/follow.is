@@ -37,10 +37,10 @@ export function Hero() {
         className="relative flex flex-col gap-2 items-center justify-center px-4"
       >
         <div className="text-3xl md:text-5xl font-bold dark:text-white text-center">
-          Next generation information browser
+          Follow your favorites in one inbox
         </div>
-        <div className="font-extralight text-base md:text-2xl dark:text-neutral-200 pb-8">
-          Enjoy a platformless experience like never before.
+        <div className="font-extralight text-base md:text-xl dark:text-neutral-200 py-2 pb-8 max-w-4xl text-center">
+          As they say, your thoughts are what you read—and we’ve been consuming noisy feeds for too long! Follow organizes content into one timeline, keeping you updated on what matters, noise-free. Share lists, explore collections, and enjoy distraction-free browsing.
         </div>
 
         <div className="flex items-center gap-4 flex-col md:flex-row">
