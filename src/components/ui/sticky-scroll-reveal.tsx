@@ -9,7 +9,7 @@ export function StickyScroll({
 }: {
   content: Array<{
     title: string
-    description: string
+    description: string | React.ReactNode
     content?: React.ReactNode
   }>
 }) {
