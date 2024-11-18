@@ -426,7 +426,7 @@ export function FollowSummary({
   const claimStatus: AirdropClaimStatus = tx ? 'claimed' : amount ? verify ? 'verified' : 'eligible' : 'not-eligible'
 
   return (
-    <div className="min-h-screen bg-background text-foreground py-8">
+    <div className="bg-background text-foreground py-8">
       <div className="max-w-7xl mx-auto flex flex-col items-center justify-center">
         <div className="w-fit p-10 space-y-8" id="follow-summary">
           <div className="text-center space-y-4 mb-6">
