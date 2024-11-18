@@ -14,6 +14,7 @@ import { Button } from '@/components/ui/button'
 import { Card, CardContent } from '@/components/ui/card'
 import { alphaTestAirdropTotalUsers } from '@/constants'
 
+import { AirdropClaim } from './airdrop-claim'
 import { AirdropDetailForm } from './airdrop-detail-form'
 import { Logo } from './logo'
 import { Tooltip, TooltipContent, TooltipProvider, TooltipTrigger } from './ui/tooltip'
@@ -403,21 +404,29 @@ function getStatusCardOrder(data: Partial<DetailModel> | null | undefined) {
   return cardOrder
 }
 
-export function FollowSummary({
-  data,
-  verifyLink,
-  amount,
-  rank,
-  tx,
-}: {
-  data?: Partial<DetailModel> | null | undefined
-  verifyLink?: string
+export type AirdropStatus = {
   amount: string
   rank: number
-  tx?: string
+  detail: DetailModel | null
+  tx: string
+  verify: string
+} | null
+
+type AirdropClaimStatus = 'claimed' | 'verified' | 'eligible' | 'not-eligible'
+
+export function FollowSummary({
+  status,
+}: {
+  status?: AirdropStatus
 }) {
+  if (!status)
+    return null
+  const { amount, rank, detail: data, tx, verify } = status
+
+  const claimStatus: AirdropClaimStatus = tx ? 'claimed' : amount ? verify ? 'verified' : 'eligible' : 'not-eligible'
+
   return (
-    <div className="min-h-screen bg-background text-foreground py-8">
+    <div className="bg-background text-foreground py-8">
       <div className="max-w-7xl mx-auto flex flex-col items-center justify-center">
         <div className="w-fit p-10 space-y-8" id="follow-summary">
           <div className="text-center space-y-4 mb-6">
@@ -425,34 +434,37 @@ export function FollowSummary({
               <Logo className="h-10 w-auto rounded-[10px]" /> Follow Airdrop #1
             </h1>
           </div>
-          <p className="text-2xl">
-            {tx
-              ? 'You have already claimed your airdrop'
-              : amount
-                ? (
-                    <div className="space-y-2">
+          <div className="text-2xl space-y-2">
+            {claimStatus === 'claimed'
+              ? <p>You have already claimed your airdrop</p>
+              : claimStatus === 'not-eligible'
+                ? <p>You are not eligible to receive this airdrop, please pay attention to the next event</p>
+                : (
+                    <>
                       <p>Thank you for participating in the Follow alpha test!</p>
                       <p>You are eligible to claim <span className="text-power-orange font-bold">{amount} $POWER</span> Alpha Airdrop, surpassing <strong>{100 - Math.ceil(rank / alphaTestAirdropTotalUsers * 100)}%</strong> of users.</p>
-                    </div>
-                  )
-                : 'You are not eligible to receive this airdrop, please pay attention to the next event'}
-          </p>
-          <div className="w-fit mx-auto">
-            <div className="mt-8">
-              <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-                {getStatusCardOrder(data).map(({ component: StatsCardComponent, key }) => (
-                  <StatsCardComponent key={key} data={data} />
-                ))}
-              </div>
-              <div className="flex items-center justify-center gap-4 mt-12">
-                <Logo className="h-10 w-auto rounded-[10px]" />
-                <p className="text-xl font-bold">Follow</p>
+                    </>
+                  )}
+          </div>
+          {claimStatus === 'eligible' && (
+            <div className="w-fit mx-auto">
+              <div className="mt-8">
+                <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+                  {getStatusCardOrder(data).map(({ component: StatsCardComponent, key }) => (
+                    <StatsCardComponent key={key} data={data} />
+                  ))}
+                </div>
+                <div className="flex items-center justify-center gap-4 mt-12">
+                  <Logo className="h-10 w-auto rounded-[10px]" />
+                  <p className="text-xl font-bold">Follow</p>
+                </div>
               </div>
             </div>
-          </div>
+          )}
         </div>
-        <Actions />
-        <AirdropDetailForm verifyLink={verifyLink} />
+        {claimStatus === 'eligible' && <Actions />}
+        {claimStatus === 'eligible' && <AirdropDetailForm verifyLink={verify} />}
+        {claimStatus === 'verified' && <AirdropClaim />}
       </div>
     </div>
   )
