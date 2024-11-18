@@ -99,6 +99,9 @@ export function AirdropClaim() {
           <div className="space-y-4">
             <h2 className="text-xl font-semibold">Step 4: Claim Your Airdrop</h2>
             <p>You're all set! Click the button below to claim your airdrop:</p>
+            <p>
+              We will need some time to process it after you click to claim it. If there is no response for a long time, you can close the page and come back to check it later. You do not need to click to claim it again.
+            </p>
             <AirdropClaimButton />
           </div>
         )}
