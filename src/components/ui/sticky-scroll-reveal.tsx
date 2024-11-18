@@ -9,7 +9,7 @@ export function StickyScroll({
 }: {
   content: Array<{
     title: string
-    description: string
+    description: string | React.ReactNode
     content?: React.ReactNode
   }>
 }) {
@@ -52,7 +52,7 @@ export function StickyScroll({
                 opacity: activeCard === index ? 1 : 0.3,
               }}
               key={item.title}
-              className="md:h-[calc(100vh-6rem)] md:mt-24"
+              className="md:h-[calc(100vh-6rem)] md:mt-24 text-center md:text-left"
             >
               <h2 className="text-2xl font-bold">
                 {item.title}
