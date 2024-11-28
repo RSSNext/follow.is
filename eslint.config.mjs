@@ -8,4 +8,9 @@ export default defineConfig(
     project: true,
     tailwindCSS: false,
   },
+  {
+    rules: {
+      'unicorn/expiring-todo-comments': 'off',
+    },
+  },
 )
