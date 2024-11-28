@@ -1,7 +1,7 @@
 {
   "name": "follow.is",
   "private": true,
-  "packageManager": "pnpm@9.14.2",
+  "packageManager": "pnpm@10.0.0-beta.0",
   "scripts": {
     "build": "next build",
     "dev": "next dev --turbo -p 2222",
@@ -52,7 +52,7 @@
     "@types/react": "npm:types-react@19.0.0-rc.1",
     "@types/react-dom": "npm:types-react-dom@19.0.0-rc.1",
     "eslint": "^9.15.0",
-    "eslint-config-hyoban": "^3.1.13",
+    "eslint-config-hyoban": "^3.1.14",
     "lint-staged": "^15.2.10",
     "postcss": "^8.4.49",
     "simple-git-hooks": "^2.11.1",
