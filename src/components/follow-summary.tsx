@@ -84,7 +84,7 @@ function StatsCard({
   children,
 }: StatsCardProps) {
   return (
-    <Card className={`bg-gradient-to-br ${gradient} ${darkGradient} border-none h-full max-w-[400px]`}>
+    <Card className={`bg-linear-to-br ${gradient} ${darkGradient} border-none h-full max-w-[400px]`}>
       <CardContent className="p-6 flex flex-col h-full">
         <div className="flex items-center gap-4 mb-8">
           <div className={`p-2.5 ${iconColor} ${darkIconColor} rounded-2xl`}>
@@ -430,7 +430,7 @@ export function FollowSummary({
       <div className="max-w-7xl mx-auto flex flex-col items-center justify-center">
         <div className="w-fit p-10 space-y-8" id="follow-summary">
           <div className="text-center space-y-4 mb-6">
-            <h1 className="flex items-center justify-center gap-4 text-4xl md:text-[42px] font-bold text-balance bg-gradient-to-r bg-clip-text">
+            <h1 className="flex items-center justify-center gap-4 text-4xl md:text-[42px] font-bold text-balance bg-linear-to-r bg-clip-text">
               <Logo className="h-10 w-auto rounded-[10px]" /> Follow Airdrop #1
             </h1>
           </div>

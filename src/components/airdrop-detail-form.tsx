@@ -50,7 +50,7 @@ export function AirdropDetailForm({ verifyLink }: { verifyLink?: string }) {
   }
 
   return (
-    <div className="w-full sm:max-w-xl mx-auto !my-10 pt-16 border-t">
+    <div className="w-full sm:max-w-xl mx-auto my-10! pt-16 border-t">
       <h2 className="text-3xl font-bold mb-4">
         One more step to claim your airdrop
       </h2>
@@ -66,7 +66,7 @@ export function AirdropDetailForm({ verifyLink }: { verifyLink?: string }) {
           placeholder={verifyLink ?? 'Enter your post link'}
           value={postLink}
           onChange={e => setPostLink(e.target.value)}
-          className="pl-10 w-full h-auto rounded-r-none !ring-offset-0 !ring-0"
+          className="pl-10 w-full h-auto rounded-r-none ring-offset-0! ring-0!"
         />
         <Button
           disabled={fillVerifyInfo.isMutating}

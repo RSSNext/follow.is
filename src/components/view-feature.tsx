@@ -52,7 +52,7 @@ export function ViewFeature() {
                   key={view.title}
                   className={cn(
                     'group relative rounded-full px-4 py-1 lg:rounded-xl lg:p-6',
-                    "has-[[data-state='active']]:bg-secondary has-[[data-state='active']]:text-secondary-foreground",
+                    "has-data-[state='active']:bg-secondary has-data-[state='active']:text-secondary-foreground",
                   )}
                 >
                   <h3>

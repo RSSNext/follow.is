@@ -116,8 +116,8 @@ export async function Testimonials() {
               <TestimonialCard key={i.text} testimonial={i} />
             ))}
           </Marquee>
-          <div className="pointer-events-none absolute inset-y-0 left-0 w-1/6 bg-gradient-to-r from-[#fefaf4] dark:from-background" />
-          <div className="pointer-events-none absolute inset-y-0 right-0 w-1/6 bg-gradient-to-l from-[#fcf5ea] dark:from-background" />
+          <div className="pointer-events-none absolute inset-y-0 left-0 w-1/6 bg-linear-to-r from-[#fefaf4] dark:from-background" />
+          <div className="pointer-events-none absolute inset-y-0 right-0 w-1/6 bg-linear-to-l from-[#fcf5ea] dark:from-background" />
         </div>
       </Container>
     </section>

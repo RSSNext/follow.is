@@ -32,7 +32,7 @@ export function FAQ() {
         <h2 className="text-3xl md:text-4xl font-bold mb-4">
           Frequently Asked
           {' '}
-          <span className="bg-gradient-to-b from-primary/60 to-primary text-transparent bg-clip-text">
+          <span className="bg-linear-to-b from-primary/60 to-primary text-transparent bg-clip-text">
             Questions
           </span>
         </h2>
