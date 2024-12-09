@@ -1,9 +1,8 @@
 'use client'
 
-import { getProviders, signIn, signOut, useSession } from '@hono/auth-js/react'
 import useSWR from 'swr'
 
-import { env } from '@/env'
+import { getProviders, loginHandler, signOut, useSession } from '@/lib/auth'
 import { cn } from '@/lib/utils'
 
 import { Avatar, AvatarFallback, AvatarImage } from './ui/avatar'
@@ -18,13 +17,14 @@ import {
 const providerIcons: Record<string, string> = {
   google: 'i-simple-icons-google',
   github: 'i-simple-icons-github',
+  apple: 'i-simple-icons-apple',
 }
 
 export function AuthButton({ className }: { className?: string }) {
-  const { data: session, status } = useSession()
-  const { data } = useSWR('get-providers', getProviders)
+  const { data: session, isPending, error } = useSession()
+  const { data: providers } = useSWR('get-providers', () => getProviders())
 
-  if (session && status === 'authenticated') {
+  if (session && !isPending && !error) {
     return (
       <section className={cn('flex gap-4 items-center', className)}>
         <TooltipProvider>
@@ -51,25 +51,23 @@ export function AuthButton({ className }: { className?: string }) {
     )
   }
 
-  if (data && status === 'unauthenticated') {
+  if (providers?.data && !session && !isPending && !error) {
     return (
       <section className={cn('flex flex-col sm:flex-row gap-4 items-center', className)}>
-        {Object.entries(data || {}).map(([provider, providerData]) => {
+        {Object.entries(providers.data).map(([provider, providerData]) => {
           return (
             <Button
               className="flex items-center gap-2"
               variant="outline"
               key={provider}
               onClick={() => {
-                void signIn(provider as any, {
-                  callbackUrl: `${env.NEXT_PUBLIC_WEB_URL}/airdrop`,
-                })
+                void loginHandler(provider)
               }}
             >
               <i className={cn(providerIcons[provider], 'size-4')} />
               Sign in with
               {' '}
-              {providerData.name}
+              {(providerData as any).name}
             </Button>
           )
         })}

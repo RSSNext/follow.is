@@ -7,5 +7,6 @@ export default defineConfig(
     typeChecked: 'essential',
     project: true,
     tailwindCSS: false,
+    ignores: ['src/lib/hono.ts'],
   },
 )

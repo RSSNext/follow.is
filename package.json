@@ -11,8 +11,6 @@
     "start": "next start"
   },
   "dependencies": {
-    "@auth/core": "^0.37.4",
-    "@hono/auth-js": "^1.0.15",
     "@openpanel/nextjs": "^1.0.6",
     "@radix-ui/react-accordion": "^1.2.1",
     "@radix-ui/react-avatar": "^1.1.1",
@@ -23,6 +21,7 @@
     "@radix-ui/react-tabs": "^1.1.1",
     "@radix-ui/react-tooltip": "^1.1.4",
     "@t3-oss/env-nextjs": "^0.11.1",
+    "better-auth": "^1.0.14",
     "canvas-confetti": "^1.9.3",
     "class-variance-authority": "^0.7.1",
     "clsx": "^2.1.1",
@@ -41,6 +40,7 @@
   },
   "devDependencies": {
     "@egoist/tailwindcss-icons": "^1.8.1",
+    "@hono/node-server": "^1.13.7",
     "@iconify-json/logos": "1.2.3",
     "@iconify-json/mingcute": "1.2.1",
     "@iconify-json/simple-icons": "1.2.13",
@@ -51,8 +51,11 @@
     "@types/node": "^22.10.1",
     "@types/react": "npm:types-react@19.0.0-rc.1",
     "@types/react-dom": "npm:types-react-dom@19.0.0-rc.1",
+    "better-call": "0.3.3-beta.4",
+    "drizzle-orm": "^0.37.0",
     "eslint": "^9.15.0",
     "eslint-config-hyoban": "^3.1.14",
+    "hono": "^4.6.13",
     "lint-staged": "^15.2.10",
     "postcss": "^8.4.49",
     "simple-git-hooks": "^2.11.1",

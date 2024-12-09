@@ -1,4 +1,3 @@
-import { getCsrfToken } from '@hono/auth-js/react'
 import { Link2 } from 'lucide-react'
 import { useState } from 'react'
 import { toast } from 'sonner'
@@ -21,7 +20,6 @@ export function AirdropDetailForm({ verifyLink }: { verifyLink?: string }) {
           method: 'PUT',
           headers: {
             'Content-Type': 'application/json',
-            'X-CSRF-Token': await getCsrfToken(),
           },
           credentials: 'include',
           body: JSON.stringify({ verify }),

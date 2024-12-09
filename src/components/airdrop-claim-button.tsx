@@ -1,4 +1,3 @@
-import { getCsrfToken } from '@hono/auth-js/react'
 import confetti from 'canvas-confetti'
 import { useRef } from 'react'
 import { toast } from 'sonner'
@@ -22,7 +21,6 @@ export function AirdropClaimButton() {
           method: 'POST',
           headers: {
             'Content-Type': 'application/json',
-            'X-CSRF-Token': await getCsrfToken(),
           },
           credentials: 'include',
         },

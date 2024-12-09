@@ -1,14 +1,9 @@
 'use client'
-import { authConfigManager, SessionProvider, useSession } from '@hono/auth-js/react'
+
 import { OpenPanelComponent } from '@openpanel/nextjs'
 
 import { env } from '@/env'
-
-authConfigManager.setConfig({
-  baseUrl: env.NEXT_PUBLIC_API_URL,
-  basePath: '/auth',
-  credentials: 'include',
-})
+import { useSession } from '@/lib/auth'
 
 function OpenPanel() {
   const { data } = useSession()
@@ -26,9 +21,9 @@ function OpenPanel() {
 
 export function Providers({ children }: { children: React.ReactNode }) {
   return (
-    <SessionProvider>
+    <>
       <OpenPanel />
       {children}
-    </SessionProvider>
+    </>
   )
 }

@@ -1,5 +1,5 @@
 'use client'
-import { useSession } from '@hono/auth-js/react'
+
 import { Toaster } from 'sonner'
 import useSWR from 'swr'
 
@@ -7,11 +7,12 @@ import { AuthButton } from '@/components/auth'
 import type { AirdropStatus } from '@/components/follow-summary'
 import { FollowSummary } from '@/components/follow-summary'
 import { env } from '@/env'
+import { useSession } from '@/lib/auth'
 
 export default function AirdropPage() {
-  const { data: session, status } = useSession()
+  const { data: session, isPending, error } = useSession()
   const { data } = useSWR(
-    session && status === 'authenticated' ? 'get-airdrop-amount' : null,
+    (session && !isPending && !error) ? 'get-airdrop-amount' : null,
     async () => {
       const res = await fetch(`${env.NEXT_PUBLIC_API_URL}/wallets/airdrop`, {
         credentials: 'include',
