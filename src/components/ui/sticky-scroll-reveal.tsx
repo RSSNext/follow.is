@@ -57,9 +57,9 @@ export function StickyScroll({
               <h2 className="text-2xl font-bold">
                 {item.title}
               </h2>
-              <p className="text-lg mt-10 text-balance">
+              <div className="text-lg mt-10 text-balance">
                 {item.description}
-              </p>
+              </div>
               <Slot className="max-w-full h-fit my-10 md:hidden">
                 {item.content ?? null}
               </Slot>

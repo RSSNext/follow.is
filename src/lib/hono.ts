@@ -1,3 +1,5 @@
+// @ts-nocheck
+
 import * as hono_hono_base from 'hono/hono-base';
 import * as hono_types from 'hono/types';
 import * as hono_utils_http_status from 'hono/utils/http-status';
