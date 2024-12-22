@@ -22,7 +22,7 @@ export const siteInfo = {
     { title: 'Features', href: '/#features' },
     { title: 'Testimonials', href: '/#testimonials' },
     { title: 'FAQ', href: '/#faq' },
-    { title: 'AirDrop', href: '/airdrop' },
+    { title: '$POWER', href: 'https://power.top' },
   ],
 } as const
 
