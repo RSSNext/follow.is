@@ -1,15 +1,12 @@
 import * as React from 'react'
-import { forwardRef, useRef } from 'react'
+import { useRef } from 'react'
 
 import { AnimatedBeam } from '@/components/ui/animated-beam'
 import { cn } from '@/lib/utils'
 
 import { Logo } from './logo'
 
-const Circle = forwardRef<
-  HTMLDivElement,
-  { className?: string, children?: React.ReactNode }
->(({ className, children }, ref) => {
+function Circle({ ref, className, children }: { className?: string, children?: React.ReactNode } & { ref?: React.RefObject<HTMLDivElement | null> }) {
   return (
     <div
       ref={ref}
@@ -21,7 +18,7 @@ const Circle = forwardRef<
       {children}
     </div>
   )
-})
+}
 
 Circle.displayName = 'Circle'
 
