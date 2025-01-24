@@ -1,5 +1,8 @@
 @import 'tailwindcss';
-
+@plugin '@egoist/tailwindcss-icons' {
+  scale: 1.5;
+};
+@plugin '@tailwindcss/typography';
 @config "../../tailwind.config.ts";
 
 @theme {
