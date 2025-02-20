@@ -22,7 +22,7 @@ export function Footer() {
             <nav className="mt-10 text-sm" aria-label="quick links">
               <div className="-my-1 flex justify-center gap-x-6">
                 {siteInfo.navigation.map(item => (
-                  <Link key={item.href} href={item.href}>
+                  <Link key={item.href} href={item.href} className="hover:text-primary">
                     {item.title}
                   </Link>
                 ))}
