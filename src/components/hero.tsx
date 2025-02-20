@@ -21,7 +21,7 @@ export function Hero() {
             duration: 0.8,
             ease: 'easeInOut',
           }}
-          className="z-50 origin-top"
+          className="z-40 origin-top"
         >
           <Logo className="h-20 w-auto" />
         </motion.div>
