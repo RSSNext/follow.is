@@ -21,7 +21,7 @@ export function Hero() {
             duration: 0.8,
             ease: 'easeInOut',
           }}
-          className="z-50 origin-top"
+          className="z-40 origin-top"
         >
           <Logo className="h-20 w-auto" />
         </motion.div>
@@ -43,11 +43,11 @@ export function Hero() {
           As they say, your thoughts are what you read—and we’ve been consuming noisy feeds for too long! Follow organizes content into one timeline, keeping you updated on what matters, noise-free. Share lists, explore collections, and enjoy distraction-free browsing.
         </div>
 
-        <div className="flex items-center gap-4 flex-col md:flex-row">
-          <Button type="button" asChild size="xl" className="w-[250px] text-xl">
+        <div className="grid items-center gap-4 grid-cols-1 md:grid-cols-2">
+          <Button type="button" asChild size="xl" className="w-full text-xl">
             <Link href="/download">Get Started</Link>
           </Button>
-          <Button type="button" className="p-0 bg-[#111] hover:bg-[#111]" variant="ghost" size="xl">
+          <Button type="button" className="px-4 bg-[#111] hover:bg-[#111]" variant="ghost" size="xl">
             <Link href={siteInfo.githubLink} target="_blank">
               <GithubTrending />
             </Link>
