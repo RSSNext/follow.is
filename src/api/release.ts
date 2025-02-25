@@ -3,7 +3,8 @@ export async function getLatestReleaseInfo(): Promise<ReleaseInfo | undefined> {
 }
 
 export async function getNightlyReleaseInfo(): Promise<ReleaseInfo | undefined> {
-  return getReleaseInfo(true)
+  return
+  // return getReleaseInfo(true)
 }
 
 async function getReleaseInfo(isNightly: boolean): Promise<ReleaseInfo | undefined> {
