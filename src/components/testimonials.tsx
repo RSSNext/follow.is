@@ -2,6 +2,8 @@ import { Quote } from 'lucide-react'
 import Image from 'next/image'
 import { getTweet } from 'react-tweet/api'
 
+import { APP_NAME } from '@/constants'
+
 import { Container } from './container'
 import { Card } from './ui/card'
 import { Marquee } from './ui/marquee'
@@ -102,7 +104,7 @@ export async function Testimonials() {
             Ready to experience the future?
           </h2>
           <p className="mt-4 text-lg tracking-tight">
-            Follow—where information flows freely, and creators hold the power.
+            {`${APP_NAME}—where information flows freely, and creators hold the power.`}
           </p>
         </div>
         <div className="relative flex h-[550px] w-full my-10 flex-col items-center justify-center overflow-hidden rounded-lg">

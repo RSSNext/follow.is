@@ -4,7 +4,7 @@ import {
   AccordionItem,
   AccordionTrigger,
 } from '@/components/ui/accordion'
-import { siteInfo } from '@/constants'
+import { APP_NAME, siteInfo } from '@/constants'
 
 import { Container } from './container'
 
@@ -16,8 +16,8 @@ interface FAQProps {
 
 const FAQList: FAQProps[] = [
   {
-    question: 'On which platforms is Follow available?',
-    answer: 'Follow is available on Desktop for Windows, macOS, Linux, and directly in your browser. The mobile app for Android and iOS is coming soon!',
+    question: `On which platforms is ${APP_NAME} available?`,
+    answer: `${APP_NAME} is available on Desktop for Windows, macOS, Linux, and directly in your browser. The mobile app for Android and iOS is coming soon!`,
     value: 'item-1',
   },
 ]

@@ -7,8 +7,10 @@ import screenshotVideo from '@/images/screenshots/video.png'
 
 export const alphaTestAirdropTotalUsers = 28675
 
+export const APP_NAME = 'Folo'
+
 export const siteInfo = {
-  title: 'Follow',
+  title: APP_NAME,
   description: 'Next-Gen Information Browser',
   webUrl: 'https://follow.is',
   appUrl: 'https://app.follow.is',

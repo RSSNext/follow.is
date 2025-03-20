@@ -5,7 +5,7 @@ import Link from 'next/link'
 
 import { AuroraBackground } from '@/components/ui/aurora-background'
 import { Button } from '@/components/ui/button'
-import { siteInfo } from '@/constants'
+import { APP_NAME, siteInfo } from '@/constants'
 
 import GithubTrending from './github-trending'
 import { Logo } from './logo'
@@ -25,7 +25,7 @@ export function Hero() {
         >
           <Logo className="h-20 w-auto" />
         </motion.div>
-        <p className="text-xl font-bold">Follow</p>
+        <p className="text-xl font-bold">{APP_NAME}</p>
       </div>
       <motion.div
         initial={{ opacity: 0, y: 400 }}
@@ -40,7 +40,7 @@ export function Hero() {
           Follow your favorites in one inbox
         </div>
         <div className="font-extralight text-base md:text-xl dark:text-neutral-200 py-2 pb-8 max-w-4xl text-center">
-          As they say, your thoughts are what you read—and we’ve been consuming noisy feeds for too long! Follow organizes content into one timeline, keeping you updated on what matters, noise-free. Share lists, explore collections, and enjoy distraction-free browsing.
+          {`As they say, your thoughts are what you read—and we’ve been consuming noisy feeds for too long! ${APP_NAME} organizes content into one timeline, keeping you updated on what matters, noise-free. Share lists, explore collections, and enjoy distraction-free browsing.`}
         </div>
 
         <div className="grid items-center gap-4 grid-cols-1 md:grid-cols-2">

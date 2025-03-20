@@ -3,6 +3,7 @@
 import { motion } from 'motion/react'
 import Image from 'next/image'
 
+import { APP_NAME } from '@/constants'
 import screenShotAIDaily from '@/images/screenshots/AI At Your Fingertips.png'
 import screenShotDiscover from '@/images/screenshots/Customized Info Hub.png'
 import screenShotViews from '@/images/screenshots/Dynamic Content Support.png'
@@ -36,7 +37,7 @@ const content = [
   },
   {
     title: 'Dynamic Content Support',
-    description: 'Because we know content is more than just text. From articles to videos, images to audio — Follow gets it all covered.',
+    description: `Because we know content is more than just text. From articles to videos, images to audio — ${APP_NAME} gets it all covered.`,
     content: (
       <div className="flex justify-center items-center h-[32rem] w-[50rem]">
         <Image
@@ -78,13 +79,13 @@ const content = [
   },
   {
     title: 'More Than Just An App',
-    description: 'This isn’t just another app. Follow is a community — introducing a new era of openness and community-driven experience.',
+    description: `This isn’t just another app. ${APP_NAME} is a community — introducing a new era of openness and community-driven experience.`,
     content: (
       <div className="flex justify-center items-center h-[32rem] w-[50rem]">
         <Image
           className="rounded-lg"
           src={screenShotSocial}
-          alt="Screenshot of Personal page in Follow"
+          alt={`Screenshot of Personal page in ${APP_NAME}`}
           priority
         />
       </div>

@@ -5,7 +5,7 @@ import { usePathname } from 'next/navigation'
 
 import { Container } from '@/components/container'
 import { Logo } from '@/components/logo'
-import { siteInfo } from '@/constants'
+import { APP_NAME, siteInfo } from '@/constants'
 
 export function Footer() {
   const pathname = usePathname()
@@ -17,7 +17,7 @@ export function Footer() {
           <div className="py-16">
             <div className="flex items-center justify-center gap-4">
               <Logo className="h-10 w-auto" />
-              <p className="text-xl font-bold">Follow</p>
+              <p className="text-xl font-bold">{APP_NAME}</p>
             </div>
             <nav className="mt-10 text-sm" aria-label="quick links">
               <div className="-my-1 flex justify-center gap-x-6">
@@ -36,7 +36,7 @@ export function Footer() {
               href={siteInfo.discordLink}
               target="_blank"
               rel="noopener noreferrer"
-              aria-label="Follow on Discord"
+              aria-label={`${APP_NAME} on Discord`}
             >
               <div className="i-simple-icons-discord" />
             </a>
@@ -44,7 +44,7 @@ export function Footer() {
               href={siteInfo.xLink}
               target="_blank"
               rel="noopener noreferrer"
-              aria-label="Follow on X"
+              aria-label={`${APP_NAME} on X`}
             >
               <div className="i-simple-icons-x" />
             </a>
@@ -52,7 +52,7 @@ export function Footer() {
               href={siteInfo.githubLink}
               target="_blank"
               rel="noopener noreferrer"
-              aria-label="Follow on GitHub"
+              aria-label={`${APP_NAME} on GitHub`}
             >
               <div className="i-simple-icons-github" />
             </a>
@@ -62,7 +62,8 @@ export function Footer() {
             {' '}
             {new Date().getFullYear()}
             {' '}
-            Follow.
+            {APP_NAME}
+            .
           </p>
         </div>
       </Container>

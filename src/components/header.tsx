@@ -1,6 +1,6 @@
 import Link from 'next/link'
 
-import { siteInfo } from '@/constants'
+import { APP_NAME, siteInfo } from '@/constants'
 import { cn } from '@/lib/utils'
 
 import { Container } from './container'
@@ -49,7 +49,7 @@ export async function Header() {
           <div className="flex items-center md:gap-x-12">
             <Link className="flex items-center gap-3" href="/#">
               <Logo className="h-7 w-auto" color="#000" />
-              <p className="text-xl font-bold">Follow</p>
+              <p className="text-xl font-bold">{APP_NAME}</p>
             </Link>
             <NavDesktop />
           </div>

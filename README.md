@@ -1,3 +1,3 @@
 # follow.is
 
-This repo is Follow official website source code.
+This repo is Folo official website source code.

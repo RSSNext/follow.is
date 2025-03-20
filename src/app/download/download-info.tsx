@@ -4,7 +4,7 @@ import type { FC } from 'react'
 import type { ReleaseInfo } from '@/api/release'
 import { getNightlyReleaseInfo } from '@/api/release'
 import { Button } from '@/components/ui/button'
-import { siteInfo } from '@/constants'
+import { APP_NAME, siteInfo } from '@/constants'
 import { cn } from '@/lib/utils'
 
 export type OS = 'macOS' | 'iOS' | 'Windows' | 'Android' | 'Linux' | ''
@@ -57,7 +57,7 @@ export const DownloadInfo: FC<{
     <>
       {!releaseInfo.downloadUrl[platform] ? (
         <p className="text-xl text-foreground/70">
-          {`Follow ${releaseInfo.name} is not available for ${platform}.`}
+          {`${APP_NAME} ${releaseInfo.name} is not available for ${platform}.`}
         </p>
       ) : (
         <div className="flex flex-col gap-2">
