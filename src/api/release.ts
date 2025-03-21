@@ -8,7 +8,7 @@ export async function getNightlyReleaseInfo(): Promise<ReleaseInfo | undefined> 
 }
 
 async function getReleaseInfo(isNightly: boolean): Promise<ReleaseInfo | undefined> {
-  const res = await fetch('https://ungh.cc/repos/RSSNext/follow/releases', {
+  const res = await fetch('https://ungh.cc/repos/RSSNext/Folo/releases', {
     next: { revalidate: 60 },
   })
   const releases = (await res.json()) as GitHubRelease
