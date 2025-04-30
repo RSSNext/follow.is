@@ -7,6 +7,9 @@ import { useSession } from '@/lib/auth'
 
 function OpenPanel() {
   const { data } = useSession()
+  if (process.env.NODE_ENV === 'development') {
+    return null
+  }
   return (
     <OpenPanelComponent
       clientId={env.NEXT_PUBLIC_OPENPANEL_CLIENT_ID}
