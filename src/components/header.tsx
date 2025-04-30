@@ -47,9 +47,11 @@ export async function Header() {
       <Container>
         <nav className="relative flex justify-between">
           <div className="flex items-center md:gap-x-12">
-            <Link className="flex items-center gap-3" href="/#">
-              <Logo className="h-7 w-auto" color="#000" />
-              <p className="text-xl font-bold">{APP_NAME}</p>
+            <Link href="/#">
+              <div className="flex items-center gap-3">
+                <Logo className="h-7 w-auto" color="#000" />
+                <p className="text-xl font-bold">{APP_NAME}</p>
+              </div>
             </Link>
             <NavDesktop />
           </div>
