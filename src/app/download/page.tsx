@@ -14,10 +14,9 @@ export default async function DownloadPage() {
       <h1 className="text-2xl md:text-4xl font-bold text-center">
         {`Download ${APP_NAME} ${version}`}
       </h1>
-      <p className="text-xl text-foreground/70">
+      <p className="text-center mx-4 text-xl text-foreground/70">
         {`Available for ${Object.keys(PlatformIconMap).filter(i => i !== 'Android').join(', ')}, Web.`}
       </p>
-
       <DownloadInfo />
     </main>
   )

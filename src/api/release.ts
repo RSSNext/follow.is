@@ -90,8 +90,6 @@ export async function getOs(): Promise<OS | undefined> {
 
   if (userAgent.includes('Win'))
     return 'Windows'
-  if (userAgent.includes('Mac'))
-    return 'macOS'
   if (
     userAgent.includes('iPhone')
     || userAgent.includes('iPad')
@@ -99,6 +97,8 @@ export async function getOs(): Promise<OS | undefined> {
   ) {
     return 'iOS'
   }
+  if (userAgent.includes('Mac'))
+    return 'macOS'
   if (userAgent.includes('Android'))
     return 'Android'
   if (userAgent.includes('Linux'))
