@@ -1,4 +1,6 @@
 // @ts-check
+import path from 'node:path'
+
 import { defineConfig } from 'eslint-config-hyoban'
 
 export default defineConfig(
@@ -6,7 +8,22 @@ export default defineConfig(
     fileCase: 'kebabCase',
     typeChecked: 'essential',
     project: true,
-    tailwindCSS: false,
+    tailwindCSS: {
+      order: false,
+    },
     ignores: ['src/lib/hono.ts'],
+  },
+  {
+    settings: {
+      tailwindcss: {
+        config: path.join(import.meta.dirname, './src/app/globals.css'),
+      },
+    },
+  },
+  {
+    rules: {
+      'tailwindcss/no-contradicting-classname': 'off',
+      'tailwindcss/migration-from-tailwind-2': 'off',
+    },
   },
 )
