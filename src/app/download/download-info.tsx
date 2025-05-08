@@ -1,7 +1,9 @@
-import { getLatestReleaseInfo, getOs, PlatformIconMap, PlatformStoreLinkMap } from '@/api/release'
-import { Button } from '@/components/ui/button'
+import Image from 'next/image'
+
+import { getLatestReleaseInfo, getOs, PlatformStoreLinkMap } from '@/api/release'
 import { APP_NAME, siteInfo } from '@/constants'
-import { cn } from '@/lib/utils'
+import ImageDownloadGitHub from '@/images/download/download-on-the-github.png'
+import ImageTryOnTheBrowser from '@/images/download/try-on-the-browser.png'
 
 export async function DownloadInfo() {
   const platform = await getOs()
@@ -14,35 +16,36 @@ export async function DownloadInfo() {
           {`${APP_NAME} is not available for ${platform}.`}
         </p>
       ) : (
-        <div className="flex flex-col gap-2">
+        <div className="flex max-sm:flex-col gap-2">
           {PlatformStoreLinkMap[platform] && (
-            <Button className="p-6 rounded-lg" asChild>
-              <a href={PlatformStoreLinkMap[platform]?.link} target="_blank" rel="noopener noreferrer">
-                <i className={cn(PlatformIconMap[platform as keyof typeof PlatformIconMap], 'mr-2')} />
-                <span className="font-semibold text-lg">
-                  Open in {PlatformStoreLinkMap[platform]?.name}
-                </span>
-              </a>
-            </Button>
+            <a href={PlatformStoreLinkMap[platform].link} target="_blank" rel="noopener noreferrer">
+              <Image
+                src={PlatformStoreLinkMap[platform].image}
+                alt={`Download on the ${PlatformStoreLinkMap[platform].name}`}
+                className="h-14 w-fit"
+                priority
+              />
+            </a>
           )}
           {releaseInfo?.downloadUrl[platform] && (
-            <Button className="p-6 rounded-lg" asChild variant="outline">
-              <a href={releaseInfo.downloadUrl[platform]} target="_blank" rel="noopener noreferrer">
-                <i className={cn(PlatformIconMap[platform as keyof typeof PlatformIconMap], 'mr-2')} />
-                <span className="font-semibold text-lg">
-                  Download for {platform}
-                </span>
-              </a>
-            </Button>
-          )}
-          <Button className="p-6 rounded-lg" asChild variant="outline">
-            <a href={siteInfo.appUrl}>
-              <i className="i-mingcute-chrome-fill mr-2" />
-              <span className="font-semibold text-lg">
-                Try in browser
-              </span>
+            <a href={releaseInfo.downloadUrl[platform]} target="_blank" rel="noopener noreferrer">
+              <Image
+                src={ImageDownloadGitHub}
+                alt="Download on the GitHub"
+                className="h-14 w-fit"
+                priority
+              />
             </a>
-          </Button>
+          )}
+
+          <a href={siteInfo.appUrl}>
+            <Image
+              src={ImageTryOnTheBrowser}
+              alt="Try on the browser"
+              className="h-14 w-fit"
+              priority
+            />
+          </a>
         </div>
       )}
       <section className="flex flex-col sm:flex-row items-center gap-4">

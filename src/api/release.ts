@@ -1,5 +1,9 @@
 import { headers } from 'next/headers'
 
+import ImageDownloadIOS from '@/images/download/download-on-the-app-store.png'
+import ImageDownloadMacOS from '@/images/download/download-on-the-mac-app-store.svg'
+import ImageDownloadWindows from '@/images/download/download-on-the-microsoft-store.svg'
+
 export async function getLatestReleaseInfo(): Promise<ReleaseInfo | undefined> {
   return getReleaseInfo(false)
 }
@@ -113,10 +117,22 @@ export const PlatformIconMap: Record<OS, string> = {
   Android: 'i-mingcute-android-fill',
 }
 
-export const PlatformStoreLinkMap: Record<OS, { link: string, name: string } | undefined> = {
-  iOS: { link: 'https://apps.apple.com/us/app/folo-follow-everything/id6739802604', name: 'App Store' },
-  macOS: { link: 'https://apps.apple.com/us/app/folo-follow-everything/id6739802604', name: 'Mac App Store' },
-  Windows: { link: 'https://apps.microsoft.com/detail/9nvfzpv0v0ht?mode=direct', name: 'Microsoft Store' },
+export const PlatformStoreLinkMap: Record<OS, { link: string, name: string, image: any } | undefined> = {
+  iOS: {
+    link: 'https://apps.apple.com/us/app/folo-follow-everything/id6739802604',
+    name: 'App Store',
+    image: ImageDownloadIOS,
+  },
+  macOS: {
+    link: 'https://apps.apple.com/us/app/folo-follow-everything/id6739802604',
+    name: 'Mac App Store',
+    image: ImageDownloadMacOS,
+  },
+  Windows: {
+    link: 'https://apps.microsoft.com/detail/9nvfzpv0v0ht?mode=direct',
+    name: 'Microsoft Store',
+    image: ImageDownloadWindows,
+  },
   Android: undefined,
   Linux: undefined,
 }
