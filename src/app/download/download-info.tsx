@@ -27,7 +27,7 @@ export async function DownloadInfo() {
               />
             </a>
           )}
-          {releaseInfo?.downloadUrl[platform] && (
+          {(releaseInfo?.downloadUrl[platform] && !PlatformStoreLinkMap[platform]) && (
             <a href={releaseInfo.downloadUrl[platform]} target="_blank" rel="noopener noreferrer">
               <Image
                 src={ImageDownloadGitHub}
