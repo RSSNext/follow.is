@@ -3,6 +3,7 @@ import { headers } from 'next/headers'
 import ImageDownloadIOS from '@/images/download/download-on-the-app-store.png'
 import ImageDownloadMacOS from '@/images/download/download-on-the-mac-app-store.svg'
 import ImageDownloadWindows from '@/images/download/download-on-the-microsoft-store.svg'
+import ImageDownloadAndroid from '@/images/download/get-it-on-google-play.svg'
 
 export async function getLatestReleaseInfo(): Promise<ReleaseInfo | undefined> {
   return getReleaseInfo(false)
@@ -133,7 +134,11 @@ export const PlatformStoreLinkMap: Record<OS, { link: string, name: string, imag
     name: 'Microsoft Store',
     image: ImageDownloadWindows,
   },
-  Android: undefined,
+  Android: {
+    link: 'https://play.google.com/store/apps/details?id=is.follow',
+    name: 'Google Play',
+    image: ImageDownloadAndroid,
+  },
   Linux: undefined,
 }
 
