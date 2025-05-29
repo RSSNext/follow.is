@@ -1,69 +1,117 @@
-import Link from 'next/link'
+'use client'
 
-import { APP_NAME, siteInfo } from '@/constants'
+import { motion } from 'motion/react'
+import Link from 'next/link'
+import { useEffect, useState } from 'react'
+
+import { siteInfo } from '@/constants'
 import { cn } from '@/lib/utils'
 
-import { Container } from './container'
-import { Logo } from './logo'
-import { NavDesktop } from './nav-desktop'
-import { NavMobile } from './nav-mobile'
+import { Logo, LogoText } from './logo'
 import { Button } from './ui/button'
+import { GitHubStarsButton } from './ui/github-star-button'
+import { LiquidButton } from './ui/liquid'
 
-async function getGithubStars() {
-  const res = await fetch(siteInfo.githubApiLink, { next: { revalidate: 3600 } })
-  const data = (await res.json()) as { repo: { stars: number } }
-  return data.repo.stars
-}
+export function Header() {
+  const [isScrolled, setIsScrolled] = useState(false)
 
-async function GithubStarButton() {
-  const stars = await getGithubStars()
+  useEffect(() => {
+    const handleScroll = () => {
+      setIsScrolled(window.scrollY > 50)
+    }
+
+    window.addEventListener('scroll', handleScroll)
+
+    return () => window.removeEventListener('scroll', handleScroll)
+  }, [])
+
   return (
-    <Button
-      className="gap-2 bg-black text-white hover:bg-black/90 hidden md:flex"
-      asChild
-    >
-      <a
-        href={siteInfo.githubLink}
-        target="_blank"
-        rel="noopener noreferrer"
-        className="flex items-center"
-      >
-        <span className="i-simple-icons-github size-4" />
-        <span>Star on GitHub</span>
-        <span className="i-mingcute-star-fill size-4 text-yellow-500 mb-0.5" />
-        <div className="font-medium">{(stars / 1000).toFixed(1)}K</div>
-      </a>
-    </Button>
-  )
-}
-
-export async function Header() {
-  return (
-    <header
+    <motion.header
+      initial={{ y: -100, opacity: 0 }}
+      animate={{ y: 0, opacity: 1 }}
+      transition={{ duration: 0.6, ease: 'easeOut' }}
       className={cn(
-        'p-4 md:px-10 backdrop-blur-lg fixed top-0 inset-x-0 z-50 transition-all',
+        'fixed top-0 inset-x-0 z-50 transition-all duration-500',
+        isScrolled
+          ? 'bg-white/95 dark:bg-gray-950/95 backdrop-blur-xl border-b border-gray-200/50 dark:border-gray-800/50 shadow-xl shadow-gray-900/10'
+          : 'bg-transparent',
       )}
     >
-      <Container>
-        <nav className="relative flex justify-between">
-          <div className="flex items-center md:gap-x-12">
-            <Link href="/#">
-              <div className="flex items-center gap-3">
-                <Logo className="h-7 w-auto" color="#000" />
-                <p className="text-xl font-bold">{APP_NAME}</p>
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <nav className="relative flex justify-between items-center h-20">
+          {/* Logo */}
+          <motion.div
+            whileHover={{ scale: 1.05 }}
+            transition={{ duration: 0.2 }}
+          >
+            <Link href="/" className="flex items-center gap-3 group">
+              <div className="relative">
+                <Logo className="h-9 w-auto transition-transform duration-300 group-hover:scale-110" />
+                <div className="absolute inset-0 bg-gradient-to-r from-indigo-500/20 to-violet-500/20 rounded-full blur-xl opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
               </div>
+              <LogoText className="h-5 w-auto" />
             </Link>
-            <NavDesktop />
+          </motion.div>
+
+          {/* Navigation Links */}
+          <div className="hidden lg:flex items-center gap-1">
+            {siteInfo.navigation.map(item => (
+              <motion.div
+                key={item.href}
+                whileHover={{ scale: 1.05 }}
+                whileTap={{ scale: 0.95 }}
+              >
+                <Link
+                  href={item.href}
+                  className="relative px-4 py-2 text-sm font-medium text-gray-700 dark:text-gray-300 hover:text-gray-900 dark:hover:text-white transition-all duration-300 rounded-lg hover:bg-gray-100/80 dark:hover:bg-gray-800/80 group"
+                >
+                  {item.title}
+                  <div className="absolute inset-x-0 bottom-0 h-0.5 bg-gradient-to-r from-orange-500 to-red-500 rounded-full transform scale-x-0 group-hover:scale-x-100 transition-transform duration-300" />
+                </Link>
+              </motion.div>
+            ))}
           </div>
-          <div className="flex items-center gap-4">
-            <GithubStarButton />
-            <Button className="hidden md:inline-flex" asChild>
-              <Link href="/download">Get Started</Link>
-            </Button>
-            <NavMobile />
+
+          {/* Actions */}
+          <div className="flex items-center gap-3">
+
+            <GitHubStarsButton className="h-9" username="RSSNext" repo="Folo" />
+
+            <LiquidButton variant="default" className="bg-white" size="sm">
+              <Link href="/download" className="relative z-10 font-medium px-1">
+                Download
+              </Link>
+            </LiquidButton>
+
+            {/* Mobile Menu Button */}
+            <motion.div
+              whileHover={{ scale: 1.05 }}
+              whileTap={{ scale: 0.95 }}
+              className="lg:hidden"
+            >
+              <Button
+                variant="ghost"
+                size="sm"
+                className="w-10 h-10 rounded-lg hover:bg-gray-100 dark:hover:bg-gray-800 transition-colors duration-300"
+              >
+                <svg
+                  className="w-5 h-5"
+                  fill="none"
+                  viewBox="0 0 24 24"
+                  stroke="currentColor"
+                >
+                  <path
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                    strokeWidth={2}
+                    d="M4 6h16M4 12h16M4 18h16"
+                  />
+                </svg>
+              </Button>
+            </motion.div>
           </div>
         </nav>
-      </Container>
-    </header>
+      </div>
+    </motion.header>
   )
 }

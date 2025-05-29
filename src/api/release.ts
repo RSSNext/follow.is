@@ -1,26 +1,22 @@
 import { headers } from 'next/headers'
 
-import ImageDownloadIOS from '@/images/download/download-on-the-app-store.png'
-import ImageDownloadMacOS from '@/images/download/download-on-the-mac-app-store.svg'
-import ImageDownloadWindows from '@/images/download/download-on-the-microsoft-store.svg'
-import ImageDownloadAndroid from '@/images/download/get-it-on-google-play.svg'
-
 export async function getLatestReleaseInfo(): Promise<ReleaseInfo | undefined> {
   return getReleaseInfo(false)
 }
 
-export async function getNightlyReleaseInfo(): Promise<ReleaseInfo | undefined> {
+export async function getNightlyReleaseInfo(): Promise<
+  ReleaseInfo | undefined
+> {
   return
   // return getReleaseInfo(true)
 }
 
-async function getReleaseInfo(isNightly: boolean): Promise<ReleaseInfo | undefined> {
-  const res = await fetch(
-    'https://ungh.cc/repos/RSSNext/Folo/releases',
-    {
-      next: { revalidate: 3600 },
-    },
-  )
+async function getReleaseInfo(
+  isNightly: boolean,
+): Promise<ReleaseInfo | undefined> {
+  const res = await fetch('https://ungh.cc/repos/RSSNext/Folo/releases', {
+    next: { revalidate: 3600 },
+  })
   const releases = (await res.json()) as GitHubRelease
   const latestRelease = releases.releases.find(
     release => !release.draft && release.prerelease === isNightly,
@@ -110,39 +106,9 @@ export async function getOs(): Promise<OS | undefined> {
     return 'Linux'
 }
 
-export const PlatformIconMap: Record<OS, string> = {
-  Windows: 'i-mingcute-windows-fill',
-  macOS: 'i-mingcute-apple-fill',
-  Linux: 'i-mingcute-linux-fill',
-  iOS: 'i-mingcute-apple-fill',
-  Android: 'i-mingcute-android-fill',
-}
-
-export const PlatformStoreLinkMap: Record<OS, { link: string, name: string, image: any } | undefined> = {
-  iOS: {
-    link: 'https://apps.apple.com/us/app/folo-follow-everything/id6739802604',
-    name: 'App Store',
-    image: ImageDownloadIOS,
-  },
-  macOS: {
-    link: 'https://apps.apple.com/us/app/folo-follow-everything/id6739802604',
-    name: 'Mac App Store',
-    image: ImageDownloadMacOS,
-  },
-  Windows: {
-    link: 'https://apps.microsoft.com/detail/9nvfzpv0v0ht?mode=direct',
-    name: 'Microsoft Store',
-    image: ImageDownloadWindows,
-  },
-  Android: {
-    link: 'https://play.google.com/store/apps/details?id=is.follow',
-    name: 'Google Play',
-    image: ImageDownloadAndroid,
-  },
-  Linux: undefined,
-}
-
-export async function getPlatformAppVersion(os?: OS): Promise<string | undefined> {
+export async function getPlatformAppVersion(
+  os?: OS,
+): Promise<string | undefined> {
   if (!os) {
     return
   }
