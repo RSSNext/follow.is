@@ -11,6 +11,7 @@ import screenShotDiscover from '@/images/screenshots/Customized Info Hub.png'
 import screenShotViews from '@/images/screenshots/Dynamic Content Support.png'
 import screenShotPower from '@/images/screenshots/High Level Description.png'
 import screenShotSocial from '@/images/screenshots/More Than Just An App.png'
+import { scrollAnimations, springAnimations } from '@/lib/animations'
 
 import { Button } from './ui/button'
 
@@ -99,9 +100,7 @@ export function Features() {
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* Section Header */}
         <motion.div
-          initial={{ opacity: 0, y: 30 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.8 }}
+          {...scrollAnimations.fadeInUp}
           viewport={{ once: true }}
           className="text-center mb-20"
         >
@@ -132,7 +131,7 @@ export function Features() {
               key={feature.id}
               initial={{ opacity: 0, y: 40 }}
               whileInView={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.8, delay: index * 0.1 }}
+              transition={springAnimations.withDelay(index * 0.05, 'medium')}
               viewport={{ once: true }}
               className={`group ${
                 index % 2 === 1 ? 'lg:flex-row-reverse' : ''
@@ -272,7 +271,7 @@ export function Features() {
         <motion.div
           initial={{ opacity: 0, y: 30 }}
           whileInView={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.8, delay: 0.3 }}
+          transition={springAnimations.withDelay(0.2, 'medium')}
           viewport={{ once: true }}
           className="text-center mt-32"
         >

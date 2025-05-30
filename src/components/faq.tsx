@@ -10,6 +10,7 @@ import {
 } from '@/components/ui/accordion'
 import { Button } from '@/components/ui/button'
 import { APP_NAME } from '@/constants'
+import { springAnimations } from '@/lib/animations'
 
 import { LogoText } from './logo'
 
@@ -58,7 +59,7 @@ export function FAQ() {
             rotate: [0, 12, 0],
           }}
           transition={{
-            duration: 18,
+            duration: 8,
             repeat: Infinity,
             ease: 'easeInOut',
           }}
@@ -75,10 +76,10 @@ export function FAQ() {
             y: [0, -15, 0],
           }}
           transition={{
-            duration: 14,
+            duration: 6,
             repeat: Infinity,
             ease: 'easeInOut',
-            delay: 2,
+            delay: 1,
           }}
           className="absolute top-40 right-16 text-amber-200/30 dark:text-amber-800/20"
         >
@@ -93,7 +94,7 @@ export function FAQ() {
         <motion.div
           initial={{ opacity: 0, y: 30 }}
           whileInView={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.8 }}
+          transition={springAnimations.medium}
           viewport={{ once: true }}
           className="text-center mb-16"
         >
@@ -132,7 +133,7 @@ export function FAQ() {
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.8, delay: 0.2 }}
+          transition={springAnimations.withDelay(0.1, 'medium')}
           viewport={{ once: true }}
         >
           <Accordion type="single" collapsible className="space-y-2">
@@ -141,7 +142,7 @@ export function FAQ() {
                 key={faq.id}
                 initial={{ opacity: 0, y: 10 }}
                 whileInView={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.5, delay: index * 0.05 }}
+                transition={springAnimations.withDelay(index * 0.03, 'fast')}
                 viewport={{ once: true }}
               >
                 <AccordionItem
@@ -168,7 +169,7 @@ export function FAQ() {
         <motion.div
           initial={{ opacity: 0, y: 30 }}
           whileInView={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.8, delay: 0.4 }}
+          transition={springAnimations.withDelay(0.2, 'medium')}
           viewport={{ once: true }}
           className="text-center mt-16"
         >

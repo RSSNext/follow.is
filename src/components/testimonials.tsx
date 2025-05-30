@@ -5,6 +5,7 @@ import Image from 'next/image'
 import Marquee from 'react-fast-marquee'
 
 import { APP_NAME } from '@/constants'
+import { springAnimations } from '@/lib/animations'
 
 import { Container } from './container'
 import { Card } from './ui/card'
@@ -52,9 +53,7 @@ function TestimonialCard({
       animate={{
         opacity: 1,
       }}
-      transition={{
-        opacity: { duration: 0.6, delay: index * 0.1 },
-      }}
+      transition={springAnimations.withDelay(index * 0.05, 'fast')}
       className="group flex-shrink-0 w-80 mx-3"
     >
       <Card
@@ -65,7 +64,7 @@ function TestimonialCard({
           <motion.svg
             animate={{ rotate: [0, 5, -5, 0] }}
             transition={{
-              duration: 4,
+              duration: 2,
               repeat: Infinity,
               ease: 'easeInOut',
             }}
@@ -117,10 +116,10 @@ function TestimonialCard({
                 rotate: [0, 2, -2, 0],
               }}
               transition={{
-                duration: 4,
+                duration: 2,
                 repeat: Infinity,
                 ease: 'easeInOut',
-                delay: index * 0.2,
+                delay: index * 0.1,
               }}
             >
               <Image
@@ -135,7 +134,7 @@ function TestimonialCard({
               <motion.svg
                 animate={{ scale: [1, 1.2, 1] }}
                 transition={{
-                  duration: 2,
+                  duration: 1.5,
                   repeat: Infinity,
                   ease: 'easeInOut',
                 }}
@@ -231,7 +230,7 @@ export function Testimonials() {
         <motion.div
           initial={{ opacity: 0, y: 30 }}
           whileInView={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.8 }}
+          transition={springAnimations.medium}
           viewport={{ once: true }}
           className="text-center mb-20"
         >
@@ -239,7 +238,7 @@ export function Testimonials() {
             <motion.div
               animate={{ scale: [1, 1.2, 1] }}
               transition={{
-                duration: 2,
+                duration: 1.5,
                 repeat: Infinity,
                 ease: 'easeInOut',
               }}
@@ -257,7 +256,7 @@ export function Testimonials() {
                 backgroundPosition: ['0% 50%', '100% 50%', '0% 50%'],
               }}
               transition={{
-                duration: 3,
+                duration: 2,
                 repeat: Infinity,
                 ease: 'easeInOut',
               }}

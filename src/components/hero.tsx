@@ -6,6 +6,7 @@ import Link from 'next/link'
 
 import { Button } from '@/components/ui/button'
 import { APP_NAME } from '@/constants'
+import { floatingAnimations, floatingTransitions, scrollAnimations, springAnimations } from '@/lib/animations'
 
 import GithubTrending from './github-trending'
 import { Logo } from './logo'
@@ -29,20 +30,13 @@ export function Hero() {
       <motion.div
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
-        transition={{ duration: 2, delay: 0.5 }}
+        transition={springAnimations.withDelay(0.3, 'medium')}
         className="absolute inset-0 pointer-events-none"
       >
         {/* Top Left Icons */}
         <motion.div
-          animate={{
-            y: [0, -20, 0],
-            rotate: [0, 5, 0],
-          }}
-          transition={{
-            duration: 6,
-            repeat: Infinity,
-            ease: 'easeInOut',
-          }}
+          animate={floatingAnimations.strong}
+          transition={floatingTransitions.gentle}
           className="absolute top-20 left-20 text-indigo-400/30 dark:text-indigo-500/20"
         >
           <svg className="w-8 h-8" fill="currentColor" viewBox="0 0 24 24">
@@ -57,10 +51,8 @@ export function Hero() {
             rotate: [0, -10, 0],
           }}
           transition={{
-            duration: 8,
-            repeat: Infinity,
-            ease: 'easeInOut',
-            delay: 1,
+            ...floatingTransitions.medium,
+            delay: 0.5,
           }}
           className="absolute top-32 right-32 text-violet-400/35 dark:text-violet-500/25"
         >
@@ -76,10 +68,8 @@ export function Hero() {
             scale: [1, 1.1, 1],
           }}
           transition={{
-            duration: 7,
-            repeat: Infinity,
-            ease: 'easeInOut',
-            delay: 2,
+            ...floatingTransitions.strong,
+            delay: 1,
           }}
           className="absolute top-1/2 left-16 text-blue-400/30 dark:text-blue-500/20"
         >
@@ -95,10 +85,8 @@ export function Hero() {
             y: [0, 10, 0],
           }}
           transition={{
-            duration: 9,
-            repeat: Infinity,
-            ease: 'easeInOut',
-            delay: 0.5,
+            ...floatingTransitions.gentle,
+            delay: 0.2,
           }}
           className="absolute top-1/2 right-20 text-indigo-300/35 dark:text-indigo-400/25"
         >
@@ -113,7 +101,7 @@ export function Hero() {
             rotate: [0, 360],
           }}
           transition={{
-            duration: 20,
+            duration: 10,
             repeat: Infinity,
             ease: 'linear',
           }}
@@ -125,15 +113,10 @@ export function Hero() {
         </motion.div>
 
         <motion.div
-          animate={{
-            y: [0, -10, 0],
-            scale: [1, 1.2, 1],
-          }}
+          animate={floatingAnimations.medium}
           transition={{
-            duration: 5,
-            repeat: Infinity,
-            ease: 'easeInOut',
-            delay: 3,
+            ...floatingTransitions.medium,
+            delay: 1.5,
           }}
           className="absolute bottom-40 right-1/3 text-blue-400/30 dark:text-blue-500/20"
         >
@@ -146,16 +129,14 @@ export function Hero() {
       <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
         {/* Logo and Brand */}
         <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.8, ease: 'easeOut' }}
+          {...scrollAnimations.fadeInUp}
           className="flex flex-col items-center justify-center gap-6 mb-12"
         >
           <div className="relative">
             <motion.div
               initial={{ scale: 0.8, opacity: 0 }}
               animate={{ scale: 1, opacity: 1 }}
-              transition={{ duration: 1, ease: 'easeOut', delay: 0.2 }}
+              transition={springAnimations.withDelay(0.1, 'medium')}
               className="relative z-10"
             >
               <Logo className="h-16 w-auto sm:h-20" />
@@ -166,7 +147,7 @@ export function Hero() {
             <motion.div
               initial={{ opacity: 0, scale: 0 }}
               animate={{ opacity: 1, scale: 1 }}
-              transition={{ duration: 0.6, delay: 1 }}
+              transition={springAnimations.withDelay(0.5, 'fast')}
               className="absolute -top-2 -right-2 text-orange-500"
             >
               <svg className="w-4 h-4" fill="currentColor" viewBox="0 0 24 24">
@@ -176,7 +157,7 @@ export function Hero() {
             <motion.div
               initial={{ opacity: 0, scale: 0 }}
               animate={{ opacity: 1, scale: 1 }}
-              transition={{ duration: 0.6, delay: 1.2 }}
+              transition={springAnimations.withDelay(0.6, 'fast')}
               className="absolute -bottom-1 -left-3 text-amber-500"
             >
               <svg className="w-3 h-3" fill="currentColor" viewBox="0 0 24 24">
@@ -188,7 +169,7 @@ export function Hero() {
           <motion.div
             initial={{ opacity: 0, y: 10 }}
             animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8, delay: 0.4 }}
+            transition={springAnimations.withDelay(0.2, 'medium')}
             className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-gradient-to-r from-slate-50 to-gray-50 dark:from-gray-900/50 dark:to-gray-800/50 border border-gray-200/60 dark:border-gray-700/50"
           >
             <div className="w-2 h-2 bg-gradient-to-r from-orange-500 to-red-500 rounded-full animate-pulse" />
@@ -202,7 +183,7 @@ export function Hero() {
         <motion.div
           initial={{ opacity: 0, y: 30 }}
           animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.8, delay: 0.6 }}
+          transition={{ duration: 0.4, delay: 0.2 }}
           className="mb-8 relative"
         >
           <h1 className="text-4xl sm:text-6xl lg:text-7xl font-bold tracking-tight">
@@ -248,7 +229,7 @@ export function Hero() {
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.8, delay: 0.8 }}
+          transition={springAnimations.withDelay(0.4, 'medium')}
           className="mb-12"
         >
           <p className="text-lg sm:text-xl lg:text-2xl text-gray-600 dark:text-gray-300 max-w-4xl mx-auto leading-relaxed">
@@ -274,7 +255,7 @@ export function Hero() {
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.8, delay: 1 }}
+          transition={springAnimations.withDelay(0.5, 'medium')}
           className="flex justify-center mb-6 -mr-5 text-foreground"
         >
           <GithubTrending />
@@ -283,7 +264,7 @@ export function Hero() {
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.8, delay: 1 }}
+          transition={springAnimations.withDelay(0.5, 'medium')}
           className="flex flex-col sm:flex-row gap-4 justify-center items-center mb-16"
         >
           <Button
@@ -340,7 +321,7 @@ export function Hero() {
         <motion.div
           initial={{ opacity: 0, y: 30 }}
           animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.8, delay: 1.2 }}
+          transition={springAnimations.withDelay(0.6, 'medium')}
           className="grid grid-cols-1 sm:grid-cols-3 gap-8 max-w-3xl mx-auto"
         >
           {[
@@ -388,7 +369,7 @@ export function Hero() {
               key={index}
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.6, delay: 1.4 + index * 0.1 }}
+              transition={springAnimations.withDelay(0.7 + index * 0.05, 'fast')}
               className="text-center group hover:scale-105 transition-transform duration-300"
             >
               <div className="flex items-center justify-center gap-2 mb-2">

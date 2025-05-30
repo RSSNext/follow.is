@@ -4,12 +4,13 @@ import { AnimatePresence, motion } from 'motion/react'
 import Link from 'next/link'
 import { useEffect, useState } from 'react'
 
+import { Button } from '@/components/ui/button'
 import { siteInfo } from '@/constants'
 import { useViewport } from '@/hooks/use-viewport'
+import { interactionAnimations, springAnimations } from '@/lib/animations'
 import { cn } from '@/lib/utils'
 
 import { Logo, LogoText } from './logo'
-import { Button } from './ui/button'
 import { GitHubStarsButton } from './ui/github-star-button'
 import { LiquidButton } from './ui/liquid'
 
@@ -56,7 +57,7 @@ export function Header() {
       <motion.header
         initial={{ y: -100, opacity: 0 }}
         animate={{ y: 0, opacity: 1 }}
-        transition={{ duration: 0.6, ease: 'easeOut' }}
+        transition={springAnimations.medium}
         className={cn(
           'fixed top-0 inset-x-0 z-50 transition-all duration-500',
           isScrolled
@@ -68,8 +69,8 @@ export function Header() {
           <nav className="relative flex justify-between items-center h-16 md:h-20">
             {/* Logo */}
             <motion.div
-              whileHover={{ scale: 1.05 }}
-              transition={{ duration: 0.2 }}
+              whileHover={interactionAnimations.hover}
+              transition={springAnimations.ultraFast}
               className="flex-shrink-0"
             >
               <Link
@@ -140,7 +141,7 @@ export function Header() {
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
               exit={{ opacity: 0 }}
-              transition={{ duration: 0.2 }}
+              transition={springAnimations.ultraFast}
               className="fixed inset-0 bg-black/50 backdrop-blur-sm z-40 lg:hidden"
               onClick={() => setIsMobileMenuOpen(false)}
             />
@@ -150,7 +151,7 @@ export function Header() {
               initial={{ x: '100%' }}
               animate={{ x: 0 }}
               exit={{ x: '100%' }}
-              transition={{ type: 'spring', damping: 25, stiffness: 200 }}
+              transition={springAnimations.fast}
               className="fixed top-0 right-0 h-full w-80 max-w-[85vw] bg-white dark:bg-gray-950 shadow-2xl z-50 lg:hidden"
             >
               <div className="flex flex-col h-full">

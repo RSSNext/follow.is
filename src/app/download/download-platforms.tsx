@@ -9,6 +9,7 @@ import { Card } from '@/components/ui/card'
 import { siteInfo } from '@/constants'
 import { PlatformIconMap, PlatformStoreLinkMap } from '@/constants/release'
 import { usePlatform } from '@/hooks/use-platform'
+import { scrollAnimations, springAnimations } from '@/lib/animations'
 
 const platformDetails = {
   iOS: {
@@ -46,9 +47,7 @@ export function DownloadPlatforms() {
       <div className="max-w-7xl mx-auto px-6">
         {/* Section Header */}
         <motion.div
-          initial={{ opacity: 0, y: 30 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.8 }}
+          {...scrollAnimations.fadeInUp}
           viewport={{ once: true }}
           className="text-center mb-16"
         >
@@ -78,7 +77,7 @@ export function DownloadPlatforms() {
                   key={platform}
                   initial={{ opacity: 0, y: 30 }}
                   whileInView={{ opacity: 1, y: 0 }}
-                  transition={{ duration: 0.6, delay: index * 0.1 }}
+                  transition={springAnimations.withDelay(index * 0.05, 'medium')}
                   viewport={{ once: true }}
                   whileHover={{ y: -8 }}
                   className="group relative"
@@ -88,7 +87,7 @@ export function DownloadPlatforms() {
                     <motion.div
                       initial={{ opacity: 0, scale: 0.8 }}
                       animate={{ opacity: 1, scale: 1 }}
-                      transition={{ duration: 0.5, delay: 0.2 }}
+                      transition={springAnimations.withDelay(0.1, 'fast')}
                       className="absolute -top-3 -right-3 z-10"
                     >
                       <div className="bg-gradient-to-r from-green-500 to-emerald-600 text-white px-3 py-1 rounded-full text-xs font-semibold flex items-center gap-1 shadow-lg">
@@ -177,7 +176,7 @@ export function DownloadPlatforms() {
         <motion.div
           initial={{ opacity: 0, y: 30 }}
           whileInView={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.8 }}
+          transition={springAnimations.medium}
           viewport={{ once: true }}
           className="text-center"
         >
