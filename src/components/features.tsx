@@ -1,6 +1,6 @@
 'use client'
 
-import { Download } from 'lucide-react'
+import { Bell, Crown, Download, FileText, Gem, Globe, Heart, Image as ImageIcon, Rss, Sparkles, Target, Users, Video } from 'lucide-react'
 import { motion } from 'motion/react'
 import Image from 'next/image'
 import { useRouter } from 'next/navigation'
@@ -25,9 +25,10 @@ const features = [
     gradient: 'from-indigo-500 to-purple-600',
     icon: '🎯',
     details: [
-      'Adapted 1,200 popular websites',
-      'RSS & Social Media',
-      'RSSHub Integration',
+      { text: 'Adapted 1,200 popular websites', icon: Globe },
+      { text: 'RSS & Social Media', icon: Rss },
+      { text: 'RSSHub Integration', icon: Target },
+      { text: 'Content Insights', icon: Sparkles },
     ],
   },
   {
@@ -38,10 +39,10 @@ const features = [
     gradient: 'from-emerald-500 to-cyan-600',
     icon: '⚡',
     details: [
-      'Articles & Blogs',
-      'Videos & Podcasts',
-      'Images & Media',
-      'Live Streams',
+      { text: 'Articles & Blogs', icon: FileText },
+      { text: 'Videos & Podcasts', icon: Video },
+      { text: 'Images & Media', icon: ImageIcon },
+      { text: 'Notifications', icon: Bell },
     ],
   },
   {
@@ -53,10 +54,10 @@ const features = [
     gradient: 'from-violet-500 to-pink-600',
     icon: '🤖',
     details: [
-      'Auto Summaries',
-      'Real-time Translation',
-      'Smart Categories',
-      'Content Insights',
+      { text: 'Auto Summaries', icon: FileText },
+      { text: 'Real-time Translation', icon: Globe },
+      { text: 'Smart Categories', icon: Target },
+      { text: 'Content Insights', icon: Sparkles },
     ],
   },
   {
@@ -68,10 +69,10 @@ const features = [
     gradient: 'from-orange-500 to-red-600',
     icon: '💎',
     details: [
-      'Tip Creators',
-      'Earn Rewards',
-      'Premium Features',
-      'Community Governance',
+      { text: 'Tip Creators', icon: Heart },
+      { text: 'Earn Rewards', icon: Gem },
+      { text: 'Premium Features', icon: Crown },
+      { text: 'Community Governance', icon: Users },
     ],
   },
   {
@@ -82,10 +83,10 @@ const features = [
     gradient: 'from-blue-500 to-indigo-600',
     icon: '🌟',
     details: [
-      'Open Source',
-      'Community Lists',
-      'Shared Collections',
-      'Collaborative Features',
+      { text: 'Open Source', icon: Globe },
+      { text: 'Community Lists', icon: Users },
+      { text: 'Shared Collections', icon: Heart },
+      { text: 'Collaborative Features', icon: Sparkles },
     ],
   },
 ]
@@ -176,7 +177,7 @@ export function Features() {
                       </div>
                       <div>
                         <h4 className="font-semibold text-gray-900 dark:text-white text-lg">
-                          {feature.details[0]}
+                          {feature.details[0].text}
                         </h4>
                       </div>
                     </div>
@@ -199,7 +200,7 @@ export function Features() {
                           />
                           <div>
                             <span className="font-medium text-gray-800 dark:text-gray-200 text-sm group-hover/small-card:text-gray-900 dark:group-hover/small-card:text-white transition-colors duration-200">
-                              {detail}
+                              {detail.text}
                             </span>
                           </div>
                         </div>
@@ -219,23 +220,14 @@ export function Features() {
                           <div
                             className={`w-8 h-8 rounded-lg bg-gradient-to-br ${feature.gradient} flex items-center justify-center`}
                           >
-                            <svg
-                              className="w-4 h-4 text-white"
-                              fill="none"
-                              viewBox="0 0 24 24"
-                              stroke="currentColor"
-                            >
-                              <path
-                                strokeLinecap="round"
-                                strokeLinejoin="round"
-                                strokeWidth={2}
-                                d="M13 10V3L4 14h7v7l9-11h-7z"
-                              />
-                            </svg>
+                            {(() => {
+                              const IconComponent = feature.details[3].icon
+                              return <IconComponent className="w-4 h-4 text-white" />
+                            })()}
                           </div>
                           <div>
                             <span className="font-medium text-gray-800 dark:text-gray-200 group-hover/dashed:text-gray-900 dark:group-hover/dashed:text-white transition-colors duration-200">
-                              {feature.details[3]}
+                              {feature.details[3].text}
                             </span>
                           </div>
                         </div>

@@ -24,12 +24,12 @@ const faqs = [
     id: 'what-is-power',
     question: 'What is $POWER?',
     answer:
-      '$POWER is our native token that enables tipping creators, unlocking premium features, and participating in community governance.',
+      '$POWER is our native token that enables tipping creators, and participating in community governance.',
   },
   {
     id: 'is-it-free',
     question: 'Is it free to use?',
-    answer: `Yes, ${APP_NAME} is completely free and open-source. Premium features are available through $POWER tokens.`,
+    answer: `Yes, ${APP_NAME} is completely free and open-source.`,
   },
   {
     id: 'platforms',
@@ -117,15 +117,15 @@ export function FAQ() {
             {' '}
             <LogoText className="h-[1.2ch] -translate-y-0.5 w-auto inline-block" />
             .
-            Can't find the answer you're looking for?
-            <span className="block mt-2">
+            {/* Can't find the answer you're looking for? */}
+            {/* <span className="block mt-2">
               <a
                 href="mailto:support@follow.is"
                 className="text-accent hover:text-accent/80 font-medium underline underline-offset-4 transition-colors"
               >
                 Reach out to our support team
               </a>
-            </span>
+            </span> */}
           </p>
         </motion.div>
 
@@ -232,7 +232,7 @@ export function FAQ() {
                     </svg>
                   </a>
                 </Button>
-
+                {/*
                 <Button
                   variant="glass"
                   size="lg"
@@ -258,7 +258,7 @@ export function FAQ() {
                     </svg>
                     Email Support
                   </a>
-                </Button>
+                </Button> */}
               </div>
             </div>
           </div>
