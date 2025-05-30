@@ -121,7 +121,7 @@ export function Header() {
               >
                 <Link
                   href="/download"
-                  className="relative z-10 font-medium px-0.5 sm:px-1"
+                  className="relative z-10 font-semibold px-0.5 sm:px-1"
                 >
                   Download
                 </Link>
