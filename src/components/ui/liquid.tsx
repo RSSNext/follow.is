@@ -14,7 +14,7 @@ const buttonVariants = cva(
     variants: {
       variant: {
         default:
-          'text-primary hover:text-background !bg-accent [--liquid-button-color:hsl(var(--foreground))]',
+          'text-white hover:text-black !bg-accent [--liquid-button-color:#eee]',
         outline:
           'border !bg-background dark:!bg-input/30 dark:border-input [--liquid-button-color:#ff5c00]',
       },

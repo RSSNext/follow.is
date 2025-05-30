@@ -2,7 +2,6 @@
 
 import { CheckCircle, Download, ExternalLink, Globe } from 'lucide-react'
 import { motion } from 'motion/react'
-import Image from 'next/image'
 import Link from 'next/link'
 
 import { Button } from '@/components/ui/button'
@@ -101,7 +100,7 @@ export function DownloadPlatforms() {
 
                   <Card className={`relative overflow-hidden border-0 shadow-lg hover:shadow-2xl transition-all duration-300 bg-white dark:bg-gray-800 ${
                     isRecommended
-                      ? 'ring-2 ring-green-500 ring-opacity-50 shadow-green-500/20'
+                      ? 'ring-2 ring-green-500 shadow-green-500/20'
                       : ''
                   }`}
                   >
@@ -134,25 +133,26 @@ export function DownloadPlatforms() {
 
                       {/* Download Button */}
                       {storeInfo ? (
-                        <Link
-                          href={storeInfo.link}
-                          target="_blank"
-                          rel="noopener noreferrer"
-                          className="block"
+                        <Button
+                          size="lg"
+                          className="w-full bg-gradient-to-r from-blue-500 to-indigo-600 hover:from-blue-600 hover:to-indigo-700 text-white border-0 px-6 py-3 text-base font-semibold rounded-xl shadow-lg hover:shadow-xl transition-all duration-300"
+                          asChild
                         >
-                          <div className="relative group/btn">
-                            <Image
-                              src={storeInfo.image}
-                              alt={`Download on ${storeInfo.name}`}
-                              className="h-12 w-auto mx-auto group-hover:scale-105 transition-transform duration-300"
-                              priority
-                            />
-                          </div>
-                        </Link>
+                          <Link
+                            href={storeInfo.link}
+                            target="_blank"
+                            rel="noopener noreferrer"
+                          >
+                            <Download className="size-4 mr-2" />
+                            Download from
+                            {' '}
+                            {storeInfo.name}
+                          </Link>
+                        </Button>
                       ) : (
                         <Button
-                          variant="outline"
-                          className="w-full px-6 py-3 text-base font-semibold rounded-xl border-2 hover:bg-gray-100 dark:hover:bg-gray-700 transition-all duration-300"
+                          size="lg"
+                          className="w-full bg-gradient-to-r from-blue-500 to-indigo-600 hover:from-blue-600 hover:to-indigo-700 text-white border-0 px-6 py-3 text-base font-semibold rounded-xl shadow-lg hover:shadow-xl transition-all duration-300"
                           asChild
                         >
                           <Link

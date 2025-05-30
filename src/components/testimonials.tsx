@@ -296,8 +296,8 @@ export function Testimonials() {
         </Marquee>
       </div>
 
-      <Container>
-        {/* Bottom Stats */}
+      {/* <Container>
+
         <motion.div
           initial={{ opacity: 0, y: 30 }}
           whileInView={{ opacity: 1, y: 0 }}
@@ -342,7 +342,7 @@ export function Testimonials() {
             </motion.div>
           ))}
         </motion.div>
-      </Container>
+      </Container> */}
     </section>
   )
 }

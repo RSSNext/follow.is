@@ -264,7 +264,10 @@ export function Hero() {
               </svg>
               noise-free
             </span>
-            . Share lists, explore collections, and enjoy distraction-free
+            .
+
+            <br />
+            Share lists, explore collections, and enjoy distraction-free
             browsing.
           </p>
         </motion.div>
@@ -272,7 +275,7 @@ export function Hero() {
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8, delay: 1 }}
-          className="flex justify-center mb-6 -mr-5"
+          className="flex justify-center mb-6 -mr-5 text-foreground"
         >
           <GithubTrending />
         </motion.div>
@@ -319,7 +322,7 @@ export function Hero() {
           <Button
             variant="outline"
             size="lg"
-            className="px-8 py-6 text-lg font-semibold rounded-lg border-2 hover:bg-gray-100 dark:hover:bg-gray-800 transition-all duration-300"
+            className="px-8 py-6 text-lg font-semibold rounded-lg border hover:bg-gray-100 dark:hover:bg-gray-800 transition-all duration-300"
             asChild
           >
             <Link
