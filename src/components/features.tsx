@@ -139,8 +139,38 @@ export function Features() {
               } lg:flex items-center gap-12`}
             >
               {/* Content Side */}
-              <div className="lg:w-1/2 space-y-6">
-                <div className="flex items-center gap-4">
+              <div className="lg:w-1/2 space-y-6 text-center lg:text-left">
+                {/* Mobile Layout - Badge above title */}
+                <div className="lg:hidden space-y-4">
+                  {/* Badge */}
+                  <div className="flex justify-center">
+                    <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-gradient-to-r from-gray-50 to-gray-100 dark:from-gray-800 dark:to-gray-700 border border-gray-200/50 dark:border-gray-600/50">
+                      <div
+                        className={`w-2 h-2 rounded-full bg-gradient-to-r ${feature.gradient}`}
+                      />
+                      <span className="text-xs font-medium text-gray-600 dark:text-gray-400">
+                        Feature {String(index + 1).padStart(2, '0')}
+                      </span>
+                    </div>
+                  </div>
+
+                  {/* Icon and Title */}
+                  <div className="flex flex-col items-center gap-4">
+                    <div
+                      className={`flex-shrink-0 w-14 h-14 rounded-2xl bg-gradient-to-br ${feature.gradient} flex items-center justify-center text-white text-2xl shadow-lg`}
+                    >
+                      {feature.icon}
+                    </div>
+                    <div>
+                      <h3 className="text-3xl lg:text-4xl font-bold text-gray-900 dark:text-white mb-4">
+                        {feature.title}
+                      </h3>
+                    </div>
+                  </div>
+                </div>
+
+                {/* Desktop Layout - Badge and icon side by side */}
+                <div className="hidden lg:flex items-center gap-4 justify-center lg:justify-start">
                   <div
                     className={`flex-shrink-0 w-14 h-14 rounded-2xl bg-gradient-to-br ${feature.gradient} flex items-center justify-center text-white text-2xl shadow-lg`}
                   >
@@ -157,7 +187,8 @@ export function Features() {
                 </div>
 
                 <div>
-                  <h3 className="text-3xl lg:text-4xl font-bold text-gray-900 dark:text-white mb-4">
+                  {/* Title for desktop only (mobile has it above) */}
+                  <h3 className="hidden lg:block text-3xl lg:text-4xl font-bold text-gray-900 dark:text-white mb-4">
                     {feature.title}
                   </h3>
                   <p className="text-lg text-gray-600 dark:text-gray-300 leading-relaxed mb-6">
