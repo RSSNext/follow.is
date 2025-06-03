@@ -1,7 +1,11 @@
 'use client'
 
 import { Star } from 'lucide-react'
-import type { HTMLMotionProps, SpringOptions, UseInViewOptions } from 'motion/react'
+import type {
+  HTMLMotionProps,
+  SpringOptions,
+  UseInViewOptions,
+} from 'motion/react'
 import {
   AnimatePresence,
   motion,
@@ -10,7 +14,9 @@ import {
   useSpring,
 } from 'motion/react'
 import * as React from 'react'
+import useSWR from 'swr'
 
+import { getGithubStar } from '@/actions/github-star'
 import { cn } from '@/lib/utils'
 
 import { SlidingNumber } from './sliding-number'
@@ -87,27 +93,19 @@ function GitHubStarsButton({
   const motionNumberRef = React.useRef(0)
   const isCompletedRef = React.useRef(false)
   const [, forceRender] = React.useReducer(x => x + 1, 0)
-  const [stars, setStars] = React.useState(0)
+
   const [isCompleted, setIsCompleted] = React.useState(false)
   const [displayParticles, setDisplayParticles] = React.useState(false)
-  const [isLoading, setIsLoading] = React.useState(true)
 
   const repoUrl = React.useMemo(
     () => `https://github.com/${username}/${repo}`,
     [username, repo],
   )
 
-  React.useEffect(() => {
-    fetch(`https://api.github.com/repos/${username}/${repo}`)
-      .then(response => response.json())
-      .then((data) => {
-        if (data && typeof data.stargazers_count === 'number') {
-          setStars(data.stargazers_count)
-        }
-      })
-      .catch(console.error)
-      .finally(() => setIsLoading(false))
-  }, [username, repo])
+  const { data: _stars, isLoading } = useSWR('github-star', () =>
+    getGithubStar(username, repo))
+
+  const stars = _stars ?? 0
 
   const handleDisplayParticles = React.useCallback(() => {
     setDisplayParticles(true)
@@ -213,7 +211,9 @@ function GitHubStarsButton({
           className="absolute top-0 left-0 text-yellow-500 fill-yellow-500"
           aria-hidden="true"
           style={{
-            clipPath: `inset(${100 - (isCompleted ? fillPercentage : fillPercentage - 10)}% 0 0 0)`,
+            clipPath: `inset(${
+              100 - (isCompleted ? fillPercentage : fillPercentage - 10)
+            }% 0 0 0)`,
           }}
         />
         <AnimatePresence>
