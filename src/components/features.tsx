@@ -1,6 +1,20 @@
 'use client'
 
-import { Bell, Crown, Download, FileText, Gem, Globe, Heart, Image as ImageIcon, Rss, Sparkles, Target, Users, Video } from 'lucide-react'
+import {
+  Bell,
+  Crown,
+  Download,
+  FileText,
+  Gem,
+  Globe,
+  Heart,
+  Image as ImageIcon,
+  Rss,
+  Sparkles,
+  Target,
+  Users,
+  Video,
+} from 'lucide-react'
 import { motion } from 'motion/react'
 import Image from 'next/image'
 import { useRouter } from 'next/navigation'
@@ -253,7 +267,9 @@ export function Features() {
                           >
                             {(() => {
                               const IconComponent = feature.details[3].icon
-                              return <IconComponent className="w-4 h-4 text-white" />
+                              return (
+                                <IconComponent className="w-4 h-4 text-white" />
+                              )
                             })()}
                           </div>
                           <div>
@@ -280,9 +296,6 @@ export function Features() {
                       className="object-cover group-hover/image:scale-105 transition-transform duration-700"
                       priority={index < 2}
                     />
-
-                    {/* Overlay */}
-                    <div className="absolute inset-0 bg-gradient-to-t from-black/20 via-transparent to-transparent opacity-0 group-hover/image:opacity-100 transition-opacity duration-300" />
                   </div>
                 </div>
               </div>
