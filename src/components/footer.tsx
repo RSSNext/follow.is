@@ -21,7 +21,7 @@ const footerSections = [
       { name: 'Discord', href: siteInfo.discordLink },
       { name: 'GitHub', href: siteInfo.githubLink },
       { name: 'Twitter', href: siteInfo.xLink },
-      { name: 'Product Hunt', href: siteInfo.productHuntLink },
+      // { name: 'Product Hunt', href: siteInfo.productHuntLink },
     ],
   },
 
