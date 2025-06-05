@@ -1,5 +1,6 @@
 import './src/env'
 
+import { codeInspectorPlugin } from 'code-inspector-plugin'
 import type { NextConfig } from 'next'
 
 const nextConfig: NextConfig = {
@@ -11,6 +12,15 @@ const nextConfig: NextConfig = {
         port: '',
       },
     ],
+  },
+  webpack: (config) => {
+    config.plugins.push(
+      codeInspectorPlugin({
+        bundler: 'webpack',
+        hotKeys: ['altKey'],
+      }),
+    )
+    return config
   },
 }
 
