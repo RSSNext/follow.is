@@ -4,6 +4,7 @@ import { OpenPanelComponent } from '@openpanel/nextjs'
 
 import { env } from '@/env'
 import { useSession } from '@/lib/auth'
+import { EventProvider } from '@/providers/event-provider'
 
 function OpenPanel() {
   const { data } = useSession()
@@ -26,6 +27,7 @@ export function Providers({ children }: { children: React.ReactNode }) {
   return (
     <>
       <OpenPanel />
+      <EventProvider />
       {children}
     </>
   )
