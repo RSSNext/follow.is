@@ -13,7 +13,7 @@ import { Logo } from './logo'
 
 export function Hero() {
   return (
-    <section className="relative min-h-screen flex items-center justify-center overflow-hidden">
+    <section className="relative min-h-[max(100svh,1000px)] flex items-center justify-center overflow-hidden">
       {/* Background Effects */}
       <div className="absolute inset-0 bg-gradient-to-b from-white via-gray-50/80 to-slate-100/60 dark:from-gray-950 dark:via-gray-900 dark:to-gray-800" />
       <div className="absolute inset-0 bg-[radial-gradient(circle_at_50%_120%,rgba(99,102,241,0.15),rgba(255,255,255,0))] dark:bg-[radial-gradient(circle_at_50%_120%,rgba(99,102,241,0.08),rgba(255,255,255,0))]" />
