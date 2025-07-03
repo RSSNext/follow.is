@@ -12,8 +12,8 @@ export const APP_NAME = 'Folo'
 export const siteInfo = {
   title: APP_NAME,
   description: 'Next-Gen Information Browser',
-  webUrl: 'https://follow.is',
-  appUrl: 'https://app.follow.is',
+  webUrl: 'https://folo.is',
+  appUrl: 'https://app.folo.is',
   githubLink: 'https://github.com/RSSNext/Folo',
   githubApiLink: 'https://ungh.cc/repos/RSSNext/Folo',
   xLink: 'https://x.com/follow_app_',

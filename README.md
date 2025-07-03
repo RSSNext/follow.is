@@ -1,4 +1,4 @@
-# follow.is
+# folo.is
 
 This repo is Folo official website source code.
 
