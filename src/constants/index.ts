@@ -16,7 +16,7 @@ export const siteInfo = {
   appUrl: 'https://app.folo.is',
   githubLink: 'https://github.com/RSSNext/Folo',
   githubApiLink: 'https://ungh.cc/repos/RSSNext/Folo',
-  xLink: 'https://x.com/follow_app_',
+  xLink: 'https://x.com/folo_is',
   discordLink: 'https://discord.gg/followapp',
   productHuntLink: 'https://www.producthunt.com/posts/follow-5',
   releaseLink: 'https://github.com/RSSNext/Folo/releases/latest',
