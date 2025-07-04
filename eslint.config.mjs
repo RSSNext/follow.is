@@ -26,6 +26,7 @@ export default defineConfig(
       'tailwindcss/no-contradicting-classname': 'off',
       'tailwindcss/migration-from-tailwind-2': 'off',
       'unicorn/filename-case': 0,
+      '@typescript-eslint/no-empty-object-type': 0,
     },
   },
 )
