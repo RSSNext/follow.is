@@ -3,6 +3,7 @@
 import { Star } from 'lucide-react'
 import type {
   HTMLMotionProps,
+  MotionProps,
   SpringOptions,
   UseInViewOptions,
 } from 'motion/react'
@@ -14,9 +15,7 @@ import {
   useSpring,
 } from 'motion/react'
 import * as React from 'react'
-import useSWR from 'swr'
 
-import { getGithubStar } from '@/actions/github-star'
 import { cn } from '@/lib/utils'
 
 import { SlidingNumber } from './sliding-number'
@@ -62,9 +61,9 @@ const animations = {
     },
     transition: { duration: 0.5, delay: index * 0.03, ease: 'easeOut' },
   }),
-}
+} satisfies Record<string, MotionProps | ((index: number) => MotionProps)>
 
-type GitHubStarsButtonProps = HTMLMotionProps<'a'> & {
+export type GitHubStarsButtonProps = HTMLMotionProps<'a'> & {
   username: string
   repo: string
   transition?: SpringOptions
@@ -73,9 +72,10 @@ type GitHubStarsButtonProps = HTMLMotionProps<'a'> & {
   inViewMargin?: UseInViewOptions['margin']
   inViewOnce?: boolean
   showText?: boolean
+  stars: number
 }
 
-function GitHubStarsButton({
+export function GitHubStarsButton({
   ref,
   username,
   repo,
@@ -86,6 +86,7 @@ function GitHubStarsButton({
   inViewMargin = '0px',
   showText = true,
   className,
+  stars,
   ...props
 }: GitHubStarsButtonProps) {
   const motionVal = useMotionValue(0)
@@ -96,16 +97,6 @@ function GitHubStarsButton({
 
   const [isCompleted, setIsCompleted] = React.useState(false)
   const [displayParticles, setDisplayParticles] = React.useState(false)
-
-  const repoUrl = React.useMemo(
-    () => `https://github.com/${username}/${repo}`,
-    [username, repo],
-  )
-
-  const { data: _stars, isLoading } = useSWR('github-star', () =>
-    getGithubStar(username, repo))
-
-  const stars = _stars ?? 0
 
   const handleDisplayParticles = React.useCallback(() => {
     setDisplayParticles(true)
@@ -170,6 +161,11 @@ function GitHubStarsButton({
     </span>
   )
 
+  const repoUrl = React.useMemo(
+    () => `https://github.com/${username}/${repo}`,
+    [username, repo],
+  )
+
   const handleClick = React.useCallback(
     (e: React.MouseEvent<HTMLAnchorElement>) => {
       e.preventDefault()
@@ -178,9 +174,6 @@ function GitHubStarsButton({
     },
     [handleDisplayParticles, repoUrl],
   )
-
-  if (isLoading)
-    return null
 
   return (
     <motion.a
@@ -260,5 +253,3 @@ function GitHubStarsButton({
     </motion.a>
   )
 }
-
-export { GitHubStarsButton, type GitHubStarsButtonProps }
