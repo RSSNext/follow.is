@@ -23,9 +23,16 @@ export default async function RootLayout({
     headers: {
       Authorization: `Bearer ${process.env.GITHUB_TOKEN}`,
     },
+
   })
     .then(res => res.json())
-    .then(data => data.stargazers_count)
+    .then((data) => {
+      return data.stargazers_count
+    })
+    .catch((e) => {
+      console.error(e)
+      return -1
+    })
 
   return (
     <html lang="en" className="font-sans antialiased scroll-smooth h-full">
@@ -49,11 +56,13 @@ export default async function RootLayout({
         />
       </head>
       <Providers>
-        <body className="h-full">
-          <Header />
-          <GitHubStarProvider stars={stars}>{children}</GitHubStarProvider>
-          <Footer />
-        </body>
+        <GitHubStarProvider stars={stars}>
+          <body className="h-full">
+            <Header />
+            {children}
+            <Footer />
+          </body>
+        </GitHubStarProvider>
       </Providers>
     </html>
   )

@@ -238,18 +238,20 @@ export function GitHubStarsButton({
           )}
         </AnimatePresence>
       </div>
-      <span className="relative inline-flex">
-        {renderNumberSegments(
-          ghostFormattedNumber.number,
-          ghostFormattedNumber.unit,
-          true,
-        )}
-        {renderNumberSegments(
-          formattedResult.number,
-          formattedResult.unit,
-          false,
-        )}
-      </span>
+      {stars > 0 && (
+        <span className="relative inline-flex">
+          {renderNumberSegments(
+            ghostFormattedNumber.number,
+            ghostFormattedNumber.unit,
+            true,
+          )}
+          {renderNumberSegments(
+            formattedResult.number,
+            formattedResult.unit,
+            false,
+          )}
+        </span>
+      )}
     </motion.a>
   )
 }
