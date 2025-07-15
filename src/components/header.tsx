@@ -2,10 +2,11 @@
 
 import { AnimatePresence, motion } from 'motion/react'
 import Link from 'next/link'
-import { useEffect, useState } from 'react'
+import { use, useEffect, useState } from 'react'
 
 import { Button } from '@/components/ui/button'
 import { siteInfo } from '@/constants'
+import { GitHubStarContext } from '@/contexts/GitHubStarContext'
 import { useViewport } from '@/hooks/use-viewport'
 import { interactionAnimations, springAnimations } from '@/lib/animations'
 import { cn } from '@/lib/utils'
@@ -51,6 +52,8 @@ export function Header() {
   }, [isMobileMenuOpen])
 
   const md = useViewport(state => state.md)
+
+  const stars = use (GitHubStarContext)
 
   return (
     <>
@@ -112,6 +115,7 @@ export function Header() {
                 username="RSSNext"
                 repo="Folo"
                 showText={md}
+                stars={stars}
               />
 
               {/* Download Button - Responsive sizing */}
@@ -214,6 +218,7 @@ export function Header() {
                     username="RSSNext"
                     repo="Folo"
                     showText={true}
+                    stars={stars}
                   />
 
                   {/* Download Button */}

@@ -5,7 +5,7 @@ import Link from 'next/link'
 
 import { APP_NAME, siteInfo } from '@/constants'
 
-import { Logo } from './logo'
+import { Logo, LogoText } from './logo'
 
 const footerSections = [
   {
@@ -85,7 +85,7 @@ export function Footer() {
             >
               <div className="flex items-center gap-3 mb-6">
                 <Logo className="h-10 w-auto" />
-                <span className="text-xl font-bold">{APP_NAME}</span>
+                <LogoText className="h-5 w-auto" />
               </div>
 
               <p className="text-gray-300 leading-relaxed mb-6 max-w-md">

@@ -11,7 +11,7 @@ export default defineConfig(
     tailwindCSS: {
       order: false,
     },
-    ignores: ['src/lib/hono.ts'],
+
   },
   {
     settings: {
@@ -19,11 +19,14 @@ export default defineConfig(
         config: path.join(import.meta.dirname, './src/app/globals.css'),
       },
     },
+
   },
   {
     rules: {
       'tailwindcss/no-contradicting-classname': 'off',
       'tailwindcss/migration-from-tailwind-2': 'off',
+      'unicorn/filename-case': 0,
+      '@typescript-eslint/no-empty-object-type': 0,
     },
   },
 )
