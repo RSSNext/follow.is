@@ -1,11 +1,17 @@
 'use server'
 
-export async function getGithubStar(username: string, repo: string) {
-  const response = await fetch(`https://api.github.com/repos/${username}/${repo}`)
-
-  const data = await response.json()
-  if (data && typeof data.stargazers_count === 'number') {
-    return data.stargazers_count
-  }
-  return 0
+export async function getGithubStar() {
+  return await fetch(`https://api.github.com/repos/RSSNext/Folo`, {
+    headers: {
+      Authorization: `Bearer ${process.env.GITHUB_TOKEN}`,
+    },
+  })
+    .then(res => res.json())
+    .then((data) => {
+      return data.stargazers_count as number
+    })
+    .catch((e) => {
+      console.error(e)
+      return -1
+    })
 }

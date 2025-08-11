@@ -5,7 +5,6 @@ import type { Metadata } from 'next'
 import { Footer } from '@/components/footer'
 import { Header } from '@/components/header'
 import { siteInfo } from '@/constants'
-import { GitHubStarProvider } from '@/contexts/GitHubStarContext'
 
 import { Providers } from './providers'
 
@@ -19,21 +18,6 @@ export default async function RootLayout({
 }: Readonly<{
   children: React.ReactNode
 }>) {
-  const stars = await fetch(`https://api.github.com/repos/RSSNext/Folo`, {
-    headers: {
-      Authorization: `Bearer ${process.env.GITHUB_TOKEN}`,
-    },
-
-  })
-    .then(res => res.json())
-    .then((data) => {
-      return data.stargazers_count
-    })
-    .catch((e) => {
-      console.error(e)
-      return -1
-    })
-
   return (
     <html lang="en" className="font-sans antialiased scroll-smooth h-full">
       <head>
@@ -56,13 +40,11 @@ export default async function RootLayout({
         />
       </head>
       <Providers>
-        <GitHubStarProvider stars={stars}>
-          <body className="h-full">
-            <Header />
-            {children}
-            <Footer />
-          </body>
-        </GitHubStarProvider>
+        <body className="h-full">
+          <Header />
+          {children}
+          <Footer />
+        </body>
       </Providers>
     </html>
   )
