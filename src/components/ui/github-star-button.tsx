@@ -1,3 +1,4 @@
+/* eslint-disable @eslint-react/no-array-index-key */
 'use client'
 
 import { Star } from 'lucide-react'
@@ -75,11 +76,12 @@ export type GitHubStarsButtonProps = HTMLMotionProps<'a'> & {
   stars: number
 }
 
+const defaultTransition = { stiffness: 90, damping: 50 }
 export function GitHubStarsButton({
   ref,
   username,
   repo,
-  transition = { stiffness: 90, damping: 50 },
+  transition,
   formatted = false,
   inView = false,
   inViewOnce = true,
@@ -90,7 +92,7 @@ export function GitHubStarsButton({
   ...props
 }: GitHubStarsButtonProps) {
   const motionVal = useMotionValue(0)
-  const springVal = useSpring(motionVal, transition)
+  const springVal = useSpring(motionVal, transition ?? defaultTransition)
   const motionNumberRef = React.useRef(0)
   const isCompletedRef = React.useRef(false)
   const [, forceRender] = React.useReducer(x => x + 1, 0)

@@ -2,11 +2,12 @@
 
 import { AnimatePresence, motion } from 'motion/react'
 import Link from 'next/link'
-import { use, useEffect, useState } from 'react'
+import { useEffect, useState } from 'react'
+import useSWR from 'swr'
 
+import { getGithubStar } from '@/actions/github-star'
 import { Button } from '@/components/ui/button'
 import { siteInfo } from '@/constants'
-import { GitHubStarContext } from '@/contexts/GitHubStarContext'
 import { useViewport } from '@/hooks/use-viewport'
 import { interactionAnimations, springAnimations } from '@/lib/animations'
 import { cn } from '@/lib/utils'
@@ -53,7 +54,7 @@ export function Header() {
 
   const md = useViewport(state => state.md)
 
-  const stars = use (GitHubStarContext)
+  const { data: stars } = useSWR('/api/github-star', getGithubStar)
 
   return (
     <>
@@ -114,8 +115,8 @@ export function Header() {
                 className="h-8 sm:h-9 md:h-10  rounded-lg"
                 username="RSSNext"
                 repo="Folo"
+                stars={stars ?? 0}
                 showText={md}
-                stars={stars}
               />
 
               {/* Download Button - Responsive sizing */}
@@ -218,7 +219,7 @@ export function Header() {
                     username="RSSNext"
                     repo="Folo"
                     showText={true}
-                    stars={stars}
+                    stars={stars ?? 0}
                   />
 
                   {/* Download Button */}
