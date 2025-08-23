@@ -1,4 +1,4 @@
-@import 'tailwindcss';
+@import "tailwindcss";
 @plugin '@egoist/tailwindcss-icons' {
   scale: 1.5;
 }
@@ -6,9 +6,9 @@
 @plugin 'tailwindcss-animate';
 
 @theme {
-  --font-sans: var(--font-geist-sans), 'SF Pro Display', -apple-system,
-    BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen', 'Ubuntu', 'Cantarell',
-    'Open Sans', 'Helvetica Neue', sans-serif;
+  --font-sans:
+    var(--font-geist-sans), "SF Pro Display", -apple-system, BlinkMacSystemFont, "Segoe UI",
+    "Roboto", "Oxygen", "Ubuntu", "Cantarell", "Open Sans", "Helvetica Neue", sans-serif;
 
   --radius-lg: var(--radius);
   --radius-md: calc(var(--radius) - 2px);
@@ -31,10 +31,14 @@
 
   @keyframes aurora {
     from {
-      background-position: 50% 50%, 50% 50%;
+      background-position:
+        50% 50%,
+        50% 50%;
     }
     to {
-      background-position: 350% 50%, 350% 50%;
+      background-position:
+        350% 50%,
+        350% 50%;
     }
   }
   @keyframes accordion-down {

@@ -3,12 +3,7 @@ export function Logo({
   ...props
 }: React.SVGProps<SVGSVGElement> & { ref?: React.RefObject<SVGSVGElement> }) {
   return (
-    <svg
-      xmlns="http://www.w3.org/2000/svg"
-      viewBox="0 0 24 24"
-      ref={ref}
-      {...props}
-    >
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" ref={ref} {...props}>
       <title>Folo</title>
       <path
         fill="#ff5c00"
@@ -23,7 +18,7 @@ export function Logo({
 }
 
 export function LogoText({
-  color = 'currentColor',
+  color = "currentColor",
   ...props
 }: React.SVGProps<SVGSVGElement> & { color?: string }) {
   return (

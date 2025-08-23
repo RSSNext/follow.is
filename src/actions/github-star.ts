@@ -1,4 +1,4 @@
-'use server'
+"use server"
 
 export async function getGithubStar() {
   return await fetch(`https://api.github.com/repos/RSSNext/Folo`, {
@@ -6,7 +6,7 @@ export async function getGithubStar() {
       Authorization: `Bearer ${process.env.GITHUB_TOKEN}`,
     },
   })
-    .then(res => res.json())
+    .then((res) => res.json())
     .then((data) => {
       return data.stargazers_count as number
     })

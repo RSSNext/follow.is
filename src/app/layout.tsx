@@ -1,13 +1,13 @@
-import './globals.css'
+import "./globals.css"
 
-import { GeistSans } from 'geist/font/sans'
-import type { Metadata } from 'next/types'
+import { GeistSans } from "geist/font/sans"
+import type { Metadata } from "next/types"
 
-import { Footer } from '@/components/footer'
-import { Header } from '@/components/header'
-import { siteInfo } from '@/constants'
+import { Footer } from "@/components/footer"
+import { Header } from "@/components/header"
+import { siteInfo } from "@/constants"
 
-import { Providers } from './providers'
+import { Providers } from "./providers"
 
 export const metadata: Metadata = {
   title: siteInfo.title,
@@ -20,14 +20,11 @@ export default async function RootLayout({
   children: React.ReactNode
 }>) {
   return (
-    <html lang="en" className={`${GeistSans.variable} font-sans antialiased scroll-smooth h-full`}>
+    <html lang="en" className={`${GeistSans.variable} h-full scroll-smooth font-sans antialiased`}>
       <head>
         <meta name="apple-itunes-app" content="app-id=6739802604" />
 
-        <script
-          async
-          src="https://www.googletagmanager.com/gtag/js?id=G-DZMBZBW3EC"
-        />
+        <script async src="https://www.googletagmanager.com/gtag/js?id=G-DZMBZBW3EC" />
         <script
           dangerouslySetInnerHTML={{
             __html: `

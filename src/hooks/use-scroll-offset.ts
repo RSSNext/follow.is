@@ -1,4 +1,4 @@
-import * as React from 'react'
+import * as React from "react"
 
 export function useScrollOffset() {
   const [scrollOffset, setScrollOffset] = React.useState(0)
@@ -6,8 +6,8 @@ export function useScrollOffset() {
     const handleScroll = () => {
       setScrollOffset(window.scrollY)
     }
-    window.addEventListener('scroll', handleScroll)
-    return () => window.removeEventListener('scroll', handleScroll)
+    window.addEventListener("scroll", handleScroll)
+    return () => window.removeEventListener("scroll", handleScroll)
   }, [])
   return scrollOffset
 }

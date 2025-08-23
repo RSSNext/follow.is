@@ -1,47 +1,46 @@
-'use client'
+"use client"
 
-import { motion } from 'motion/react'
+import { motion } from "motion/react"
 
 import {
   Accordion,
   AccordionContent,
   AccordionItem,
   AccordionTrigger,
-} from '@/components/ui/accordion'
-import { Button } from '@/components/ui/button'
-import { APP_NAME } from '@/constants'
-import { springAnimations } from '@/lib/animations'
+} from "@/components/ui/accordion"
+import { Button } from "@/components/ui/button"
+import { APP_NAME } from "@/constants"
+import { springAnimations } from "@/lib/animations"
 
-import { LogoText } from './logo'
+import { LogoText } from "./logo"
 
 const faqs = [
   {
-    id: 'what-is-folo',
+    id: "what-is-folo",
     question: `What is ${APP_NAME}?`,
     answer: `${APP_NAME} is a next-generation information browser that aggregates content from multiple sources into a single, noise-free timeline with AI-powered features.`,
   },
   {
-    id: 'what-is-power',
-    question: 'What is $POWER?',
+    id: "what-is-power",
+    question: "What is $POWER?",
     answer:
-      '$POWER is our native token that enables tipping creators, and participating in community governance.',
+      "$POWER is our native token that enables tipping creators, and participating in community governance.",
   },
   {
-    id: 'is-it-free',
-    question: 'Is it free to use?',
+    id: "is-it-free",
+    question: "Is it free to use?",
     answer: `Yes, ${APP_NAME} is completely free and open-source.`,
   },
   {
-    id: 'platforms',
-    question: 'What platforms are supported?',
-    answer:
-      'Available on macOS, Windows, Linux, iOS, Android, and web browsers.',
+    id: "platforms",
+    question: "What platforms are supported?",
+    answer: "Available on macOS, Windows, Linux, iOS, Android, and web browsers.",
   },
   {
-    id: 'getting-started',
-    question: 'How do I get started?',
+    id: "getting-started",
+    question: "How do I get started?",
     answer:
-      'Download the app, create an account, and add your favorite content sources. Our onboarding guides you through setup.',
+      "Download the app, create an account, and add your favorite content sources. Our onboarding guides you through setup.",
   },
 ]
 
@@ -49,10 +48,10 @@ export function FAQ() {
   return (
     <section
       id="faq"
-      className="relative py-24 bg-gradient-to-b from-white to-gray-50 dark:from-gray-950 dark:to-gray-900 overflow-hidden"
+      className="relative overflow-hidden bg-gradient-to-b from-white to-gray-50 py-24 dark:from-gray-950 dark:to-gray-900"
     >
       {/* Background Decorative Icons */}
-      <div className="absolute inset-0 pointer-events-none">
+      <div className="pointer-events-none absolute inset-0">
         <motion.div
           animate={{
             y: [0, -25, 0],
@@ -61,11 +60,11 @@ export function FAQ() {
           transition={{
             duration: 8,
             repeat: Infinity,
-            ease: 'easeInOut',
+            ease: "easeInOut",
           }}
           className="absolute top-24 left-12 text-orange-200/25 dark:text-orange-800/15"
         >
-          <svg className="w-10 h-10" fill="currentColor" viewBox="0 0 24 24">
+          <svg className="h-10 w-10" fill="currentColor" viewBox="0 0 24 24">
             <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm1 17h-2v-2h2v2zm2.07-7.75l-.9.92C13.45 12.9 13 13.5 13 15h-2v-.5c0-1.1.45-2.1 1.17-2.83l1.24-1.26c.37-.36.59-.86.59-1.41 0-1.1-.9-2-2-2s-2 .9-2 2H8c0-2.21 1.79-4 4-4s4 1.79 4 4c0 .88-.36 1.68-.93 2.25z" />
           </svg>
         </motion.div>
@@ -78,45 +77,41 @@ export function FAQ() {
           transition={{
             duration: 6,
             repeat: Infinity,
-            ease: 'easeInOut',
+            ease: "easeInOut",
             delay: 1,
           }}
           className="absolute top-40 right-16 text-amber-200/30 dark:text-amber-800/20"
         >
-          <svg className="w-8 h-8" fill="currentColor" viewBox="0 0 24 24">
+          <svg className="h-8 w-8" fill="currentColor" viewBox="0 0 24 24">
             <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z" />
           </svg>
         </motion.div>
       </div>
 
-      <div className="relative max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div className="relative mx-auto max-w-4xl px-4 sm:px-6 lg:px-8">
         {/* Section Header */}
         <motion.div
           initial={{ opacity: 0, y: 30 }}
           whileInView={{ opacity: 1, y: 0 }}
           transition={springAnimations.medium}
           viewport={{ once: true }}
-          className="text-center mb-16"
+          className="mb-16 text-center"
         >
-          <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-gradient-to-r from-slate-50 to-gray-50 dark:from-gray-900/50 dark:to-gray-800/50 border border-gray-200/60 dark:border-gray-700/50 mb-6">
-            <div className="w-2 h-2 bg-gradient-to-r from-orange-500 to-red-500 rounded-full animate-pulse" />
-            <span className="text-sm font-medium text-gray-700 dark:text-gray-300">
-              FAQ
-            </span>
+          <div className="mb-6 inline-flex items-center gap-2 rounded-full border border-gray-200/60 bg-gradient-to-r from-slate-50 to-gray-50 px-4 py-2 dark:border-gray-700/50 dark:from-gray-900/50 dark:to-gray-800/50">
+            <div className="h-2 w-2 animate-pulse rounded-full bg-gradient-to-r from-orange-500 to-red-500" />
+            <span className="text-sm font-medium text-gray-700 dark:text-gray-300">FAQ</span>
           </div>
 
-          <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold text-gray-900 dark:text-white mb-6">
+          <h2 className="mb-6 text-3xl font-bold text-gray-900 sm:text-4xl lg:text-5xl dark:text-white">
             Frequently asked
             <span className="block bg-gradient-to-r from-orange-500 via-red-500 to-pink-600 bg-clip-text text-transparent">
               questions
             </span>
           </h2>
 
-          <p className="text-lg sm:text-xl text-gray-600 dark:text-gray-300 max-w-2xl mx-auto">
-            Everything you need to know about
-            {' '}
-            <LogoText className="h-[1.2ch] -translate-y-0.5 w-auto inline-block" />
-            .
+          <p className="mx-auto max-w-2xl text-lg text-gray-600 sm:text-xl dark:text-gray-300">
+            Everything you need to know about{" "}
+            <LogoText className="inline-block h-[1.2ch] w-auto -translate-y-0.5" />.
             {/* Can't find the answer you're looking for? */}
             {/* <span className="block mt-2">
               <a
@@ -133,7 +128,7 @@ export function FAQ() {
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
-          transition={springAnimations.withDelay(0.1, 'medium')}
+          transition={springAnimations.withDelay(0.1, "medium")}
           viewport={{ once: true }}
         >
           <Accordion type="single" collapsible className="space-y-2">
@@ -142,20 +137,17 @@ export function FAQ() {
                 key={faq.id}
                 initial={{ opacity: 0, y: 10 }}
                 whileInView={{ opacity: 1, y: 0 }}
-                transition={springAnimations.withDelay(index * 0.03, 'fast')}
+                transition={springAnimations.withDelay(index * 0.03, "fast")}
                 viewport={{ once: true }}
               >
-                <AccordionItem
-                  value={faq.id}
-                  className="group"
-                >
-                  <AccordionTrigger className="text-left hover:no-underline px-5 py-4 transition-all duration-200 [&[data-state=open]>svg]:rotate-180">
-                    <span className="text-base font-medium text-gray-900 dark:text-white group-hover:text-orange-600 dark:group-hover:text-orange-400 group-data-[state=open]:text-orange-700 dark:group-data-[state=open]:text-orange-300 transition-colors duration-200">
+                <AccordionItem value={faq.id} className="group">
+                  <AccordionTrigger className="px-5 py-4 text-left transition-all duration-200 hover:no-underline [&[data-state=open]>svg]:rotate-180">
+                    <span className="text-base font-medium text-gray-900 transition-colors duration-200 group-hover:text-orange-600 group-data-[state=open]:text-orange-700 dark:text-white dark:group-hover:text-orange-400 dark:group-data-[state=open]:text-orange-300">
                       {faq.question}
                     </span>
                   </AccordionTrigger>
                   <AccordionContent className="px-5 pb-4">
-                    <div className="text-sm text-gray-600 dark:text-gray-300 leading-relaxed">
+                    <div className="text-sm leading-relaxed text-gray-600 dark:text-gray-300">
                       {faq.answer}
                     </div>
                   </AccordionContent>
@@ -169,34 +161,29 @@ export function FAQ() {
         <motion.div
           initial={{ opacity: 0, y: 30 }}
           whileInView={{ opacity: 1, y: 0 }}
-          transition={springAnimations.withDelay(0.2, 'medium')}
+          transition={springAnimations.withDelay(0.2, "medium")}
           viewport={{ once: true }}
-          className="text-center mt-16"
+          className="mt-16 text-center"
         >
-          <div className="relative overflow-hidden rounded-2xl bg-gradient-to-br from-white via-gray-50/80 to-slate-100/60 dark:from-gray-900/90 dark:via-gray-800/80 dark:to-gray-700/60 border border-gray-200/50 dark:border-gray-700/50 backdrop-blur-sm shadow-xl shadow-gray-900/5 dark:shadow-gray-900/20">
+          <div className="relative overflow-hidden rounded-2xl border border-gray-200/50 bg-gradient-to-br from-white via-gray-50/80 to-slate-100/60 shadow-xl shadow-gray-900/5 backdrop-blur-sm dark:border-gray-700/50 dark:from-gray-900/90 dark:via-gray-800/80 dark:to-gray-700/60 dark:shadow-gray-900/20">
             {/* Background decorative elements */}
             <div className="absolute inset-0 bg-gradient-to-br from-orange-500/5 via-transparent to-red-500/5" />
-            <div className="absolute top-0 right-0 w-32 h-32 bg-gradient-to-br from-orange-400/10 to-red-400/10 rounded-full blur-3xl" />
-            <div className="absolute bottom-0 left-0 w-24 h-24 bg-gradient-to-tr from-violet-400/10 to-indigo-400/10 rounded-full blur-2xl" />
+            <div className="absolute top-0 right-0 h-32 w-32 rounded-full bg-gradient-to-br from-orange-400/10 to-red-400/10 blur-3xl" />
+            <div className="absolute bottom-0 left-0 h-24 w-24 rounded-full bg-gradient-to-tr from-violet-400/10 to-indigo-400/10 blur-2xl" />
 
             <div className="relative z-10 flex flex-col items-center gap-6 p-8">
-              <div className="text-2xl font-bold text-gray-900 dark:text-white flex items-center gap-3">
-                <div className="p-2 rounded-xl bg-gradient-to-br from-orange-500/10 to-red-500/10 border border-orange-200/50 dark:border-orange-700/50">
-                  <svg
-                    className="w-6 h-6 text-orange-500"
-                    fill="currentColor"
-                    viewBox="0 0 24 24"
-                  >
+              <div className="flex items-center gap-3 text-2xl font-bold text-gray-900 dark:text-white">
+                <div className="rounded-xl border border-orange-200/50 bg-gradient-to-br from-orange-500/10 to-red-500/10 p-2 dark:border-orange-700/50">
+                  <svg className="h-6 w-6 text-orange-500" fill="currentColor" viewBox="0 0 24 24">
                     <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm1 17h-2v-2h2v2zm2.07-7.75l-.9.92C13.45 12.9 13 13.5 13 15h-2v-.5c0-1.1.45-2.1 1.17-2.83l1.24-1.26c.37-.36.59-.86.59-1.41 0-1.1-.9-2-2-2s-2 .9-2 2H8c0-2.21 1.79-4 4-4s4 1.79 4 4c0 .88-.36 1.68-.93 2.25z" />
                   </svg>
                 </div>
                 Still have questions?
               </div>
-              <p className="text-gray-600 dark:text-gray-300 max-w-md text-center leading-relaxed">
-                Join our community and get help from other users, or reach out
-                to our team directly.
+              <p className="max-w-md text-center leading-relaxed text-gray-600 dark:text-gray-300">
+                Join our community and get help from other users, or reach out to our team directly.
               </p>
-              <div className="flex flex-col sm:flex-row gap-4 w-full sm:w-auto">
+              <div className="flex w-full flex-col gap-4 sm:w-auto sm:flex-row">
                 <Button
                   variant="gradient"
                   size="lg"
@@ -210,7 +197,7 @@ export function FAQ() {
                     className="flex items-center gap-3"
                   >
                     <svg
-                      className="w-5 h-5 transition-transform group-hover:scale-110"
+                      className="h-5 w-5 transition-transform group-hover:scale-110"
                       viewBox="0 0 24 24"
                       fill="currentColor"
                     >
@@ -218,7 +205,7 @@ export function FAQ() {
                     </svg>
                     Join Discord
                     <svg
-                      className="w-4 h-4 transition-transform group-hover:translate-x-1"
+                      className="h-4 w-4 transition-transform group-hover:translate-x-1"
                       fill="none"
                       viewBox="0 0 24 24"
                       stroke="currentColor"

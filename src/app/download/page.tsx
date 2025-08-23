@@ -1,5 +1,5 @@
-import { DownloadHero } from './download-hero'
-import { DownloadPlatforms } from './download-platforms'
+import { DownloadHero } from "./download-hero"
+import { DownloadPlatforms } from "./download-platforms"
 
 export default async function DownloadPage() {
   return (
@@ -9,7 +9,6 @@ export default async function DownloadPage() {
 
       {/* Platform Downloads */}
       <DownloadPlatforms />
-
     </main>
   )
 }

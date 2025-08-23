@@ -1,31 +1,31 @@
-import { atom } from 'jotai'
+import { atom } from "jotai"
 
 export const viewportAtom = atom({
   /**
    * 640px
    */
-  'sm': false,
+  sm: false,
 
   /**
    * 768px
    */
-  'md': false,
+  md: false,
 
   /**
    * 1024px
    */
-  'lg': false,
+  lg: false,
 
   /**
    * 1280px
    */
-  'xl': false,
+  xl: false,
 
   /**
    * 1536px
    */
-  '2xl': false,
+  "2xl": false,
 
-  'h': 0,
-  'w': 0,
+  h: 0,
+  w: 0,
 })

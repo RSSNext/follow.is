@@ -1,25 +1,21 @@
-import { headers } from 'next/headers'
+import { headers } from "next/headers"
 
 export async function getLatestReleaseInfo(): Promise<ReleaseInfo | undefined> {
   return getReleaseInfo(false)
 }
 
-export async function getNightlyReleaseInfo(): Promise<
-  ReleaseInfo | undefined
-> {
+export async function getNightlyReleaseInfo(): Promise<ReleaseInfo | undefined> {
   return
   // return getReleaseInfo(true)
 }
 
-async function getReleaseInfo(
-  isNightly: boolean,
-): Promise<ReleaseInfo | undefined> {
-  const res = await fetch('https://ungh.cc/repos/RSSNext/Folo/releases', {
+async function getReleaseInfo(isNightly: boolean): Promise<ReleaseInfo | undefined> {
+  const res = await fetch("https://ungh.cc/repos/RSSNext/Folo/releases", {
     next: { revalidate: 3600 },
   })
   const releases = (await res.json()) as GitHubRelease
   const latestRelease = releases.releases.find(
-    release => !release.draft && release.prerelease === isNightly,
+    (release) => !release.draft && release.prerelease === isNightly,
   )
   if (!latestRelease) {
     return
@@ -27,21 +23,19 @@ async function getReleaseInfo(
 
   const { assets } = latestRelease
   const downloadUrl = {
-    Windows: '',
-    macOS: '',
-    Linux: '',
+    Windows: "",
+    macOS: "",
+    Linux: "",
   }
   for (const asset of assets) {
-    if (!isNightly && asset.contentType !== 'application/octet-stream') {
+    if (!isNightly && asset.contentType !== "application/octet-stream") {
       continue
     }
-    if (asset.downloadUrl.includes('windows')) {
+    if (asset.downloadUrl.includes("windows")) {
       downloadUrl.Windows = asset.downloadUrl
-    }
-    else if (asset.downloadUrl.includes('macos-arm64')) {
+    } else if (asset.downloadUrl.includes("macos-arm64")) {
       downloadUrl.macOS = asset.downloadUrl
-    }
-    else if (asset.downloadUrl.includes('linux')) {
+    } else if (asset.downloadUrl.includes("linux")) {
       downloadUrl.Linux = asset.downloadUrl
     }
   }
@@ -83,39 +77,29 @@ interface Asset {
   downloadUrl: string
 }
 
-export type OS = 'macOS' | 'iOS' | 'Windows' | 'Android' | 'Linux'
+export type OS = "macOS" | "iOS" | "Windows" | "Android" | "Linux"
 
 export async function getOs(): Promise<OS | undefined> {
   const headersList = await headers()
-  const userAgent = headersList.get('user-agent') || ''
+  const userAgent = headersList.get("user-agent") || ""
 
-  if (userAgent.includes('Win'))
-    return 'Windows'
-  if (
-    userAgent.includes('iPhone')
-    || userAgent.includes('iPad')
-    || userAgent.includes('iPod')
-  ) {
-    return 'iOS'
+  if (userAgent.includes("Win")) return "Windows"
+  if (userAgent.includes("iPhone") || userAgent.includes("iPad") || userAgent.includes("iPod")) {
+    return "iOS"
   }
-  if (userAgent.includes('Mac'))
-    return 'macOS'
-  if (userAgent.includes('Android'))
-    return 'Android'
-  if (userAgent.includes('Linux'))
-    return 'Linux'
+  if (userAgent.includes("Mac")) return "macOS"
+  if (userAgent.includes("Android")) return "Android"
+  if (userAgent.includes("Linux")) return "Linux"
 }
 
-export async function getPlatformAppVersion(
-  os?: OS,
-): Promise<string | undefined> {
+export async function getPlatformAppVersion(os?: OS): Promise<string | undefined> {
   if (!os) {
     return
   }
   const res = await fetch(
-    os === 'Android' || os === 'iOS'
-      ? 'https://raw.githubusercontent.com/RSSNext/Folo/refs/heads/main/apps/mobile/package.json'
-      : 'https://raw.githubusercontent.com/RSSNext/Folo/refs/heads/main/apps/desktop/package.json',
+    os === "Android" || os === "iOS"
+      ? "https://raw.githubusercontent.com/RSSNext/Folo/refs/heads/main/apps/mobile/package.json"
+      : "https://raw.githubusercontent.com/RSSNext/Folo/refs/heads/main/apps/desktop/package.json",
     {
       next: { revalidate: 3600 },
     },

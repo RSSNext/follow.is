@@ -1,4 +1,4 @@
-'use client'
+"use client"
 
 import {
   Bell,
@@ -14,93 +14,93 @@ import {
   Target,
   Users,
   Video,
-} from 'lucide-react'
-import { motion } from 'motion/react'
-import Image from 'next/image'
-import { useRouter } from 'next/navigation'
+} from "lucide-react"
+import { motion } from "motion/react"
+import Image from "next/image"
+import { useRouter } from "next/navigation"
 
-import { APP_NAME } from '@/constants'
-import screenShotAIDaily from '@/images/screenshots/AI At Your Fingertips.png'
-import screenShotDiscover from '@/images/screenshots/Customized Info Hub.png'
-import screenShotViews from '@/images/screenshots/Dynamic Content Support.png'
-import screenShotPower from '@/images/screenshots/High Level Description.png'
-import screenShotSocial from '@/images/screenshots/More Than Just An App.png'
-import { scrollAnimations, springAnimations } from '@/lib/animations'
+import { APP_NAME } from "@/constants"
+import screenShotAIDaily from "@/images/screenshots/AI At Your Fingertips.png"
+import screenShotDiscover from "@/images/screenshots/Customized Info Hub.png"
+import screenShotViews from "@/images/screenshots/Dynamic Content Support.png"
+import screenShotPower from "@/images/screenshots/High Level Description.png"
+import screenShotSocial from "@/images/screenshots/More Than Just An App.png"
+import { scrollAnimations, springAnimations } from "@/lib/animations"
 
-import { Button } from './ui/button'
+import { Button } from "./ui/button"
 
 const features = [
   {
-    id: 'hub',
-    title: 'Customized Information Hub',
+    id: "hub",
+    title: "Customized Information Hub",
     description:
       "Powered by RSSHub, the world's largest RSS network with 5,000+ instances. Subscribe to feeds from any platform and curate your personalized information timeline.",
     image: screenShotDiscover,
-    gradient: 'from-indigo-500 to-purple-600',
-    icon: '🎯',
+    gradient: "from-indigo-500 to-purple-600",
+    icon: "🎯",
     details: [
-      { text: 'Adapted 1,200 popular websites', icon: Globe },
-      { text: 'RSS & Social Media', icon: Rss },
-      { text: 'RSSHub Integration', icon: Target },
-      { text: 'Content Insights', icon: Sparkles },
+      { text: "Adapted 1,200 popular websites", icon: Globe },
+      { text: "RSS & Social Media", icon: Rss },
+      { text: "RSSHub Integration", icon: Target },
+      { text: "Content Insights", icon: Sparkles },
     ],
   },
   {
-    id: 'dynamic',
-    title: 'Dynamic Content Support',
+    id: "dynamic",
+    title: "Dynamic Content Support",
     description: `From articles to videos, images to audio — ${APP_NAME} gets it all covered with intelligent content parsing.`,
     image: screenShotViews,
-    gradient: 'from-emerald-500 to-cyan-600',
-    icon: '⚡',
+    gradient: "from-emerald-500 to-cyan-600",
+    icon: "⚡",
     details: [
-      { text: 'Articles & Blogs', icon: FileText },
-      { text: 'Videos & Podcasts', icon: Video },
-      { text: 'Images & Media', icon: ImageIcon },
-      { text: 'Notifications', icon: Bell },
+      { text: "Articles & Blogs", icon: FileText },
+      { text: "Videos & Podcasts", icon: Video },
+      { text: "Images & Media", icon: ImageIcon },
+      { text: "Notifications", icon: Bell },
     ],
   },
   {
-    id: 'ai',
-    title: 'AI At Your Fingertips',
+    id: "ai",
+    title: "AI At Your Fingertips",
     description:
-      'Smart browsing with AI-powered features like translation, summary, and content insights.',
+      "Smart browsing with AI-powered features like translation, summary, and content insights.",
     image: screenShotAIDaily,
-    gradient: 'from-violet-500 to-pink-600',
-    icon: '🤖',
+    gradient: "from-violet-500 to-pink-600",
+    icon: "🤖",
     details: [
-      { text: 'Auto Summaries', icon: FileText },
-      { text: 'Real-time Translation', icon: Globe },
-      { text: 'Smart Categories', icon: Target },
-      { text: 'Content Insights', icon: Sparkles },
+      { text: "Auto Summaries", icon: FileText },
+      { text: "Real-time Translation", icon: Globe },
+      { text: "Smart Categories", icon: Target },
+      { text: "Content Insights", icon: Sparkles },
     ],
   },
   {
-    id: 'power',
-    title: '$POWER Economy',
+    id: "power",
+    title: "$POWER Economy",
     description:
-      'Tip creators instantly with $POWER, support content you love, and unlock value in your work.',
+      "Tip creators instantly with $POWER, support content you love, and unlock value in your work.",
     image: screenShotPower,
-    gradient: 'from-orange-500 to-red-600',
-    icon: '💎',
+    gradient: "from-orange-500 to-red-600",
+    icon: "💎",
     details: [
-      { text: 'Tip Creators', icon: Heart },
-      { text: 'Earn Rewards', icon: Gem },
-      { text: 'Premium Features', icon: Crown },
-      { text: 'Community Governance', icon: Users },
+      { text: "Tip Creators", icon: Heart },
+      { text: "Earn Rewards", icon: Gem },
+      { text: "Premium Features", icon: Crown },
+      { text: "Community Governance", icon: Users },
     ],
   },
   {
-    id: 'community',
-    title: 'Community-Driven',
+    id: "community",
+    title: "Community-Driven",
     description: `More than an app. ${APP_NAME} is a community introducing a new era of openness and collaboration.`,
     image: screenShotSocial,
-    gradient: 'from-blue-500 to-indigo-600',
-    icon: '🌟',
+    gradient: "from-blue-500 to-indigo-600",
+    icon: "🌟",
     details: [
-      { text: 'Open Source', icon: Globe },
-      { text: 'Community Lists', icon: Users },
-      { text: 'Shared Collections', icon: Heart },
-      { text: 'Collaborative Features', icon: Sparkles },
+      { text: "Open Source", icon: Globe },
+      { text: "Community Lists", icon: Users },
+      { text: "Shared Collections", icon: Heart },
+      { text: "Collaborative Features", icon: Sparkles },
     ],
   },
 ]
@@ -110,32 +110,30 @@ export function Features() {
   return (
     <section
       id="features"
-      className="py-24 bg-gradient-to-b from-gray-50 to-white dark:from-gray-900 dark:to-gray-950"
+      className="bg-gradient-to-b from-gray-50 to-white py-24 dark:from-gray-900 dark:to-gray-950"
     >
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
         {/* Section Header */}
         <motion.div
           {...scrollAnimations.fadeInUp}
           viewport={{ once: true }}
-          className="text-center mb-20"
+          className="mb-20 text-center"
         >
-          <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-gradient-to-r from-slate-50 to-gray-50 dark:from-gray-900/50 dark:to-gray-800/50 border border-gray-200/60 dark:border-gray-700/50 mb-6">
-            <div className="w-2 h-2 bg-gradient-to-r from-orange-500 to-red-500 rounded-full animate-pulse" />
-            <span className="text-sm font-medium text-gray-700 dark:text-gray-300">
-              Features
-            </span>
+          <div className="mb-6 inline-flex items-center gap-2 rounded-full border border-gray-200/60 bg-gradient-to-r from-slate-50 to-gray-50 px-4 py-2 dark:border-gray-700/50 dark:from-gray-900/50 dark:to-gray-800/50">
+            <div className="h-2 w-2 animate-pulse rounded-full bg-gradient-to-r from-orange-500 to-red-500" />
+            <span className="text-sm font-medium text-gray-700 dark:text-gray-300">Features</span>
           </div>
 
-          <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold text-gray-900 dark:text-white mb-6">
+          <h2 className="mb-6 text-3xl font-bold text-gray-900 sm:text-4xl lg:text-5xl dark:text-white">
             Everything you need for
             <span className="block bg-gradient-to-r from-orange-500 via-red-500 to-pink-600 bg-clip-text text-transparent">
               modern content consumption
             </span>
           </h2>
 
-          <p className="text-lg sm:text-xl text-gray-600 dark:text-gray-300 max-w-3xl mx-auto">
-            Discover powerful features designed to transform how you discover,
-            consume, and interact with content across the web.
+          <p className="mx-auto max-w-3xl text-lg text-gray-600 sm:text-xl dark:text-gray-300">
+            Discover powerful features designed to transform how you discover, consume, and interact
+            with content across the web.
           </p>
         </motion.div>
 
@@ -146,24 +144,24 @@ export function Features() {
               key={feature.id}
               initial={{ opacity: 0, y: 40 }}
               whileInView={{ opacity: 1, y: 0 }}
-              transition={springAnimations.withDelay(index * 0.05, 'medium')}
+              transition={springAnimations.withDelay(index * 0.05, "medium")}
               viewport={{ once: true }}
               className={`group ${
-                index % 2 === 1 ? 'lg:flex-row-reverse' : ''
-              } lg:flex items-center gap-12`}
+                index % 2 === 1 ? "lg:flex-row-reverse" : ""
+              } items-center gap-12 lg:flex`}
             >
               {/* Content Side */}
-              <div className="lg:w-1/2 space-y-6 text-center lg:text-left">
+              <div className="space-y-6 text-center lg:w-1/2 lg:text-left">
                 {/* Mobile Layout - Badge above title */}
-                <div className="lg:hidden space-y-4">
+                <div className="space-y-4 lg:hidden">
                   {/* Badge */}
                   <div className="flex justify-center">
-                    <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-gradient-to-r from-gray-50 to-gray-100 dark:from-gray-800 dark:to-gray-700 border border-gray-200/50 dark:border-gray-600/50">
+                    <div className="inline-flex items-center gap-2 rounded-full border border-gray-200/50 bg-gradient-to-r from-gray-50 to-gray-100 px-3 py-1 dark:border-gray-600/50 dark:from-gray-800 dark:to-gray-700">
                       <div
-                        className={`w-2 h-2 rounded-full bg-gradient-to-r ${feature.gradient}`}
+                        className={`h-2 w-2 rounded-full bg-gradient-to-r ${feature.gradient}`}
                       />
                       <span className="text-xs font-medium text-gray-600 dark:text-gray-400">
-                        Feature {String(index + 1).padStart(2, '0')}
+                        Feature {String(index + 1).padStart(2, "0")}
                       </span>
                     </div>
                   </div>
@@ -171,12 +169,12 @@ export function Features() {
                   {/* Icon and Title */}
                   <div className="flex flex-col items-center gap-4">
                     <div
-                      className={`flex-shrink-0 w-14 h-14 rounded-2xl bg-gradient-to-br ${feature.gradient} flex items-center justify-center text-white text-2xl shadow-lg`}
+                      className={`h-14 w-14 flex-shrink-0 rounded-2xl bg-gradient-to-br ${feature.gradient} flex items-center justify-center text-2xl text-white shadow-lg`}
                     >
                       {feature.icon}
                     </div>
                     <div>
-                      <h3 className="text-3xl lg:text-4xl font-bold text-gray-900 dark:text-white mb-4">
+                      <h3 className="mb-4 text-3xl font-bold text-gray-900 lg:text-4xl dark:text-white">
                         {feature.title}
                       </h3>
                     </div>
@@ -184,28 +182,26 @@ export function Features() {
                 </div>
 
                 {/* Desktop Layout - Badge and icon side by side */}
-                <div className="hidden lg:flex items-center gap-4 justify-center lg:justify-start">
+                <div className="hidden items-center justify-center gap-4 lg:flex lg:justify-start">
                   <div
-                    className={`flex-shrink-0 w-14 h-14 rounded-2xl bg-gradient-to-br ${feature.gradient} flex items-center justify-center text-white text-2xl shadow-lg`}
+                    className={`h-14 w-14 flex-shrink-0 rounded-2xl bg-gradient-to-br ${feature.gradient} flex items-center justify-center text-2xl text-white shadow-lg`}
                   >
                     {feature.icon}
                   </div>
-                  <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-gradient-to-r from-gray-50 to-gray-100 dark:from-gray-800 dark:to-gray-700 border border-gray-200/50 dark:border-gray-600/50">
-                    <div
-                      className={`w-2 h-2 rounded-full bg-gradient-to-r ${feature.gradient}`}
-                    />
+                  <div className="inline-flex items-center gap-2 rounded-full border border-gray-200/50 bg-gradient-to-r from-gray-50 to-gray-100 px-3 py-1 dark:border-gray-600/50 dark:from-gray-800 dark:to-gray-700">
+                    <div className={`h-2 w-2 rounded-full bg-gradient-to-r ${feature.gradient}`} />
                     <span className="text-xs font-medium text-gray-600 dark:text-gray-400">
-                      Feature {String(index + 1).padStart(2, '0')}
+                      Feature {String(index + 1).padStart(2, "0")}
                     </span>
                   </div>
                 </div>
 
                 <div>
                   {/* Title for desktop only (mobile has it above) */}
-                  <h3 className="hidden lg:block text-3xl lg:text-4xl font-bold text-gray-900 dark:text-white mb-4">
+                  <h3 className="mb-4 hidden text-3xl font-bold text-gray-900 lg:block lg:text-4xl dark:text-white">
                     {feature.title}
                   </h3>
-                  <p className="text-lg text-gray-600 dark:text-gray-300 leading-relaxed mb-6">
+                  <p className="mb-6 text-lg leading-relaxed text-gray-600 dark:text-gray-300">
                     {feature.description}
                   </p>
                 </div>
@@ -213,45 +209,45 @@ export function Features() {
                 {/* Feature Details - New Modern Layout */}
                 <div className="space-y-4">
                   {/* First Row - Single Full Width Card */}
-                  <div className="relative p-5 rounded-2xl bg-gradient-to-br from-white to-gray-50/80 dark:from-gray-800 dark:to-gray-900/80 border border-gray-200/60 dark:border-gray-700/60 shadow-sm hover:shadow-lg hover:shadow-gray-900/10 dark:hover:shadow-gray-900/20 transition-all duration-500 group/card">
+                  <div className="group/card relative rounded-2xl border border-gray-200/60 bg-gradient-to-br from-white to-gray-50/80 p-5 shadow-sm transition-all duration-500 hover:shadow-lg hover:shadow-gray-900/10 dark:border-gray-700/60 dark:from-gray-800 dark:to-gray-900/80 dark:hover:shadow-gray-900/20">
                     <div className="flex items-center gap-4">
                       <div
-                        className={`flex-shrink-0 w-10 h-10 rounded-xl bg-gradient-to-br ${feature.gradient} flex items-center justify-center shadow-md`}
+                        className={`h-10 w-10 flex-shrink-0 rounded-xl bg-gradient-to-br ${feature.gradient} flex items-center justify-center shadow-md`}
                       >
-                        <div className="w-3 h-3 bg-white rounded-full opacity-80" />
+                        <div className="h-3 w-3 rounded-full bg-white opacity-80" />
                       </div>
                       <div>
-                        <h4 className="font-semibold text-gray-900 dark:text-white text-lg">
+                        <h4 className="text-lg font-semibold text-gray-900 dark:text-white">
                           {feature.details[0].text}
                         </h4>
                       </div>
                     </div>
                     {/* Subtle background gradient */}
                     <div
-                      className={`absolute inset-0 bg-gradient-to-br ${feature.gradient} opacity-0 group-hover/card:opacity-5 rounded-2xl transition-opacity duration-500`}
+                      className={`absolute inset-0 bg-gradient-to-br ${feature.gradient} rounded-2xl opacity-0 transition-opacity duration-500 group-hover/card:opacity-5`}
                     />
                   </div>
 
                   {/* Second Row - Two Smaller Cards */}
-                  <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                  <div className="grid grid-cols-1 gap-4 sm:grid-cols-2">
                     {feature.details.slice(1, 3).map((detail, idx) => (
                       <div
                         key={idx}
-                        className="relative p-4 rounded-xl bg-white dark:bg-gray-800 border border-gray-200/60 dark:border-gray-700/60 shadow-sm hover:shadow-md hover:shadow-gray-900/5 dark:hover:shadow-gray-900/10 transition-all duration-300 group/small-card hover:-translate-y-1"
+                        className="group/small-card relative rounded-xl border border-gray-200/60 bg-white p-4 shadow-sm transition-all duration-300 hover:-translate-y-1 hover:shadow-md hover:shadow-gray-900/5 dark:border-gray-700/60 dark:bg-gray-800 dark:hover:shadow-gray-900/10"
                       >
                         <div className="flex items-start gap-3">
                           <div
-                            className={`flex-shrink-0 w-2 h-2 rounded-full bg-gradient-to-r ${feature.gradient} mt-2 shadow-sm`}
+                            className={`h-2 w-2 flex-shrink-0 rounded-full bg-gradient-to-r ${feature.gradient} mt-2 shadow-sm`}
                           />
                           <div>
-                            <span className="font-medium text-gray-800 dark:text-gray-200 text-sm group-hover/small-card:text-gray-900 dark:group-hover/small-card:text-white transition-colors duration-200">
+                            <span className="text-sm font-medium text-gray-800 transition-colors duration-200 group-hover/small-card:text-gray-900 dark:text-gray-200 dark:group-hover/small-card:text-white">
                               {detail.text}
                             </span>
                           </div>
                         </div>
                         {/* Hover gradient effect */}
                         <div
-                          className={`absolute inset-0 bg-gradient-to-br ${feature.gradient} opacity-0 group-hover/small-card:opacity-3 rounded-xl transition-opacity duration-300`}
+                          className={`absolute inset-0 bg-gradient-to-br ${feature.gradient} rounded-xl opacity-0 transition-opacity duration-300 group-hover/small-card:opacity-3`}
                         />
                       </div>
                     ))}
@@ -259,21 +255,19 @@ export function Features() {
 
                   {/* Third Row - Final Feature in Full Width with Special Styling */}
                   {feature.details[3] && (
-                    <div className="relative p-4 rounded-xl bg-gradient-to-r from-gray-50 to-white dark:from-gray-800/50 dark:to-gray-900/50 border border-dashed border-gray-300/60 dark:border-gray-600/60 hover:border-solid hover:shadow-lg hover:shadow-gray-900/5 dark:hover:shadow-gray-900/15 transition-all duration-500 group/dashed">
+                    <div className="group/dashed relative rounded-xl border border-dashed border-gray-300/60 bg-gradient-to-r from-gray-50 to-white p-4 transition-all duration-500 hover:border-solid hover:shadow-lg hover:shadow-gray-900/5 dark:border-gray-600/60 dark:from-gray-800/50 dark:to-gray-900/50 dark:hover:shadow-gray-900/15">
                       <div className="flex items-center justify-between">
                         <div className="flex items-center gap-3">
                           <div
-                            className={`w-8 h-8 rounded-lg bg-gradient-to-br ${feature.gradient} flex items-center justify-center`}
+                            className={`h-8 w-8 rounded-lg bg-gradient-to-br ${feature.gradient} flex items-center justify-center`}
                           >
                             {(() => {
                               const IconComponent = feature.details[3].icon
-                              return (
-                                <IconComponent className="w-4 h-4 text-white" />
-                              )
+                              return <IconComponent className="h-4 w-4 text-white" />
                             })()}
                           </div>
                           <div>
-                            <span className="font-medium text-gray-800 dark:text-gray-200 group-hover/dashed:text-gray-900 dark:group-hover/dashed:text-white transition-colors duration-200">
+                            <span className="font-medium text-gray-800 transition-colors duration-200 group-hover/dashed:text-gray-900 dark:text-gray-200 dark:group-hover/dashed:text-white">
                               {feature.details[3].text}
                             </span>
                           </div>
@@ -285,15 +279,15 @@ export function Features() {
               </div>
 
               {/* Screenshot Side */}
-              <div className="lg:w-1/2 mt-8 lg:mt-0">
-                <div className="relative group/image">
+              <div className="mt-8 lg:mt-0 lg:w-1/2">
+                <div className="group/image relative">
                   {/* Main Screenshot Container - 16:9 Aspect Ratio */}
-                  <div className="relative w-full aspect-video rounded-2xl overflow-hidden bg-gray-100 dark:bg-gray-800 shadow-2xl shadow-gray-900/20 dark:shadow-gray-900/40">
+                  <div className="relative aspect-video w-full overflow-hidden rounded-2xl bg-gray-100 shadow-2xl shadow-gray-900/20 dark:bg-gray-800 dark:shadow-gray-900/40">
                     <Image
                       src={feature.image}
                       alt={`Screenshot of ${feature.title}`}
                       fill
-                      className="object-cover group-hover/image:scale-105 transition-transform duration-700"
+                      className="object-cover transition-transform duration-700 group-hover/image:scale-105"
                       priority={index < 2}
                     />
                   </div>
@@ -307,17 +301,16 @@ export function Features() {
         <motion.div
           initial={{ opacity: 0, y: 30 }}
           whileInView={{ opacity: 1, y: 0 }}
-          transition={springAnimations.withDelay(0.2, 'medium')}
+          transition={springAnimations.withDelay(0.2, "medium")}
           viewport={{ once: true }}
-          className="text-center mt-32"
+          className="mt-32 text-center"
         >
-          <div className="inline-flex flex-col items-center gap-4 p-8 rounded-3xl bg-gradient-to-br from-slate-50 to-gray-50 dark:from-gray-900/50 dark:to-gray-800/50 border border-gray-200/60 dark:border-gray-700/50">
+          <div className="inline-flex flex-col items-center gap-4 rounded-3xl border border-gray-200/60 bg-gradient-to-br from-slate-50 to-gray-50 p-8 dark:border-gray-700/50 dark:from-gray-900/50 dark:to-gray-800/50">
             <h3 className="text-2xl font-bold text-gray-900 dark:text-white">
               Ready to experience the future of content?
             </h3>
-            <p className="text-gray-600 dark:text-gray-300 max-w-md">
-              Join thousands of users who've transformed their content
-              consumption experience.
+            <p className="max-w-md text-gray-600 dark:text-gray-300">
+              Join thousands of users who've transformed their content consumption experience.
             </p>
             {/* <a
               href="/download"
@@ -330,7 +323,7 @@ export function Features() {
               size="lg"
               className="font-medium"
               onClick={() => {
-                router.push('/download')
+                router.push("/download")
               }}
             >
               <Download />

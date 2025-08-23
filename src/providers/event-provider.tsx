@@ -1,9 +1,9 @@
-import { throttle } from 'es-toolkit/compat'
-import { useIsomorphicLayoutEffect } from 'foxact/use-isomorphic-layout-effect'
-import { useStore } from 'jotai'
-import type { FC } from 'react'
+import { throttle } from "es-toolkit/compat"
+import { useIsomorphicLayoutEffect } from "foxact/use-isomorphic-layout-effect"
+import { useStore } from "jotai"
+import type { FC } from "react"
 
-import { viewportAtom } from '@/atoms/viewport'
+import { viewportAtom } from "@/atoms/viewport"
 
 export const EventProvider: FC = () => {
   const store = useStore()
@@ -20,20 +20,20 @@ export const EventProvider: FC = () => {
         md,
         lg,
         xl,
-        '2xl': _2xl,
+        "2xl": _2xl,
         h,
         w,
       })
 
       const isMobile = window.innerWidth < 1024
-      document.documentElement.dataset.viewport = isMobile ? 'mobile' : 'desktop'
+      document.documentElement.dataset.viewport = isMobile ? "mobile" : "desktop"
     }, 16)
 
     readViewport()
 
-    window.addEventListener('resize', readViewport)
+    window.addEventListener("resize", readViewport)
     return () => {
-      window.removeEventListener('resize', readViewport)
+      window.removeEventListener("resize", readViewport)
     }
   }, [])
 

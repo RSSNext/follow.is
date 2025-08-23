@@ -1,36 +1,25 @@
 /* eslint-disable @eslint-react/no-array-index-key */
-'use client'
+"use client"
 
-import { Star } from 'lucide-react'
-import type {
-  HTMLMotionProps,
-  MotionProps,
-  SpringOptions,
-  UseInViewOptions,
-} from 'motion/react'
-import {
-  AnimatePresence,
-  motion,
-  useInView,
-  useMotionValue,
-  useSpring,
-} from 'motion/react'
-import * as React from 'react'
+import { Star } from "lucide-react"
+import type { HTMLMotionProps, MotionProps, SpringOptions, UseInViewOptions } from "motion/react"
+import { AnimatePresence, motion, useInView, useMotionValue, useSpring } from "motion/react"
+import * as React from "react"
 
-import { cn } from '@/lib/utils'
+import { cn } from "@/lib/utils"
 
-import { SlidingNumber } from './sliding-number'
+import { SlidingNumber } from "./sliding-number"
 
-type FormatNumberResult = { number: string[], unit: string }
+type FormatNumberResult = { number: string[]; unit: string }
 
 function formatNumber(num: number, formatted: boolean): FormatNumberResult {
   if (!formatted) {
-    return { number: num.toLocaleString('en-US').split(','), unit: '' }
+    return { number: num.toLocaleString("en-US").split(","), unit: "" }
   }
   if (num < 1000) {
-    return { number: [num.toString()], unit: '' }
+    return { number: [num.toString()], unit: "" }
   }
-  const units = ['k', 'M', 'B', 'T']
+  const units = ["k", "M", "B", "T"]
   let unitIndex = 0
   let n = num
   while (n >= 1000 && unitIndex < units.length) {
@@ -38,39 +27,39 @@ function formatNumber(num: number, formatted: boolean): FormatNumberResult {
     unitIndex++
   }
   const finalNumber = Math.floor(n).toString()
-  return { number: [finalNumber], unit: units[unitIndex - 1] ?? '' }
+  return { number: [finalNumber], unit: units[unitIndex - 1] ?? "" }
 }
 
 const animations = {
   pulse: {
     initial: { scale: 1.2, opacity: 0 },
     animate: { scale: [1.2, 1.8, 1.2], opacity: [0, 0.3, 0] },
-    transition: { duration: 0.8, ease: 'easeInOut' },
+    transition: { duration: 0.8, ease: "easeInOut" },
   },
   glow: {
     initial: { scale: 1, opacity: 0 },
     animate: { scale: [1, 1.5], opacity: [0.8, 0] },
-    transition: { duration: 0.5, ease: 'easeOut' },
+    transition: { duration: 0.5, ease: "easeOut" },
   },
   particle: (index: number) => ({
-    initial: { x: '50%', y: '50%', scale: 0, opacity: 0 },
+    initial: { x: "50%", y: "50%", scale: 0, opacity: 0 },
     animate: {
       x: `calc(50% + ${Math.cos((index * Math.PI) / 3) * 30}px)`,
       y: `calc(50% + ${Math.sin((index * Math.PI) / 3) * 30}px)`,
       scale: [0, 1, 0],
       opacity: [0, 1, 0],
     },
-    transition: { duration: 0.5, delay: index * 0.03, ease: 'easeOut' },
+    transition: { duration: 0.5, delay: index * 0.03, ease: "easeOut" },
   }),
 } satisfies Record<string, MotionProps | ((index: number) => MotionProps)>
 
-export type GitHubStarsButtonProps = HTMLMotionProps<'a'> & {
+export type GitHubStarsButtonProps = HTMLMotionProps<"a"> & {
   username: string
   repo: string
   transition?: SpringOptions
   formatted?: boolean
   inView?: boolean
-  inViewMargin?: UseInViewOptions['margin']
+  inViewMargin?: UseInViewOptions["margin"]
   inViewOnce?: boolean
   showText?: boolean
   stars: number
@@ -85,7 +74,7 @@ export function GitHubStarsButton({
   formatted = false,
   inView = false,
   inViewOnce = true,
-  inViewMargin = '0px',
+  inViewMargin = "0px",
   showText = true,
   className,
   stars,
@@ -95,7 +84,7 @@ export function GitHubStarsButton({
   const springVal = useSpring(motionVal, transition ?? defaultTransition)
   const motionNumberRef = React.useRef(0)
   const isCompletedRef = React.useRef(false)
-  const [, forceRender] = React.useReducer(x => x + 1, 0)
+  const [, forceRender] = React.useReducer((x) => x + 1, 0)
 
   const [isCompleted, setIsCompleted] = React.useState(false)
   const [displayParticles, setDisplayParticles] = React.useState(false)
@@ -115,7 +104,7 @@ export function GitHubStarsButton({
   const isComponentInView = !inView || inViewResult
 
   React.useEffect(() => {
-    const unsubscribe = springVal.on('change', (latest: number) => {
+    const unsubscribe = springVal.on("change", (latest: number) => {
       const newValue = Math.round(latest)
       if (motionNumberRef.current !== newValue) {
         motionNumberRef.current = newValue
@@ -131,24 +120,16 @@ export function GitHubStarsButton({
   }, [springVal, stars, handleDisplayParticles])
 
   React.useEffect(() => {
-    if (stars > 0 && isComponentInView)
-      motionVal.set(stars)
+    if (stars > 0 && isComponentInView) motionVal.set(stars)
   }, [motionVal, stars, isComponentInView])
 
   const fillPercentage = Math.min(100, (motionNumberRef.current / stars) * 100)
   const formattedResult = formatNumber(motionNumberRef.current, formatted)
   const ghostFormattedNumber = formatNumber(stars, formatted)
 
-  const renderNumberSegments = (
-    segments: string[],
-    unit: string,
-    isGhost: boolean,
-  ) => (
+  const renderNumberSegments = (segments: string[], unit: string, isGhost: boolean) => (
     <span
-      className={cn(
-        'flex items-center gap-px',
-        isGhost ? 'invisible' : 'absolute top-0 left-0',
-      )}
+      className={cn("flex items-center gap-px", isGhost ? "invisible" : "absolute top-0 left-0")}
     >
       {segments.map((segment, index) => (
         <React.Fragment key={index}>
@@ -163,16 +144,13 @@ export function GitHubStarsButton({
     </span>
   )
 
-  const repoUrl = React.useMemo(
-    () => `https://github.com/${username}/${repo}`,
-    [username, repo],
-  )
+  const repoUrl = React.useMemo(() => `https://github.com/${username}/${repo}`, [username, repo])
 
   const handleClick = React.useCallback(
     (e: React.MouseEvent<HTMLAnchorElement>) => {
       e.preventDefault()
       handleDisplayParticles()
-      setTimeout(() => window.open(repoUrl, '_blank'), 500)
+      setTimeout(() => window.open(repoUrl, "_blank"), 500)
     },
     [handleDisplayParticles, repoUrl],
   )
@@ -187,7 +165,7 @@ export function GitHubStarsButton({
       whileHover={{ scale: 1.05 }}
       onClick={handleClick}
       className={cn(
-        "flex items-center gap-2 text-sm bg-foreground text-background rounded-lg px-4 py-2 h-10 has-[>svg]:px-3 cursor-pointer whitespace-nowrap font-medium transition-colors disabled:pointer-events-none disabled:opacity-50 [&_svg]:pointer-events-none [&_svg:not([class*='size-'])]:size-[18px] shrink-0 [&_svg]:shrink-0 outline-none",
+        "bg-foreground text-background flex h-10 shrink-0 cursor-pointer items-center gap-2 rounded-lg px-4 py-2 text-sm font-medium whitespace-nowrap transition-colors outline-none disabled:pointer-events-none disabled:opacity-50 has-[>svg]:px-3 [&_svg]:pointer-events-none [&_svg]:shrink-0 [&_svg:not([class*='size-'])]:size-[18px]",
         className,
       )}
       {...props}
@@ -197,18 +175,12 @@ export function GitHubStarsButton({
       </svg>
       {showText && <span>GitHub Stars</span>}
       <div className="relative inline-flex size-[18px] shrink-0">
+        <Star className="fill-neutral-500 text-neutral-500" size={18} aria-hidden="true" />
         <Star
-          className="fill-neutral-500 text-neutral-500"
-          size={18}
-          aria-hidden="true"
-        />
-        <Star
-          className="absolute top-0 left-0 text-yellow-500 fill-yellow-500"
+          className="absolute top-0 left-0 fill-yellow-500 text-yellow-500"
           aria-hidden="true"
           style={{
-            clipPath: `inset(${
-              100 - (isCompleted ? fillPercentage : fillPercentage - 10)
-            }% 0 0 0)`,
+            clipPath: `inset(${100 - (isCompleted ? fillPercentage : fillPercentage - 10)}% 0 0 0)`,
           }}
         />
         <AnimatePresence>
@@ -218,19 +190,19 @@ export function GitHubStarsButton({
                 className="absolute inset-0 rounded-full"
                 style={{
                   background:
-                    'radial-gradient(circle, rgba(255,215,0,0.4) 0%, rgba(255,215,0,0) 70%)',
+                    "radial-gradient(circle, rgba(255,215,0,0.4) 0%, rgba(255,215,0,0) 70%)",
                 }}
                 {...animations.pulse}
               />
               <motion.div
                 className="absolute inset-0 rounded-full"
-                style={{ boxShadow: '0 0 10px 2px rgba(255,215,0,0.6)' }}
+                style={{ boxShadow: "0 0 10px 2px rgba(255,215,0,0.6)" }}
                 {...animations.glow}
               />
               {Array.from({ length: 6 }).map((_, i) => (
                 <motion.div
                   key={i}
-                  className="absolute w-1 h-1 rounded-full bg-yellow-500"
+                  className="absolute h-1 w-1 rounded-full bg-yellow-500"
                   initial={animations.particle(i).initial}
                   animate={animations.particle(i).animate}
                   transition={animations.particle(i).transition}
@@ -242,16 +214,8 @@ export function GitHubStarsButton({
       </div>
       {stars > 0 && (
         <span className="relative inline-flex">
-          {renderNumberSegments(
-            ghostFormattedNumber.number,
-            ghostFormattedNumber.unit,
-            true,
-          )}
-          {renderNumberSegments(
-            formattedResult.number,
-            formattedResult.unit,
-            false,
-          )}
+          {renderNumberSegments(ghostFormattedNumber.number, ghostFormattedNumber.unit, true)}
+          {renderNumberSegments(formattedResult.number, formattedResult.unit, false)}
         </span>
       )}
     </motion.a>

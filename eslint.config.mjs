@@ -8,6 +8,7 @@ export default defineConfig(
     fileCase: 'kebabCase',
     typeChecked: 'essential',
     project: true,
+    formatting: false,
     tailwindCSS: {
       order: false,
     },

@@ -1,14 +1,14 @@
-'use client'
+"use client"
 
-import { OpenPanelComponent } from '@openpanel/nextjs'
+import { OpenPanelComponent } from "@openpanel/nextjs"
 
-import { env } from '@/env'
-import { useSession } from '@/lib/auth'
-import { EventProvider } from '@/providers/event-provider'
+import { env } from "@/env"
+import { useSession } from "@/lib/auth"
+import { EventProvider } from "@/providers/event-provider"
 
 function OpenPanel() {
   const { data } = useSession()
-  if (process.env.NODE_ENV === 'development') {
+  if (process.env.NODE_ENV === "development") {
     return null
   }
   return (

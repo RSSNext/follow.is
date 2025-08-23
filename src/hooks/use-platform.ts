@@ -1,8 +1,8 @@
-'use client'
+"use client"
 
-import { useEffect, useState } from 'react'
+import { useEffect, useState } from "react"
 
-import type { OS } from '@/constants/release'
+import type { OS } from "@/constants/release"
 
 export function usePlatform() {
   const [platform, setPlatform] = useState<OS | undefined>()
@@ -10,35 +10,34 @@ export function usePlatform() {
 
   useEffect(() => {
     const detectPlatform = (): OS | undefined => {
-      if (typeof window === 'undefined')
-        return undefined
+      if (typeof window === "undefined") return undefined
 
       const { userAgent } = window.navigator
       const { platform } = window.navigator
 
       // iOS detection
       if (/iPad|iPhone|iPod/.test(userAgent)) {
-        return 'iOS'
+        return "iOS"
       }
 
       // Android detection
       if (/Android/.test(userAgent)) {
-        return 'Android'
+        return "Android"
       }
 
       // macOS detection
       if (/Mac|macOS/.test(platform) || /Mac/.test(userAgent)) {
-        return 'macOS'
+        return "macOS"
       }
 
       // Windows detection
       if (/Win/.test(platform) || /Windows/.test(userAgent)) {
-        return 'Windows'
+        return "Windows"
       }
 
       // Linux detection
       if (/Linux/.test(platform) && !/Android/.test(userAgent)) {
-        return 'Linux'
+        return "Linux"
       }
 
       return undefined
