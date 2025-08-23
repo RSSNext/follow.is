@@ -25,6 +25,7 @@ export const siteInfo = {
     { title: 'Testimonials', href: '/#testimonials' },
     { title: 'FAQ', href: '/#faq' },
     { title: '$POWER', href: 'https://power.top' },
+
   ],
 } as const
 
