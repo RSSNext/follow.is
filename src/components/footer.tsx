@@ -28,8 +28,8 @@ const footerSections = [
   {
     title: 'Legal',
     links: [
-      { name: 'Privacy', href: 'https://app.follow.is/privacy-policy' },
-      { name: 'Terms', href: 'https://app.follow.is/terms' },
+      { name: 'Privacy Policy', href: '/privacy-policy' },
+      { name: 'Terms of Service', href: '/terms-of-service' },
     ],
   },
 ]

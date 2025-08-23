@@ -1,6 +1,7 @@
 import './globals.css'
 
-import type { Metadata } from 'next'
+import { GeistSans } from 'geist/font/sans'
+import type { Metadata } from 'next/types'
 
 import { Footer } from '@/components/footer'
 import { Header } from '@/components/header'
@@ -19,7 +20,7 @@ export default async function RootLayout({
   children: React.ReactNode
 }>) {
   return (
-    <html lang="en" className="font-sans antialiased scroll-smooth h-full">
+    <html lang="en" className={`${GeistSans.variable} font-sans antialiased scroll-smooth h-full`}>
       <head>
         <meta name="apple-itunes-app" content="app-id=6739802604" />
 
