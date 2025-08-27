@@ -20,12 +20,12 @@ const faqs = [
     question: `What is ${APP_NAME}?`,
     answer: `${APP_NAME} is a next-generation information browser that aggregates content from multiple sources into a single, noise-free timeline with AI-powered features.`,
   },
-  {
-    id: 'what-is-power',
-    question: 'What is $POWER?',
-    answer:
-      '$POWER is our native token that enables tipping creators, and participating in community governance.',
-  },
+  // {
+  //   id: 'what-is-power',
+  //   question: 'What is $POWER?',
+  //   answer:
+  //     '$POWER is our native token that enables tipping creators, and participating in community governance.',
+  // },
   {
     id: 'is-it-free',
     question: 'Is it free to use?',

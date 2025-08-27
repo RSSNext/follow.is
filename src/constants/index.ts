@@ -24,7 +24,7 @@ export const siteInfo = {
     { title: 'Features', href: '/#features' },
     { title: 'Testimonials', href: '/#testimonials' },
     { title: 'FAQ', href: '/#faq' },
-    { title: '$POWER', href: 'https://power.top' },
+    // { title: '$POWER', href: 'https://power.top' },
 
   ],
 } as const

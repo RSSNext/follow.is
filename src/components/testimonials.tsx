@@ -161,14 +161,14 @@ function TestimonialCard({
 }
 
 const tweetList = [
-  {
-    id: '1833056589135442345',
-    text: "Very nice news aggregation, and it gives 2 power token everyday, so far I just try move front end people I followed in, haven't done yet, will try move more rss subscribe.",
-    name: '🦋 AnneInCoding',
-    screenName: '@anneincoding',
-    profileImageUrl:
-      'https://pbs.twimg.com/profile_images/1785961711150960640/33lS68gu_normal.jpg',
-  },
+  // {
+  //   id: '1833056589135442345',
+  //   text: "Very nice news aggregation, and it gives 2 power token everyday, so far I just try move front end people I followed in, haven't done yet, will try move more rss subscribe.",
+  //   name: '🦋 AnneInCoding',
+  //   screenName: '@anneincoding',
+  //   profileImageUrl:
+  //     'https://pbs.twimg.com/profile_images/1785961711150960640/33lS68gu_normal.jpg',
+  // },
   {
     id: '1832896505528930551',
     text: 'Folo is sick!!!! It is indeed the best RSS app on this planet, way better than any pure RSS app such as Reeder, Inoreader, or any apps with RSS features like Readwise Reader!!!',

@@ -2,10 +2,8 @@
 
 import {
   Bell,
-  Crown,
   Download,
   FileText,
-  Gem,
   Globe,
   Heart,
   Image as ImageIcon,
@@ -23,7 +21,7 @@ import { APP_NAME } from '@/constants'
 import screenShotAIDaily from '@/images/screenshots/AI At Your Fingertips.png'
 import screenShotDiscover from '@/images/screenshots/Customized Info Hub.png'
 import screenShotViews from '@/images/screenshots/Dynamic Content Support.png'
-import screenShotPower from '@/images/screenshots/High Level Description.png'
+// import screenShotPower from '@/images/screenshots/High Level Description.png'
 import screenShotSocial from '@/images/screenshots/More Than Just An App.png'
 import { scrollAnimations, springAnimations } from '@/lib/animations'
 
@@ -74,21 +72,21 @@ const features = [
       { text: 'Content Insights', icon: Sparkles },
     ],
   },
-  {
-    id: 'power',
-    title: '$POWER Economy',
-    description:
-      'Tip creators instantly with $POWER, support content you love, and unlock value in your work.',
-    image: screenShotPower,
-    gradient: 'from-orange-500 to-red-600',
-    icon: '💎',
-    details: [
-      { text: 'Tip Creators', icon: Heart },
-      { text: 'Earn Rewards', icon: Gem },
-      { text: 'Premium Features', icon: Crown },
-      { text: 'Community Governance', icon: Users },
-    ],
-  },
+  // {
+  //   id: 'power',
+  //   title: '$POWER Economy',
+  //   description:
+  //     'Tip creators instantly with $POWER, support content you love, and unlock value in your work.',
+  //   image: screenShotPower,
+  //   gradient: 'from-orange-500 to-red-600',
+  //   icon: '💎',
+  //   details: [
+  //     { text: 'Tip Creators', icon: Heart },
+  //     { text: 'Earn Rewards', icon: Gem },
+  //     { text: 'Premium Features', icon: Crown },
+  //     { text: 'Community Governance', icon: Users },
+  //   ],
+  // },
   {
     id: 'community',
     title: 'Community-Driven',
