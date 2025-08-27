@@ -1,11 +1,9 @@
-"use client"
+'use client'
 
 import {
   Bell,
-  Crown,
   Download,
   FileText,
-  Gem,
   Globe,
   Heart,
   Image as ImageIcon,
@@ -14,93 +12,78 @@ import {
   Target,
   Users,
   Video,
-} from "lucide-react"
-import { motion } from "motion/react"
-import Image from "next/image"
-import { useRouter } from "next/navigation"
+} from 'lucide-react'
+import { motion } from 'motion/react'
+import Image from 'next/image'
+import { useRouter } from 'next/navigation'
 
-import { APP_NAME } from "@/constants"
-import screenShotAIDaily from "@/images/screenshots/AI At Your Fingertips.png"
-import screenShotDiscover from "@/images/screenshots/Customized Info Hub.png"
-import screenShotViews from "@/images/screenshots/Dynamic Content Support.png"
-import screenShotPower from "@/images/screenshots/High Level Description.png"
-import screenShotSocial from "@/images/screenshots/More Than Just An App.png"
-import { scrollAnimations, springAnimations } from "@/lib/animations"
+import { APP_NAME } from '@/constants'
+import screenShotAIDaily from '@/images/screenshots/AI At Your Fingertips.png'
+import screenShotDiscover from '@/images/screenshots/Customized Info Hub.png'
+import screenShotViews from '@/images/screenshots/Dynamic Content Support.png'
+import screenShotSocial from '@/images/screenshots/More Than Just An App.png'
+import { scrollAnimations, springAnimations } from '@/lib/animations'
 
-import { Button } from "./ui/button"
+import { Button } from './ui/button'
 
 const features = [
   {
-    id: "hub",
-    title: "Customized Information Hub",
+    id: 'hub',
+    title: 'Customized Information Hub',
     description:
       "Powered by RSSHub, the world's largest RSS network with 5,000+ instances. Subscribe to feeds from any platform and curate your personalized information timeline.",
     image: screenShotDiscover,
-    gradient: "from-indigo-500 to-purple-600",
-    icon: "🎯",
+    gradient: 'from-indigo-500 to-purple-600',
+    icon: '🎯',
     details: [
-      { text: "Adapted 1,200 popular websites", icon: Globe },
-      { text: "RSS & Social Media", icon: Rss },
-      { text: "RSSHub Integration", icon: Target },
-      { text: "Content Insights", icon: Sparkles },
+      { text: 'Adapted 1,200 popular websites', icon: Globe },
+      { text: 'RSS & Social Media', icon: Rss },
+      { text: 'RSSHub Integration', icon: Target },
+      { text: 'Content Insights', icon: Sparkles },
     ],
   },
   {
-    id: "dynamic",
-    title: "Dynamic Content Support",
+    id: 'dynamic',
+    title: 'Dynamic Content Support',
     description: `From articles to videos, images to audio — ${APP_NAME} gets it all covered with intelligent content parsing.`,
     image: screenShotViews,
-    gradient: "from-emerald-500 to-cyan-600",
-    icon: "⚡",
+    gradient: 'from-emerald-500 to-cyan-600',
+    icon: '⚡',
     details: [
-      { text: "Articles & Blogs", icon: FileText },
-      { text: "Videos & Podcasts", icon: Video },
-      { text: "Images & Media", icon: ImageIcon },
-      { text: "Notifications", icon: Bell },
+      { text: 'Articles & Blogs', icon: FileText },
+      { text: 'Videos & Podcasts', icon: Video },
+      { text: 'Images & Media', icon: ImageIcon },
+      { text: 'Notifications', icon: Bell },
     ],
   },
   {
-    id: "ai",
-    title: "AI At Your Fingertips",
+    id: 'ai',
+    title: 'AI At Your Fingertips',
     description:
-      "Smart browsing with AI-powered features like translation, summary, and content insights.",
+      'Smart browsing with AI-powered features like translation, summary, and content insights.',
     image: screenShotAIDaily,
-    gradient: "from-violet-500 to-pink-600",
-    icon: "🤖",
+    gradient: 'from-violet-500 to-pink-600',
+    icon: '🤖',
     details: [
-      { text: "Auto Summaries", icon: FileText },
-      { text: "Real-time Translation", icon: Globe },
-      { text: "Smart Categories", icon: Target },
-      { text: "Content Insights", icon: Sparkles },
+      { text: 'Auto Summaries', icon: FileText },
+      { text: 'Real-time Translation', icon: Globe },
+      { text: 'Smart Categories', icon: Target },
+      { text: 'Content Insights', icon: Sparkles },
     ],
   },
+
   {
-    id: "power",
-    title: "$POWER Economy",
-    description:
-      "Tip creators instantly with $POWER, support content you love, and unlock value in your work.",
-    image: screenShotPower,
-    gradient: "from-orange-500 to-red-600",
-    icon: "💎",
-    details: [
-      { text: "Tip Creators", icon: Heart },
-      { text: "Earn Rewards", icon: Gem },
-      { text: "Premium Features", icon: Crown },
-      { text: "Community Governance", icon: Users },
-    ],
-  },
-  {
-    id: "community",
-    title: "Community-Driven",
+    id: 'community',
+    title: 'Community-Driven',
     description: `More than an app. ${APP_NAME} is a community introducing a new era of openness and collaboration.`,
     image: screenShotSocial,
-    gradient: "from-blue-500 to-indigo-600",
-    icon: "🌟",
+    gradient: 'from-blue-500 to-indigo-600',
+    icon: '🌟',
     details: [
-      { text: "Open Source", icon: Globe },
-      { text: "Community Lists", icon: Users },
-      { text: "Shared Collections", icon: Heart },
-      { text: "Collaborative Features", icon: Sparkles },
+      { text: 'Open Source', icon: Globe },
+      { text: 'Community Lists', icon: Users },
+      { text: 'Shared Collections', icon: Heart },
+      { text: 'Collaborative Features', icon: Sparkles },
     ],
   },
 ]
@@ -121,7 +104,9 @@ export function Features() {
         >
           <div className="mb-6 inline-flex items-center gap-2 rounded-full border border-gray-200/60 bg-gradient-to-r from-slate-50 to-gray-50 px-4 py-2 dark:border-gray-700/50 dark:from-gray-900/50 dark:to-gray-800/50">
             <div className="h-2 w-2 animate-pulse rounded-full bg-gradient-to-r from-orange-500 to-red-500" />
-            <span className="text-sm font-medium text-gray-700 dark:text-gray-300">Features</span>
+            <span className="text-sm font-medium text-gray-700 dark:text-gray-300">
+              Features
+            </span>
           </div>
 
           <h2 className="mb-6 text-3xl font-bold text-gray-900 sm:text-4xl lg:text-5xl dark:text-white">
@@ -132,8 +117,8 @@ export function Features() {
           </h2>
 
           <p className="mx-auto max-w-3xl text-lg text-gray-600 sm:text-xl dark:text-gray-300">
-            Discover powerful features designed to transform how you discover, consume, and interact
-            with content across the web.
+            Discover powerful features designed to transform how you discover,
+            consume, and interact with content across the web.
           </p>
         </motion.div>
 
@@ -144,10 +129,10 @@ export function Features() {
               key={feature.id}
               initial={{ opacity: 0, y: 40 }}
               whileInView={{ opacity: 1, y: 0 }}
-              transition={springAnimations.withDelay(index * 0.05, "medium")}
+              transition={springAnimations.withDelay(index * 0.05, 'medium')}
               viewport={{ once: true }}
               className={`group ${
-                index % 2 === 1 ? "lg:flex-row-reverse" : ""
+                index % 2 === 1 ? 'lg:flex-row-reverse' : ''
               } items-center gap-12 lg:flex`}
             >
               {/* Content Side */}
@@ -161,7 +146,7 @@ export function Features() {
                         className={`h-2 w-2 rounded-full bg-gradient-to-r ${feature.gradient}`}
                       />
                       <span className="text-xs font-medium text-gray-600 dark:text-gray-400">
-                        Feature {String(index + 1).padStart(2, "0")}
+                        Feature {String(index + 1).padStart(2, '0')}
                       </span>
                     </div>
                   </div>
@@ -189,9 +174,11 @@ export function Features() {
                     {feature.icon}
                   </div>
                   <div className="inline-flex items-center gap-2 rounded-full border border-gray-200/50 bg-gradient-to-r from-gray-50 to-gray-100 px-3 py-1 dark:border-gray-600/50 dark:from-gray-800 dark:to-gray-700">
-                    <div className={`h-2 w-2 rounded-full bg-gradient-to-r ${feature.gradient}`} />
+                    <div
+                      className={`h-2 w-2 rounded-full bg-gradient-to-r ${feature.gradient}`}
+                    />
                     <span className="text-xs font-medium text-gray-600 dark:text-gray-400">
-                      Feature {String(index + 1).padStart(2, "0")}
+                      Feature {String(index + 1).padStart(2, '0')}
                     </span>
                   </div>
                 </div>
@@ -263,7 +250,9 @@ export function Features() {
                           >
                             {(() => {
                               const IconComponent = feature.details[3].icon
-                              return <IconComponent className="h-4 w-4 text-white" />
+                              return (
+                                <IconComponent className="h-4 w-4 text-white" />
+                              )
                             })()}
                           </div>
                           <div>
@@ -301,7 +290,7 @@ export function Features() {
         <motion.div
           initial={{ opacity: 0, y: 30 }}
           whileInView={{ opacity: 1, y: 0 }}
-          transition={springAnimations.withDelay(0.2, "medium")}
+          transition={springAnimations.withDelay(0.2, 'medium')}
           viewport={{ once: true }}
           className="mt-32 text-center"
         >
@@ -310,7 +299,8 @@ export function Features() {
               Ready to experience the future of content?
             </h3>
             <p className="max-w-md text-gray-600 dark:text-gray-300">
-              Join thousands of users who've transformed their content consumption experience.
+              Join thousands of users who've transformed their content
+              consumption experience.
             </p>
             {/* <a
               href="/download"
@@ -323,7 +313,7 @@ export function Features() {
               size="lg"
               className="font-medium"
               onClick={() => {
-                router.push("/download")
+                router.push('/download')
               }}
             >
               <Download />

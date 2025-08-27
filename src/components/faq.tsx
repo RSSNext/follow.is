@@ -1,46 +1,42 @@
-"use client"
+'use client'
 
-import { motion } from "motion/react"
+import { motion } from 'motion/react'
 
 import {
   Accordion,
   AccordionContent,
   AccordionItem,
   AccordionTrigger,
-} from "@/components/ui/accordion"
-import { Button } from "@/components/ui/button"
-import { APP_NAME } from "@/constants"
-import { springAnimations } from "@/lib/animations"
+} from '@/components/ui/accordion'
+import { Button } from '@/components/ui/button'
+import { APP_NAME } from '@/constants'
+import { springAnimations } from '@/lib/animations'
 
-import { LogoText } from "./logo"
+import { LogoText } from './logo'
 
 const faqs = [
   {
-    id: "what-is-folo",
+    id: 'what-is-folo',
     question: `What is ${APP_NAME}?`,
     answer: `${APP_NAME} is a next-generation information browser that aggregates content from multiple sources into a single, noise-free timeline with AI-powered features.`,
   },
+
   {
-    id: "what-is-power",
-    question: "What is $POWER?",
-    answer:
-      "$POWER is our native token that enables tipping creators, and participating in community governance.",
-  },
-  {
-    id: "is-it-free",
-    question: "Is it free to use?",
+    id: 'is-it-free',
+    question: 'Is it free to use?',
     answer: `Yes, ${APP_NAME} is completely free and open-source.`,
   },
   {
-    id: "platforms",
-    question: "What platforms are supported?",
-    answer: "Available on macOS, Windows, Linux, iOS, Android, and web browsers.",
+    id: 'platforms',
+    question: 'What platforms are supported?',
+    answer:
+      'Available on macOS, Windows, Linux, iOS, Android, and web browsers.',
   },
   {
-    id: "getting-started",
-    question: "How do I get started?",
+    id: 'getting-started',
+    question: 'How do I get started?',
     answer:
-      "Download the app, create an account, and add your favorite content sources. Our onboarding guides you through setup.",
+      'Download the app, create an account, and add your favorite content sources. Our onboarding guides you through setup.',
   },
 ]
 
@@ -60,7 +56,7 @@ export function FAQ() {
           transition={{
             duration: 8,
             repeat: Infinity,
-            ease: "easeInOut",
+            ease: 'easeInOut',
           }}
           className="absolute top-24 left-12 text-orange-200/25 dark:text-orange-800/15"
         >
@@ -77,7 +73,7 @@ export function FAQ() {
           transition={{
             duration: 6,
             repeat: Infinity,
-            ease: "easeInOut",
+            ease: 'easeInOut',
             delay: 1,
           }}
           className="absolute top-40 right-16 text-amber-200/30 dark:text-amber-800/20"
@@ -99,7 +95,9 @@ export function FAQ() {
         >
           <div className="mb-6 inline-flex items-center gap-2 rounded-full border border-gray-200/60 bg-gradient-to-r from-slate-50 to-gray-50 px-4 py-2 dark:border-gray-700/50 dark:from-gray-900/50 dark:to-gray-800/50">
             <div className="h-2 w-2 animate-pulse rounded-full bg-gradient-to-r from-orange-500 to-red-500" />
-            <span className="text-sm font-medium text-gray-700 dark:text-gray-300">FAQ</span>
+            <span className="text-sm font-medium text-gray-700 dark:text-gray-300">
+              FAQ
+            </span>
           </div>
 
           <h2 className="mb-6 text-3xl font-bold text-gray-900 sm:text-4xl lg:text-5xl dark:text-white">
@@ -110,9 +108,9 @@ export function FAQ() {
           </h2>
 
           <p className="mx-auto max-w-2xl text-lg text-gray-600 sm:text-xl dark:text-gray-300">
-            Everything you need to know about{" "}
-            <LogoText className="inline-block h-[1.2ch] w-auto -translate-y-0.5" />.
-            {/* Can't find the answer you're looking for? */}
+            Everything you need to know about{' '}
+            <LogoText className="inline-block h-[1.2ch] w-auto -translate-y-0.5" />
+            .{/* Can't find the answer you're looking for? */}
             {/* <span className="block mt-2">
               <a
                 href="mailto:support@follow.is"
@@ -128,7 +126,7 @@ export function FAQ() {
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
-          transition={springAnimations.withDelay(0.1, "medium")}
+          transition={springAnimations.withDelay(0.1, 'medium')}
           viewport={{ once: true }}
         >
           <Accordion type="single" collapsible className="space-y-2">
@@ -137,7 +135,7 @@ export function FAQ() {
                 key={faq.id}
                 initial={{ opacity: 0, y: 10 }}
                 whileInView={{ opacity: 1, y: 0 }}
-                transition={springAnimations.withDelay(index * 0.03, "fast")}
+                transition={springAnimations.withDelay(index * 0.03, 'fast')}
                 viewport={{ once: true }}
               >
                 <AccordionItem value={faq.id} className="group">
@@ -161,7 +159,7 @@ export function FAQ() {
         <motion.div
           initial={{ opacity: 0, y: 30 }}
           whileInView={{ opacity: 1, y: 0 }}
-          transition={springAnimations.withDelay(0.2, "medium")}
+          transition={springAnimations.withDelay(0.2, 'medium')}
           viewport={{ once: true }}
           className="mt-16 text-center"
         >
@@ -174,14 +172,19 @@ export function FAQ() {
             <div className="relative z-10 flex flex-col items-center gap-6 p-8">
               <div className="flex items-center gap-3 text-2xl font-bold text-gray-900 dark:text-white">
                 <div className="rounded-xl border border-orange-200/50 bg-gradient-to-br from-orange-500/10 to-red-500/10 p-2 dark:border-orange-700/50">
-                  <svg className="h-6 w-6 text-orange-500" fill="currentColor" viewBox="0 0 24 24">
+                  <svg
+                    className="h-6 w-6 text-orange-500"
+                    fill="currentColor"
+                    viewBox="0 0 24 24"
+                  >
                     <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm1 17h-2v-2h2v2zm2.07-7.75l-.9.92C13.45 12.9 13 13.5 13 15h-2v-.5c0-1.1.45-2.1 1.17-2.83l1.24-1.26c.37-.36.59-.86.59-1.41 0-1.1-.9-2-2-2s-2 .9-2 2H8c0-2.21 1.79-4 4-4s4 1.79 4 4c0 .88-.36 1.68-.93 2.25z" />
                   </svg>
                 </div>
                 Still have questions?
               </div>
               <p className="max-w-md text-center leading-relaxed text-gray-600 dark:text-gray-300">
-                Join our community and get help from other users, or reach out to our team directly.
+                Join our community and get help from other users, or reach out
+                to our team directly.
               </p>
               <div className="flex w-full flex-col gap-4 sm:w-auto sm:flex-row">
                 <Button
