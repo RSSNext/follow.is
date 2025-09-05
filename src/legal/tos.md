@@ -2,108 +2,130 @@
 
 **Effective Date:** 2025-05-15
 
-Welcome to Folo, your personalized RSS reader and content hub. By using our application, you agree to these Terms of Service ("Terms"). Please read them carefully as they govern your use of the Service and the rights and obligations that come with it.
+Last Updated：2025-09-03
 
-Folo is designed to provide an intuitive, efficient, and user-friendly experience in managing your RSS feeds. We aim to offer a seamless and secure environment, but it’s important for you to understand your rights and responsibilities while using the Service.
+This version of the Terms of Service is the most recent update and supersedes all prior versions. These Terms may be revised from time to time, and continued use of the Service constitutes acceptance of the latest version.
 
-## Definitions
+The Folo platform (“Folo” or the “Service”) is owned, operated, and provided by NATURAL SELECTION LABS PTE. LTD.. All references to “we,” “our,” or “us” in these Terms refer to NATURAL SELECTION LABS PTE. LTD..By accessing or using Folo, you agree to be bound by these Terms of Service and all applicable laws and regulations. If you do not agree, you must not use the Service. You also confirm that you are of the legal age of majority in your jurisdiction.
 
-- **Service**: The Folo application and its related features, including the RSS reader, AI-powered functionalities, and $POWER system.
-- **User Content**: Any data, materials, or information you upload, submit, or share through the Service.
-- **$POWER**: A virtual point system within the Service used to reward content creators, with no real-world monetary value.
+## Eligibility
 
-## 1. Acceptance of Terms
+You must be at least 16 years of age, or the age of majority in your jurisdiction (whichever is higher), to access and use the Service. By using the Service, you represent and warrant that you:
 
-By accessing or using Folo ("the Service"), you agree to comply with and be bound by these Terms and our Privacy Policy. If you do not agree to these Terms, you may not use the Service. These Terms form a legally binding contract between you and Natural Selection Limited, which owns and operates Folo. You are responsible for your actions and for ensuring your use of the Service complies with these Terms.
+- Meet the minimum age requirement;
+- Have the legal capacity and authority to enter into a binding agreement with Folo;
+- Are not barred from using the Service under any applicable laws or regulations; and
+- Will use the Service only in compliance with these Terms and all applicable laws.
 
-## 2. Eligibility
+If you are accessing the Service on behalf of a company, organization, or other legal entity, you represent and warrant that you have the authority to bind such entity to these Terms, in which case “you” will refer to that entity.
 
-You must be at least 13 years old to use Folo. By using the Service, you represent and warrant that you meet this eligibility requirement. If you are under 13, you are prohibited from using the Service. Natural Selection Limited reserves the right to suspend or terminate access for users who violate these requirements. If you use Folo on behalf of a company, you confirm you have the authority to bind the company to these Terms.
+## Service Description
 
-## 3. User Account
+Folo provides a dynamic information aggregation and browsing platform that enables users to:
 
-To access certain features, you may need to create an account. You are responsible for maintaining the confidentiality of your account credentials (e.g., username and password) and for all activities under your account. Notify us immediately at follow@rss3.io if you suspect unauthorized access. You agree to provide accurate, up-to-date information when creating or maintaining your account. Failure to do so may result in limited access or functionality.
+- Aggregate publicly available content from multiple sources (articles, videos, podcasts, feeds).
+- Present such content in a personalized, distraction-free timeline.
+- Use AI-powered features (translation, summaries, insights, categorization) to enhance browsing.
+- Create, save, and share curated subscription lists and collections.
 
-## 4. Permitted Use
+Important Note: Folo may modify, expand, or discontinue any features, tools, or aspects of the Service at its sole discretion.
 
-You agree to use Folo solely for lawful purposes and in a manner that respects the rights of others. You shall not use the Service for unlawful, harmful, or malicious activities, including transmitting malware, viruses, or phishing attempts, or interfering with the Service’s operation or security. Unauthorized attempts to access the Service through hacking or other unlawful means are prohibited and may result in account termination.
+## User Account
 
-You may not exploit the Service for commercial purposes unless explicitly authorized by Natural Selection Limited.
+You are solely responsible for maintaining the confidentiality and security of your account credentials, including your username and password, and for all activities conducted under your account. You agree to notify Folo immediately if you become aware of any unauthorized use or security breach related to your account. Folo reserves the right, at its sole discretion, to suspend, restrict, or terminate accounts that violate these Terms, engage in unlawful activity, or otherwise pose a security or legal risk, and may impose additional requirements, such as verification procedures, to protect the Service and its users.
 
-## 5. Service Fees
+## Permitted Use
 
-Folo offers both free and paid features. Certain functionalities, such as advanced AI features or additional $POWER purchases, may require payment. All fees will be clearly disclosed in the application or on our website (https://app.folo.is). Fees are non-refundable unless required by applicable law.
+You agree to use Folo solely for lawful purposes and in a manner that respects the rights of others, and you shall not engage in any unlawful, harmful, or malicious activities, including transmitting malware, viruses, or phishing attempts, or interfering with the operation, security, or availability of the Service. Any unauthorized attempts to access, manipulate, or bypass the Service through hacking or other unlawful means are prohibited and may result in suspension or termination of your account.
 
-## 6. Content and Intellectual Property
+You may not exploit the Service for commercial purposes unless explicitly authorized by Us.
 
-### 6.1 User Content
+## Service Fees
 
-Folo enables you to import, subscribe to, and read content via RSS feeds. You retain ownership of any content you post, upload, or submit. By sharing content, you grant us a worldwide, royalty-free, non-exclusive license to host, display, modify, and distribute your content as necessary to operate, improve, and provide the Service. You are responsible for ensuring your content does not infringe third-party intellectual property rights and for respecting the rights of content creators and copyright holders.
+Basic access to and use of Folo is free of charge. Certain premium features, including advanced AI functionalities or additional services, may require payment of subscription or usage fees. All applicable fees will be clearly disclosed to you prior to purchase. Payments for such features are non-refundable, except where required by applicable law. By making a payment, you agree to provide accurate and complete payment information and authorize Folo to charge the designated payment method. Folo reserves the right to modify its fees, billing methods, or payment terms at any time, with notice provided as appropriate.
 
-### 6.2 Intellectual Property Rights
+## Intellectual Property
 
-The Service, including its software, designs, and content, is owned by Natural Selection Limited or its licensors. You are granted a limited, non-exclusive, non-transferable right to use the Service for personal, non-commercial purposes. You may not copy, modify, reverse-engineer, or distribute any part of the Service without our permission. All trademarks, logos, and service marks are the property of Natural Selection Limited or their respective owners. Unauthorized use is prohibited.
+Folo Technology: All intellectual property rights in Folo, including but not limited to its software, user interface, underlying algorithms, AI models, RSSHub integration, and any associated documentation or designs, are owned by Folo or licensed to Folo. These rights are protected by copyright, trademark, patent, and other applicable intellectual property laws. You are granted a limited, non-exclusive, non-transferable right to use the Service for personal, non-commercial purposes in accordance with these Terms.
 
-### 6.3 AI Features and Usage
+Third-Party Content: All rights to third-party content aggregated or otherwise accessed through the Service remain with the respective content owners. Folo does not claim ownership, control, or responsibility for such content, and provides access solely for informational and organizational purposes. Any reliance on third-party content is at your own risk.
 
-Folo incorporates AI-powered features for content translation, summarization, and recommendations. We strive to ensure these features provide useful outputs, but we do not guarantee their accuracy, completeness, or reliability. You should independently verify AI-generated content, especially for critical decisions. Natural Selection Limited is not liable for losses or damages from relying on AI content, except where caused by our gross negligence. Report significant AI errors to follow@rss3.io for us to improve the Service.
+User Contributions: Users may create, organize, and share curated lists or collections within the Service. By contributing, you grant Folo a non-exclusive, worldwide, royalty-free license to host, display, distribute, and use your contributions solely within the Service. You represent and warrant that your contributions do not infringe upon the rights of any third party, including intellectual property rights, privacy rights, or publicity rights.
 
-### 6.4 $POWER Economy
+## AI Features Disclaimer
 
-Folo’s $POWER system allows users to support content creators by tipping or rewarding with $POWER, a virtual point system with no real-world monetary value. You can acquire $POWER through community participation, tasks, or in-app purchases. You agree to:
+Folo provides AI-generated features, including summaries, translations, insights, and content categorization, to enhance your browsing experience. You acknowledge and agree that such AI-generated content may be produced by third-party AI models, and Folo does not independently generate or control these outputs. By using these features, you acknowledge and agree that:
 
-- Not engage in fraudulent or malicious activities with $POWER.
-- Acknowledge $POWER cannot be exchanged for currency or transferred outside the Service.
-- Accept that $POWER transactions are final and non-refundable.
-- Comply with any tax or legal obligations related to $POWER purchases.
+- AI outputs may contain inaccuracies, errors, omissions, or biases, and may not always reflect complete or up-to-date information.
+- You remain solely responsible for independently verifying the accuracy, reliability, and suitability of AI-generated outputs before relying on them for any purpose.
+- Folo does not guarantee the correctness, completeness, or usefulness of AI-generated content and expressly disclaims any liability for losses, damages, or actions resulting from the use or reliance on such outputs.
 
-If you have disputes about $POWER transactions, contact us at follow@rss3.io. We will investigate and respond within 30 days, but our decision is final. If we terminate the $POWER system, we will notify users at least 30 days in advance via email or in-app notification. Unused $POWER will expire upon termination without refund or compensation.
+## Privacy and Data Use
 
-We reserve the right to modify, suspend, or terminate the $POWER system at any time with notice.
+Folo collects, processes, and stores user data in accordance with its Privacy Policy, including information such as usage patterns, RSS subscriptions, interactions with AI features, and other anonymized or aggregated analytics data. The collected data is only used to improve and personalize the Service, optimize AI outputs, and ensure security and functionality. Please refer to the Privacy Policy for full details regarding data collection, usage, sharing, and retention practices.
 
-## 7. Prohibited Activities
+## Third-Party Content and Links
 
-You agree not to:
+The Service aggregates publicly available content from third-party sources for informational and organizational purposes. Folo does not control, endorse, or guarantee the accuracy, legality, or availability of such content. You acknowledge that any reliance on third-party content accessed through the Service is at your own risk.
 
-- Engage in illegal or harmful activities, such as distributing malicious software or breaching data.
-- Attempt unauthorized access to the Service or its security features.
-- Misuse the $POWER system through fraudulent transactions.
-- Disrupt the Service’s functionality or harm other users’ experiences.
+Links to external websites may be provided for convenience. Folo does not assume responsibility for the content, practices, or privacy policies of linked sites. Users are encouraged to review the terms and privacy policies of any external sites they visit.
 
-Violations may result in account suspension or termination and, if necessary, legal action.
+## Copyright Complaints
 
-## 8. Disclaimer of Warranties
+If you believe that material accessible through Folo infringes your copyright or other intellectual property rights, please contact us with the following information:
 
-The Service is provided “AS IS” and “AS AVAILABLE.” We do not guarantee uninterrupted, error-free, or secure operation. We disclaim all express or implied warranties, including merchantability, fitness for a particular purpose, and non-infringement, to the fullest extent permitted by law.
+- A clear identification of the copyrighted work(s) you claim has been infringed.
+- URL(s) or detailed description(s) of the allegedly infringing material.
+- Your full contact information, including name, email address, and telephone number.
+- A statement under penalty of perjury that you have a good faith belief that the disputed use is not authorized by the copyright owner, its agent, or the law.
 
-## 9. Limitation of Liability
+Folo will review and respond to copyright complaints in accordance with applicable copyright laws. Folo may remove or disable access to allegedly infringing content pending review and may terminate repeat infringers in accordance with applicable law.
 
-To the fullest extent permitted by law, except where caused by our gross negligence or willful misconduct, Natural Selection Limited is not liable for indirect, incidental, special, or consequential damages, including loss of profits, data, or goodwill. Our total liability shall not exceed the greater of the amount you paid for the Service in the past 12 months or SGD 100. These Terms do not limit statutory rights that cannot be waived by contract under applicable law.
+## Termination and Suspension
 
-## 10. Modifications to the Terms
+Folo reserves the right, at its sole discretion, to suspend or terminate your access to the Service, with or without prior notice, if you:
 
-We may modify these Terms at any time. Changes take effect upon posting to the Service. For significant changes (e.g., affecting user rights, fees, or data use), we will notify you at least 14 days in advance via email, in-app notification, or our website (https://folo.is). If you disagree with the changes, you may terminate your account before they take effect by contacting us or using account settings. Continued use after changes constitutes acceptance. You are responsible for periodically reviewing the Terms.
+- Violate any provision of these Terms；
+- Engage in unlawful, harmful, or malicious activities；
+- Misuse AI features, attempt to exploit the Service, or interfere with its operation or security.
 
-## 11. Termination
+Upon termination or suspension, your right to access the Service will immediately cease, and Folo may delete or deactivate your account and content, subject to applicable law. Folo shall not be liable for any loss or damage resulting from such termination or suspension.
 
-We may suspend, disable, or terminate your access to the Service at any time for reasons including violations of these Terms or fraudulent behavior. Except for immediate termination due to legal or policy violations, we will notify you 14 days in advance via email or in-app notification. You may export your RSS subscriptions and other user-generated content (if applicable) via the account settings’ export feature before termination. We recommend regular backups. Upon termination, your account will be deactivated, and we do not guarantee retention of your data unless required by law.
+## Disclaimers
 
-To terminate your account, use the account settings or contact us at follow@rss3.io.
+The Service is provided on an “as is” and “as available” basis. Folo makes no warranties of any kind, whether express, implied, statutory, or otherwise, including but not limited to warranties of merchantability, fitness for a particular purpose, accuracy, or non-infringement.
 
-## 12. Governing Law
+Folo does not guarantee uninterrupted, secure, or error-free access to the Service. You acknowledge and accept that your use of the Service is at your own risk.
 
-These Terms are governed by and construed in accordance with the laws of the Republic of Singapore. Any disputes arising out of or in connection with these Terms will be subject to the exclusive jurisdiction of the courts of Singapore.
+## Limitation of Liability
 
-## 13. Contact Us
+To the maximum extent permitted by law, Folo and its affiliates, officers, and employees shall not be liable for any indirect, incidental, special, consequential, or punitive damages, including but not limited to loss of profits, data, business opportunities, or goodwill.
 
-For questions, concerns, or support, contact us at:
+Folo’s total aggregate liability for any claim arising out of or in connection with the Service shall not exceed the total amount you paid (if any) to access or use the Service during the twelve (12) months preceding the claim.
 
-- **Email**: follow@rss3.io
+These limitations apply regardless of the form of action, whether in contract, tort, strict liability, or otherwise, except where prohibited by applicable law.
 
-## 14. Community Participation and Contribution
+## Indemnification
 
-Folo is an open-source project, and we welcome contributions such as bug reports, feature requests, and improvements. Contributions must adhere to our [Code of Conduct](https://github.com/RSSNext/Folo/blob/main/CODE_OF_CONDUCT.md) and contributing guidelines, including [Corepack](https://nodejs.org/api/corepack.html) setup. By contributing, you agree your submissions are licensed under the [GNU General Public License v3](https://www.gnu.org/licenses/gpl-3.0.html).
+You agree to indemnify, defend, and hold harmless Folo and its affiliates, officers, employees, and agents from any and all claims, liabilities, damages, losses, costs, or expenses (including reasonable legal fees) arising out of or related to:
 
-## 15. Privacy and Data Use
+- Your use or misuse of the Service.
+- Your violation of these Terms.
+- Your infringement of any third-party rights.
 
-Folo takes your privacy seriously. We may collect, store, and process personal information, including usage patterns and content interactions. Our [Privacy Policy](/privacy-policy) will detail how we collect, process, and protect your data. Until available, contact follow@rss3.io for privacy inquiries. We are committed to handling your data securely and transparently in compliance with applicable laws, including Singapore’s Personal Data Protection Act.
+## Governing Law and Dispute Resolution
+
+These Terms shall be governed by and construed in accordance with the laws of Singapore, without regard to conflict of law principles.
+
+You agree that any dispute, claim, or controversy arising out of or in connection with these Terms shall first be attempted to resolve through good-faith negotiations. If the dispute cannot be resolved through negotiation, it shall be submitted to binding arbitration administered by the Singapore International Arbitration Centre (SIAC) under its rules.
+
+## Changes to the Terms
+
+Folo may revise or update these Terms at any time. Any changes will become effective upon posting the revised Terms to our website with a new “Last Updated” date. Continued use of the Service after such posting constitutes your acceptance of the updated Terms. You are responsible for reviewing the Terms periodically.
+
+## Contact Us
+
+For any questions or concerns regarding these Terms, please contact us at:
+
+- General Support: <support@folo.is>
+- Legal and Copyright Matters: <legal@folo.is>
